@@ -14,6 +14,7 @@ import {
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideAuth, getAuth } from '@angular/fire/auth';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 @NgModule({
   declarations: [AppComponent, HeaderComponent],
   imports: [
@@ -25,6 +26,7 @@ import { provideAuth, getAuth } from '@angular/fire/auth';
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
+    FontAwesomeModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
