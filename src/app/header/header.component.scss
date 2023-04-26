@@ -1,0 +1,31 @@
+$headerHeight: 100vw;
+
+.header {
+  background-color: #f1eeee;
+  display: flex;
+
+  height: 7vh;
+  width: 100vw;
+
+  position: fixed;
+}
+
+.circle {
+  position: relative;
+  top: 30%;
+  right: 4%;
+  height: 100%;
+  width: 7vh;
+
+  border-radius: 100%;
+
+  background-color: #f1eeee;
+}
+
+.navbar {
+  padding: 0;
+}
+
+.container-fluid {
+  padding-right: 0.25rem;
+}
