@@ -1,8 +1,11 @@
-<ng-template #content let-offcanvas>
-  <header class="offcanvas-header">
+<ng-template #sidebar let-offcanvas>
+  <header class="offcanvas-header ps-0">
     <ul class="navbar-nav container-fluid">
-      <li class="nav-item ms-auto" *ngFor="let link of navLinks">
-        <a class="nav-link" routerLink="" (click)="offcanvas.close()">
+      <li
+        class="nav-item ms-auto fw-semibold lead"
+        *ngFor="let link of navLinks"
+      >
+        <a class="nav-link side-link" routerLink="" (click)="offcanvas.close()">
           {{ link.name }}</a
         >
       </li>
@@ -10,19 +13,19 @@
   </header>
 </ng-template>
 
-<nav class="navbar navbar-expand-sm fixed-top">
-  <div class="container-fluid bg-light g-0">
+<nav class="navbar navbar-expand-md fixed-top">
+  <div class="header-container container-fluid bg-light g-0">
     <a class="navbar-brand circle" [routerLink]=""></a>
     <button
       class="navbar-toggler"
       type="button"
-      (click)="openMenuRight(content)"
+      (click)="openMenuRight(sidebar)"
     >
       &#9776;
     </button>
     <div class="collapse navbar-collapse">
       <ul class="navbar-nav container-fluid justify-content-end">
-        <li class="nav-item" *ngFor="let link of navLinks">
+        <li class="nav-item fw-bold" *ngFor="let link of navLinks">
           <a class="nav-link" routerLink=""> {{ link.name }}</a>
         </li>
       </ul>

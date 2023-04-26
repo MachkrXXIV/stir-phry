@@ -2,8 +2,11 @@
 
 /* Importing Bootstrap SCSS file. */
 @import "~bootstrap/scss/bootstrap";
+
+$body-bg: #dad9d9;
+
 body {
-  background-color: #dad9d9;
+  background-color: $body-bg;
 }
 
 * {
