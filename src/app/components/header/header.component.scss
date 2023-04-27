@@ -29,6 +29,11 @@ $headerHeight: 100vw;
 
   &-toggler {
     aspect-ratio: 1.25/1;
+
+    &:focus,
+    &:active {
+      box-shadow: none;
+    }
   }
 }
 
