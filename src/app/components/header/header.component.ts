@@ -32,7 +32,7 @@ export class HeaderComponent implements OnInit {
   ];
 
   openMenuRight(content: TemplateRef<any>) {
-    this.offcanvasService.open(content, { position: 'end' });
+    this.offcanvasService.open(content, { position: 'start' });
   }
 
   ngOnInit(): void {}
