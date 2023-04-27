@@ -2,10 +2,15 @@
   <header class="offcanvas-header ps-0">
     <ul class="navbar-nav container-fluid">
       <li
-        class="nav-item ms-auto fw-semibold lead"
+        class="nav-item ms-auto fw-semibold lead w-50 d-flex align-items-center justify-content-between"
         *ngFor="let link of navLinks"
       >
-        <a class="nav-link side-link" routerLink="" (click)="offcanvas.close()">
+        <fa-icon [icon]="link.icon"></fa-icon>
+        <a
+          class="nav-link side-link align-self-center"
+          routerLink=""
+          (click)="offcanvas.close()"
+        >
           {{ link.name }}</a
         >
       </li>

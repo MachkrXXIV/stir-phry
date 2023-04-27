@@ -14,14 +14,14 @@ $headerHeight: 100vw;
 
 .circle {
   position: relative;
-  top: 30%;
-  right: 4%;
-  height: 100%;
-  width: 7vh;
+  top: 2rem;
+  right: 1.5rem;
+  width: 2rem;
+  aspect-ratio: 1/1;
 
   border-radius: 100%;
 
-  background-color: #f1eeee;
+  background-color: $light;
 }
 
 .navbar {
