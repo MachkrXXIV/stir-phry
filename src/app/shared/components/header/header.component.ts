@@ -1,6 +1,6 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { NgbOffcanvas } from '@ng-bootstrap/ng-bootstrap';
-import { NavLink } from './NavLink';
+import { NavLink } from '../../interfaces/navLink.interface';
 import {
   faHome,
   faCompass,
