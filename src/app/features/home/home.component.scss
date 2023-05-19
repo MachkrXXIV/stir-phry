@@ -1,0 +1,18 @@
+@import "~bootstrap/scss/bootstrap";
+.home-page {
+  height: 95vh;
+
+  .current-content {
+    background-color: #14b584;
+    color: white;
+    width: 100%;
+  }
+
+  .secondary-content {
+    // height: 68.5%;
+    width: 100%;
+    background-color: #dad9d9;
+    border-top-left-radius: 2rem;
+    border-top-right-radius: 2rem;
+  }
+}

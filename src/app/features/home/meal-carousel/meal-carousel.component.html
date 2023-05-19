@@ -1,0 +1,23 @@
+<ngb-carousel
+  *ngIf="meals"
+  class="container-fluid"
+  [interval]="10000"
+  [pauseOnHover]="true"
+>
+  <ng-template ngbSlide class="row" *ngFor="let meal of meals">
+    <main
+      class="current-meal-container d-flex flex-column align-items-center col-lg-4"
+    >
+      <h2>Today's [mealTime]</h2>
+      <article
+        class="current-meal-card card p-2 d-flex col-lg-4 flex-column justify-content-between flex-fill"
+      >
+        <div class="card-body">
+          <img class="card-img-top" [src]="" alt="meal image" />
+          <h4 class="card-title">{{ meal.name }}</h4>
+        </div>
+        <p class="text-end pe-3">{{ meal.duration }} min</p>
+      </article>
+    </main>
+  </ng-template>
+</ngb-carousel>

@@ -1,0 +1,21 @@
+@import "~bootstrap/scss/bootstrap";
+
+ngb-carousel {
+  position: relative;
+
+  transform: translateY(3rem);
+}
+
+.carousel-control-next-icon,
+.carousel-control-prev-icon {
+  visibility: hidden;
+}
+
+.current-meal-card {
+  height: 24vh;
+  width: 90%;
+  background-color: $body-bg;
+
+  color: black;
+  border-radius: 1.5rem;
+}
