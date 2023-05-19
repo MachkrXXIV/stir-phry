@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { Meal } from 'src/app/shared/interfaces/meal.interface';
 import { NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
 import { CommonModule } from '@angular/common';
@@ -12,6 +12,7 @@ import { CommonModule } from '@angular/common';
 })
 export class MealCarouselComponent implements OnInit {
   constructor() {}
+  isLargeScreen = false;
 
   meals: Meal[] = [
     {
@@ -28,5 +29,12 @@ export class MealCarouselComponent implements OnInit {
     },
   ];
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.isLargeScreen = window.innerWidth >= 992;
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: WindowEventHandlers) {
+    this.isLargeScreen = window.innerWidth >= 992;
+  }
 }

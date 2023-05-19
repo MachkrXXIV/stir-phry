@@ -1,9 +1,10 @@
 @import "~bootstrap/scss/bootstrap";
 
-ngb-carousel {
+ngb-carousel,
+.meal-group {
   position: relative;
 
-  transform: translateY(3rem);
+  transform: translateY(4rem);
 }
 
 .carousel-control-next-icon,
