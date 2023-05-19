@@ -16,12 +16,14 @@ import { environment } from '../environments/environment';
 import { provideAuth, getAuth } from '@angular/fire/auth';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HomeComponent } from './features/home/home.component';
+import { MealCarouselComponent } from './features/home/meal-carousel/meal-carousel.component';
 @NgModule({
   declarations: [AppComponent, HeaderComponent, HomeComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
+    MealCarouselComponent,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     FirestoreModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),

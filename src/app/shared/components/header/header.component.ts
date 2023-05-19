@@ -24,11 +24,11 @@ export class HeaderComponent implements OnInit {
 
   isMenuCollapsed = true;
   navLinks: NavLink[] = [
-    { name: 'Discover', route: 'lol', icon: faCompass },
-    { name: 'Pantry', route: 'lol', icon: faStore },
-    { name: 'Create', route: 'lol', icon: faPlus },
-    { name: 'Profile', route: 'lol', icon: faPortrait },
-    { name: 'Extra', route: 'lol', icon: faHome },
+    { name: 'Discover', route: '/discover', icon: faCompass },
+    { name: 'Pantry', route: '/pantry', icon: faStore },
+    { name: 'Create', route: '/create', icon: faPlus },
+    { name: 'Profile', route: '/profile', icon: faPortrait },
+    { name: 'Extra', route: '/home', icon: faHome },
   ];
 
   openMenuRight(content: TemplateRef<any>) {

@@ -8,8 +8,6 @@ $headerHeight: 100vw;
 
   height: 7vh;
   width: 100vw;
-
-  position: fixed;
 }
 
 .circle {
@@ -26,6 +24,7 @@ $headerHeight: 100vw;
 
 .navbar {
   padding: 0;
+  position: sticky;
 
   &-toggler {
     aspect-ratio: 1.25/1;
