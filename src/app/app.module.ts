@@ -17,8 +17,9 @@ import { provideAuth, getAuth } from '@angular/fire/auth';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HomeComponent } from './features/home/home.component';
 import { MealCarouselComponent } from './features/home/meal-carousel/meal-carousel.component';
+import { DiscoverComponent } from './features/discover.component';
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, HomeComponent],
+  declarations: [AppComponent, HeaderComponent, HomeComponent, DiscoverComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

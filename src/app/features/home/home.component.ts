@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Meal } from 'src/app/shared/interfaces/meal.interface';
-import { MealCarouselComponent } from './meal-carousel/meal-carousel.component';
-
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
