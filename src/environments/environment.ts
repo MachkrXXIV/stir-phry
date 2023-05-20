@@ -14,6 +14,7 @@ export const environment = {
     measurementId: 'G-HRZ6ZKWXPP',
   },
   production: false,
+  apiKey: 'f0327ba727ab405e9b9c75c25ee38e8e',
 
   // Your web app's Firebase configuration
   // For Firebase JS SDK v7.20.0 and later, measurementId is optional
