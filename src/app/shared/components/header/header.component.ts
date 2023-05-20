@@ -1,4 +1,4 @@
-import { Component, OnInit, TemplateRef } from '@angular/core';
+import { Component, OnInit, TemplateRef, HostListener } from '@angular/core';
 import { NgbOffcanvas } from '@ng-bootstrap/ng-bootstrap';
 import { NavLink } from '../../interfaces/navLink.interface';
 import {
@@ -8,6 +8,8 @@ import {
   faPortrait,
   faStore,
 } from '@fortawesome/free-solid-svg-icons';
+import { Router, NavigationEnd } from '@angular/router';
+import { SearchBarComponent } from '../search-bar/search-bar.component';
 
 @Component({
   selector: 'app-header',
@@ -15,7 +17,9 @@ import {
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  constructor(private offcanvasService: NgbOffcanvas) {}
+  constructor(private offcanvasService: NgbOffcanvas, private router: Router) {}
+  isLargeScreen = false;
+  showSearchBar = false;
   faHome = faHome;
   faCompass = faCompass;
   faPlus = faPlus;
@@ -35,5 +39,24 @@ export class HeaderComponent implements OnInit {
     this.offcanvasService.open(content, { position: 'start' });
   }
 
-  ngOnInit(): void {}
+  displaySearchBar() {
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.showSearchBar = event.url === '/discover';
+      }
+    });
+  }
+
+  ngOnInit(): void {
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.showSearchBar = event.url === '/discover';
+      }
+    });
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: WindowEventHandlers) {
+    this.isLargeScreen = window.innerWidth >= 992;
+  }
 }

@@ -17,9 +17,16 @@ import { provideAuth, getAuth } from '@angular/fire/auth';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HomeComponent } from './features/home/home.component';
 import { MealCarouselComponent } from './features/home/meal-carousel/meal-carousel.component';
-import { DiscoverComponent } from './features/discover.component';
+import { DiscoverComponent } from './features/discover/discover.component';
+import { SearchBarComponent } from './shared/components/search-bar/search-bar.component';
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, HomeComponent, DiscoverComponent],
+  declarations: [
+    AppComponent,
+    HeaderComponent,
+    HomeComponent,
+    DiscoverComponent,
+    SearchBarComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,

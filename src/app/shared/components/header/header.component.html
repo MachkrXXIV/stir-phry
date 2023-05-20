@@ -27,6 +27,9 @@
     >
       &#9776;
     </button>
+    <div *ngIf="showSearchBar && !isLargeScreen">
+      <app-search-bar></app-search-bar>
+    </div>
     <div class="collapse navbar-collapse">
       <ul class="navbar-nav container-fluid">
         <li class="nav-item fw-bold" *ngFor="let link of navLinks">
