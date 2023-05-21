@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { RecipeService } from '../../recipe.service';
+import { SearchBarService } from '../../search-bar.service';
 import { Meal } from '../../interfaces/meal.interface';
-import { Observable, of, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-search-bar',
@@ -9,19 +9,23 @@ import { Observable, of, Subscription } from 'rxjs';
   styleUrls: ['./search-bar.component.scss'],
 })
 export class SearchBarComponent implements OnInit {
-  constructor(private recipeService: RecipeService) {}
+  constructor(
+    private recipeService: RecipeService,
+    private searchService: SearchBarService
+  ) {}
+  @Output() query = new EventEmitter<Meal[]>();
 
   searchValue = '';
-  data: any;
-  // queryRecipes$: Observable<Meal[]> = new Observable<Meal[]>();
   queryRecipes: Meal[] = [];
 
   getUserInput() {
     this.recipeService
       .getRecipe(this.searchValue)
       .subscribe((meals: Meal[]) => {
-        this.queryRecipes = meals;
-        console.log(this.queryRecipes);
+        // this.queryRecipes = meals;
+        // this.query.emit(meals);
+        this.searchService.setQueryRecipes(meals);
+        // console.log(this.queryRecipes);
       });
   }
 
