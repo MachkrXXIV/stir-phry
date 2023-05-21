@@ -1,8 +1,10 @@
-<input
-  class="search-bar ps-1 pe-1 rounded-5"
-  type="text"
-  placeholder="Search for a recipe"
-  #searchbar
-  [(ngModel)]="searchValue"
-  (keyup.enter)="getUserInput()"
-/>
+<div class="input-group" [ngClass]="isLargeScreen ? 'input-group-lg' : ''">
+  <input
+    class="search-bar form-control ps-1 pe-1 rounded-4"
+    type="text"
+    placeholder="Search for a recipe"
+    #searchbar
+    [(ngModel)]="searchValue"
+    (keyup.enter)="getUserInput()"
+  />
+</div>
