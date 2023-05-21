@@ -1,3 +1,25 @@
-<main class="container-fluid p-3">
-  <div class="card"></div>
+<main class="container-md p-4">
+  <div
+    class="d-flex flex-column align-items-center justify-content-center"
+    *ngIf="isLargeScreen"
+  >
+    <app-search-bar></app-search-bar>
+  </div>
+  <div class="row row-cols-2 row-cols-lg-3" *ngIf="queryRecipes">
+    <div class="col-md-6 col-lg-4 g-4 gx-4" *ngFor="let query of queryRecipes">
+      <article class="card">
+        <img class="card-img-top custom-card-img" [src]="query.image" alt="" />
+        <section class="card-body">
+          <h5 class="card-title">{{ query.name }}</h5>
+          <p class="card-text">
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Optio,
+            inventore.
+          </p>
+        </section>
+      </article>
+    </div>
+  </div>
+  <div *ngIf="isError">
+    <h1>Sorry, something went wrong</h1>
+  </div>
 </main>

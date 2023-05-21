@@ -1,7 +1,8 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { RecipeService } from '../../recipe.service';
-import { SearchBarService } from '../../search-bar.service';
+import { RecipeService } from '../../services/recipe.service';
+import { SearchBarService } from '../../services/search-bar.service';
 import { Meal } from '../../interfaces/meal.interface';
+import { HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-search-bar',
@@ -13,10 +14,11 @@ export class SearchBarComponent implements OnInit {
     private recipeService: RecipeService,
     private searchService: SearchBarService
   ) {}
-  @Output() query = new EventEmitter<Meal[]>();
+  // @Output() query = new EventEmitter<Meal[]>();
 
   searchValue = '';
   queryRecipes: Meal[] = [];
+  isLargeScreen = false;
 
   getUserInput() {
     this.recipeService
@@ -29,5 +31,12 @@ export class SearchBarComponent implements OnInit {
       });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.isLargeScreen = window.innerWidth >= 992;
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.isLargeScreen = event.target.innerWidth >= 992;
+  }
 }

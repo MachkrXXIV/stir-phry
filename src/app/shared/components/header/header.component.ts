@@ -53,10 +53,11 @@ export class HeaderComponent implements OnInit {
         this.showSearchBar = event.url === '/discover';
       }
     });
+    this.isLargeScreen = window.innerWidth >= 992;
   }
 
   @HostListener('window:resize', ['$event'])
-  onResize(event: WindowEventHandlers) {
-    this.isLargeScreen = window.innerWidth >= 992;
+  onResize(event: any) {
+    this.isLargeScreen = event.target.innerWidth >= 992;
   }
 }
