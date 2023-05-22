@@ -1,9 +1,10 @@
 @import "~bootstrap/scss/functions";
 @import "~bootstrap/scss/variables";
 
-$primary-light: #f1eeee;
+$primary-light: #fff;
 $secondary-light: #2c2c2c;
-$brand-color: #14b584;
+$brand-color: hsl(162, 80%, 39%);
+$highlight: hsl(40, 70%, 49%);
 
 $theme-colors: (
   "primary-light": $primary-light,
@@ -13,7 +14,7 @@ $theme-colors: (
 
 /* Importing Bootstrap SCSS file. */
 
-$body-bg: #dad9d9;
+$body-bg: hsl(0, 10%, 90%);
 // $theme-colors: map-merge($theme-colors, $theme-colors);
 
 @import "~bootstrap/scss/bootstrap";
@@ -27,10 +28,4 @@ body {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-}
-
-.form-control {
-  &:focus {
-    border-color: $brand-color;
-  }
 }
