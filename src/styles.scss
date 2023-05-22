@@ -1,20 +1,23 @@
-/* You can add global styles to this file, and also import other style files */
 @import "~bootstrap/scss/functions";
 @import "~bootstrap/scss/variables";
 
-$primary: red;
+$primary-light: #f1eeee;
+$secondary-light: #2c2c2c;
+$brand-color: #14b584;
+
+$theme-colors: (
+  "primary-light": $primary-light,
+  "secondary-light": $secondary-light,
+  "brand-color": $brand-color,
+);
 
 /* Importing Bootstrap SCSS file. */
 
 $body-bg: #dad9d9;
-$theme-colors: map-merge(
-  $theme-colors,
-  (
-    "primary": $primary,
-  )
-);
+// $theme-colors: map-merge($theme-colors, $theme-colors);
+
 @import "~bootstrap/scss/bootstrap";
-@import "./custom-variables.scss";
+// @import "./custom-styles.scss";
 
 body {
   background-color: $body-bg;
@@ -24,4 +27,10 @@ body {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+}
+
+.form-control {
+  &:focus {
+    border-color: $brand-color;
+  }
 }

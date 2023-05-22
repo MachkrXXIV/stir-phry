@@ -3,5 +3,7 @@
     <h1 class="ps-4 pt-3 fw-bolder">Hi, {{ userName }}</h1>
     <app-meal-carousel></app-meal-carousel>
   </div>
-  <div class="secondary-content">68.5%</div>
+  <div class="secondary-content" *ngFor="let meal of savedMeals$ | async">
+    {{ meal.name }}
+  </div>
 </main>

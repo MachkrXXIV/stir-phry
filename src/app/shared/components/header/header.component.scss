@@ -1,13 +1,17 @@
-@import "~bootstrap/scss/bootstrap";
+@import "src/styles.scss";
 
 $headerHeight: 100vw;
 
 .header {
-  background-color: #f1eeee;
   display: flex;
 
   height: 7vh;
   width: 100vw;
+
+  &-container {
+    background-color: $primary-light;
+    color: $secondary-light;
+  }
 }
 
 .circle {
@@ -33,6 +37,15 @@ $headerHeight: 100vw;
     &:active {
       box-shadow: none;
     }
+  }
+}
+
+.nav-link {
+  color: $secondary-light;
+  &:active,
+  &:focus,
+  &:hover {
+    color: $brand-color;
   }
 }
 

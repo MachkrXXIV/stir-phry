@@ -1,9 +1,10 @@
-@import "~bootstrap/scss/bootstrap";
+@import "~/src/styles.scss";
 .home-page {
   height: 95vh;
 
   .current-content {
     background-color: #14b584;
+    background-color: $brand-color;
     color: white;
     width: 100vw;
   }

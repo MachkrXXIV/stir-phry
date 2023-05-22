@@ -1,1 +1,9 @@
-@import "~bootstrap/scss/bootstrap";
+@import "~/src/styles.scss";
+
+.form-control {
+  &:focus {
+    border-color: $brand-color;
+    border-width: 2px;
+    box-shadow: $brand-color 0px 2px 4px;
+  }
+}
