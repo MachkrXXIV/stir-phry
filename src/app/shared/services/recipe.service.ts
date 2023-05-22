@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable, map } from 'rxjs';
 import { Meal } from '../interfaces/meal.interface';
@@ -12,8 +12,11 @@ export class RecipeService {
   private apiKey = environment.apiKey;
 
   getRecipe(recipeName: string): Observable<Meal[]> {
+    const params = new HttpParams().set('number', 50);
     return this.http
-      .get<any>(`${this.baseUrl}?apiKey=${this.apiKey}&query=${recipeName}`)
+      .get<any>(`${this.baseUrl}?apiKey=${this.apiKey}&query=${recipeName}`, {
+        params,
+      })
       .pipe(
         map((response) => {
           return response.results.map((recipe: any) => {
