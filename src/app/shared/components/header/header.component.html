@@ -32,7 +32,7 @@
     </div>
     <div class="collapse navbar-collapse">
       <ul class="navbar-nav container-fluid">
-        <li class="nav-item fw-bold text-bg-dark" *ngFor="let link of navLinks">
+        <li class="nav-item fw-bold" *ngFor="let link of navLinks">
           <a class="nav-link" [routerLink]="link.route"> {{ link.name }}</a>
         </li>
       </ul>

@@ -21,6 +21,7 @@ import { HomeComponent } from './features/home/home.component';
 import { MealCarouselComponent } from './features/home/meal-carousel/meal-carousel.component';
 import { DiscoverComponent } from './features/discover/discover.component';
 import { SearchBarComponent } from './shared/components/search-bar/search-bar.component';
+import { CreateRecipeComponent } from './shared/components/create-recipe/create-recipe.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,6 +29,7 @@ import { SearchBarComponent } from './shared/components/search-bar/search-bar.co
     HomeComponent,
     DiscoverComponent,
     SearchBarComponent,
+    CreateRecipeComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,10 @@
-import { Component, OnInit, TemplateRef, HostListener } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  TemplateRef,
+  HostListener,
+  ViewEncapsulation,
+} from '@angular/core';
 import { NgbOffcanvas } from '@ng-bootstrap/ng-bootstrap';
 import { NavLink } from '../../interfaces/navLink.interface';
 import {
@@ -15,6 +21,7 @@ import { SearchBarComponent } from '../search-bar/search-bar.component';
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class HeaderComponent implements OnInit {
   constructor(private offcanvasService: NgbOffcanvas, private router: Router) {}
@@ -36,7 +43,10 @@ export class HeaderComponent implements OnInit {
   ];
 
   openMenuRight(content: TemplateRef<any>) {
-    this.offcanvasService.open(content, { position: 'start' });
+    this.offcanvasService.open(content, {
+      position: 'start',
+      panelClass: 'sidebar',
+    });
   }
 
   displaySearchBar() {

@@ -1,7 +1,5 @@
 @import "src/styles.scss";
 
-$headerHeight: 100vw;
-
 .header {
   display: flex;
 
@@ -12,6 +10,11 @@ $headerHeight: 100vw;
     background-color: $primary-light;
     color: $secondary-light;
   }
+}
+
+.offcanvas {
+  border-top-right-radius: 10rem;
+  border-bottom-right-radius: 20rem;
 }
 
 .circle {
@@ -51,10 +54,6 @@ $headerHeight: 100vw;
 
 .side-link {
   @include font-size(1.5rem);
-}
-
-.offcanvas {
-  max-width: 50vw;
 }
 
 .header-container {
