@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class MealClassificationsService {
-  mealTypes = [
+  private mealTypes = [
     'Breakfast',
     'Brunch',
     'Lunch',
@@ -17,7 +17,7 @@ export class MealClassificationsService {
     'Beverage',
   ];
 
-  tags = [
+  private tags = [
     'Popular',
     'Cheap',
     'Healthy',
@@ -41,7 +41,6 @@ export class MealClassificationsService {
     'Italian',
     'Greek',
     'Japanese',
-    'Seafood',
     'Beef',
     'Pork',
     'Yogurt',
