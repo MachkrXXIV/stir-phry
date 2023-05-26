@@ -3,12 +3,12 @@ export interface Meal {
   name: string;
   image?: string;
   mealType?: string; // breakfast, lunch, dinner, dessert, meal
-  categories?: string[];
+  tags?: string[];
   instructions?: string[];
   ingredients?: string[];
   calories?: number;
   fat?: number;
   carbohydrates?: number;
   protein?: number;
-  duration?: number;
+  prepTimeInMinutes?: number;
 }
