@@ -1,0 +1,131 @@
+<article class="container-fluid">
+  <div>{{ recipe | json }}</div>
+  <form
+    autocomplete="off"
+    class="form"
+    #recipeForm="ngForm"
+    (keydown.enter)="$event.preventDefault()"
+    (ngSubmit)="onSubmit()"
+  >
+    <div class="form-group">
+      <label for="name" class="form-label">Name:</label>
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Enter recipe name"
+        [(ngModel)]="recipe.name"
+        name="name"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <!-- make select -->
+      <label for="name" class="form-label">Meal Type:</label>
+      <select
+        name="mealType"
+        class="form-select"
+        [(ngModel)]="recipe.mealType"
+        required
+      >
+        <option *ngFor="let type of mealTypes" [value]="type">
+          {{ type }}
+        </option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="tags">Tags:</label>
+      <input
+        #tagInput
+        type="text"
+        placeholder="Enter tags"
+        class="form-control borderless-bottom"
+        [(ngModel)]="tagInputVal"
+        name="tags"
+        list="tagsList"
+        (keyup.enter)="addTag(tagInput.value)"
+        required
+      />
+      <div *ngIf="recipe.tags" class="tag-list w-100 p-2">
+        <span
+          class="badge tag bg-primary rounded-pill me-1"
+          *ngFor="let tag of recipe.tags"
+          (click)="removeTag(recipe.tags.indexOf(tag))"
+        >
+          {{ tag }}</span
+        >
+      </div>
+      <datalist id="tagsList">
+        <option *ngFor="let tag of tags" [value]="tag">{{ tag }}</option>
+      </datalist>
+    </div>
+    <div class="form-group">
+      <label for="name">Ingredients:</label>
+      <input
+        #ingredientInput
+        type="text"
+        placeholder="Enter ingredients"
+        class="form-control"
+        [(ngModel)]="ingredientInputVal"
+        name="ingredients"
+        (keyup.enter)="addIngredient(ingredientInput.value)"
+        required
+      />
+      <ul class="list-group d-flex flex-wrap" *ngIf="recipe.ingredients">
+        <li
+          class="list-group-item list-group-item-action d-flex justify-content-between w-75"
+          *ngFor="let ingredient of recipe.ingredients"
+        >
+          <div>{{ ingredient }}</div>
+          <span
+            class="btn-close"
+            (click)="removeIngredient(recipe.ingredients.indexOf(ingredient))"
+          ></span>
+        </li>
+      </ul>
+    </div>
+    <div class="form-group">
+      <label for="name">Instructions:</label>
+      <input
+        #instructionInput
+        type="text"
+        placeholder="Enter instructions"
+        class="form-control"
+        [(ngModel)]="instructionInputVal"
+        name="insutrctions"
+        (keyup.enter)="addInstruction(instructionInput.value)"
+        required
+      />
+      <ul class="list-group d-flex flex-wrap" *ngIf="recipe.instructions">
+        <li
+          class="list-group-item list-group-item-action d-flex justify-content-between w-75"
+          *ngFor="let instruction of recipe.instructions"
+        >
+          <div>{{ instruction }}</div>
+          <span
+            class="btn-close"
+            (click)="
+              removeInstruction(recipe.instructions.indexOf(instruction))
+            "
+          ></span>
+        </li>
+      </ul>
+    </div>
+    <div class="form-group">
+      <label for="name">Prep-time (min):</label>
+      <input
+        type="number"
+        placeholder="Enter prep-time"
+        class="form-control"
+        [(ngModel)]="recipe.prepTimeInMinutes"
+        name="prepTime"
+      />
+    </div>
+    <button
+      type="submit"
+      class="btn btn-outline-dark"
+      [disabled]="recipeForm.form.valid"
+    >
+      Submit
+    </button>
+  </form>
+</article>

@@ -11,16 +11,6 @@ import { HostListener } from '@angular/core';
 })
 export class DiscoverComponent implements OnInit, OnDestroy {
   constructor(private searchService: SearchBarService) {
-    // this.subscription = this.searchService.queryRecipes$.subscribe(
-    //   (recipes: Meal[]) => {
-    //     this.queryRecipes = recipes;
-    //   },
-    //   (error) => {
-    //     console.log('error', error);
-    //     this.displayError();
-    //     console.log('is working');
-    //   }
-    // );
     this.subscription = this.searchService.queryRecipes$.subscribe({
       next: (recipes: Meal[]) => {
         this.queryRecipes = recipes;
@@ -36,6 +26,7 @@ export class DiscoverComponent implements OnInit, OnDestroy {
   private subscription: Subscription = new Subscription();
   isLargeScreen = false;
   isError = false;
+  showPopup = false;
 
   fetchQueryRecipes(meals: Meal[]) {}
 

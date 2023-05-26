@@ -1,0 +1,50 @@
+@import "src/styles.scss";
+@mixin sliding-transition($name, $time: 1s) {
+  animation: $name $time ease-in-out;
+}
+
+.bg-primary {
+  background-color: $brand-color;
+}
+
+.borderless-bottom {
+  border-bottom: none;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.tag-list {
+  background-color: white;
+  border-bottom-left-radius: 0.375rem;
+  border-bottom-right-radius: 0.375rem;
+  border: 1px solid #ced4da;
+  border-top: none;
+}
+
+.tag {
+  font-size: $input-font-size-sm;
+  cursor: pointer;
+}
+
+@keyframes slideUp {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+// removes arrows from prep-time input
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}

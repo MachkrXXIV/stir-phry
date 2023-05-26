@@ -19,19 +19,19 @@ export class MealCarouselComponent implements OnInit {
       id: 1,
       image: '#',
       name: 'Fried Rice',
-      duration: 25,
+      prepTimeInMinutes: 25,
     },
     {
       id: 2,
       image: '#',
       name: 'Creamy Cajun Pasta',
-      duration: 55,
+      prepTimeInMinutes: 55,
     },
     {
       id: 3,
       image: '#',
       name: 'Beef Enchiladas',
-      duration: 45,
+      prepTimeInMinutes: 45,
     },
   ];
 
