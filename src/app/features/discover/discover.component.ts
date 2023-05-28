@@ -1,8 +1,9 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { Meal } from 'src/app/shared/interfaces/meal.interface';
 import { SearchBarService } from 'src/app/shared/services/search-bar.service';
 import { Subscription } from 'rxjs';
 import { HostListener } from '@angular/core';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-discover',
@@ -10,6 +11,12 @@ import { HostListener } from '@angular/core';
   styleUrls: ['./discover.component.scss'],
 })
 export class DiscoverComponent implements OnInit, OnDestroy {
+  private subscription: Subscription = new Subscription();
+  showForm = false;
+  queryRecipes: Meal[] = [];
+  isLargeScreen = false;
+  isError = false;
+  faPlusCircle = faPlus;
   constructor(private searchService: SearchBarService) {
     this.subscription = this.searchService.queryRecipes$.subscribe({
       next: (recipes: Meal[]) => {
@@ -22,16 +29,14 @@ export class DiscoverComponent implements OnInit, OnDestroy {
     });
     this.isLargeScreen = window.innerWidth >= 992;
   }
-  queryRecipes: Meal[] = [];
-  private subscription: Subscription = new Subscription();
-  isLargeScreen = false;
-  isError = false;
-  showPopup = false;
-
-  fetchQueryRecipes(meals: Meal[]) {}
 
   displayError() {
     this.isError = true;
+  }
+
+  displayForm() {
+    this.showForm = !this.showForm;
+    console.log('Display form: ', this.showForm);
   }
 
   ngOnInit(): void {}

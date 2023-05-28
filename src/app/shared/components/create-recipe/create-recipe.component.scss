@@ -3,8 +3,20 @@
   animation: $name $time ease-in-out;
 }
 
+.form-container {
+  @include sliding-transition(slideUp, 200);
+  max-height: 80vh;
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  background-color: white;
+  padding: 2rem;
+  overflow-y: scroll;
+}
+
 .bg-primary {
-  background-color: $brand-color;
+  background-color: $primary-light;
 }
 
 .borderless-bottom {

@@ -5,7 +5,10 @@
   >
     <app-search-bar></app-search-bar>
   </div>
-  <app-create-recipe></app-create-recipe>
+  <app-create-recipe
+    *ngIf="showForm"
+    (showFormOutput)="displayForm()"
+  ></app-create-recipe>
   <div class="row row-cols-2 row-cols-lg-3" *ngIf="queryRecipes">
     <div class="col-md-6 col-lg-4 g-4 gx-4" *ngFor="let query of queryRecipes">
       <article class="card">
@@ -23,5 +26,12 @@
   <div *ngIf="isError">
     <h1>Sorry, something went wrong</h1>
   </div>
-  <div class="">+</div>
+  <div class="plus-wrapper" (click)="displayForm()">
+    <fa-icon
+      class="brand"
+      [icon]="faPlusCircle"
+      size="2x"
+      [hidden]="showForm"
+    ></fa-icon>
+  </div>
 </main>

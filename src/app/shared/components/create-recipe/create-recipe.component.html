@@ -1,8 +1,8 @@
-<article class="container-fluid">
+<article class="container-fluid form-container">
   <div>{{ recipe | json }}</div>
   <form
     autocomplete="off"
-    class="form"
+    class="form d-flex flex-column"
     #recipeForm="ngForm"
     (keydown.enter)="$event.preventDefault()"
     (ngSubmit)="recipeForm.valid ? onSubmit() : false"
@@ -139,7 +139,7 @@
       <div
         class="invalid-response"
         *ngIf="
-          ingredientInput.invalid &&
+          recipe.ingredients.length < 1 &&
           (ingredientInput.dirty || ingredientInput.touched)
         "
       >
@@ -202,7 +202,7 @@
       <div
         class="invalid-response"
         *ngIf="
-          instructionInput.invalid &&
+          recipe.instructions.length < 1 &&
           (instructionInput.dirty || instructionInput.touched)
         "
       >
@@ -252,12 +252,22 @@
         </p>
       </div>
     </div>
-    <button
-      type="submit"
-      class="btn btn-primary"
-      [disabled]="recipeForm.form.valid"
-    >
-      Submit
-    </button>
+    <div class="button-group align-self-end">
+      <button
+        type="submit"
+        class="btn btn-primary m-1"
+        [disabled]="recipeForm.form.valid"
+      >
+        Submit
+      </button>
+      <button
+        type="button"
+        class="btn btn-outline-primary m-1"
+        [disabled]="recipeForm.form.valid"
+        (click)="closeForm()"
+      >
+        Cancel
+      </button>
+    </div>
   </form>
 </article>

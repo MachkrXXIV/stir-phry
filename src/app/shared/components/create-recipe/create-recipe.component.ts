@@ -4,6 +4,9 @@ import {
   ElementRef,
   OnInit,
   NgZone,
+  Input,
+  Output,
+  EventEmitter,
 } from '@angular/core';
 import { Meal } from '../../interfaces/meal.interface';
 import { RecipeForm } from '../../interfaces/recipe-form';
@@ -19,6 +22,7 @@ import { Observable } from 'rxjs';
 })
 export class CreateRecipeComponent implements OnInit {
   @ViewChild('recipeForm') recipeForm!: ElementRef;
+  @Output() showFormOutput: EventEmitter<void> = new EventEmitter();
   tagInputVal: string = '';
   ingredientInputVal: string = '';
   instructionInputVal: string = '';
@@ -96,5 +100,10 @@ export class CreateRecipeComponent implements OnInit {
       instructions: [],
       prepTimeInMinutes: 0,
     };
+  }
+
+  closeForm() {
+    this.showFormOutput.emit();
+    console.log('Child event emitted');
   }
 }
