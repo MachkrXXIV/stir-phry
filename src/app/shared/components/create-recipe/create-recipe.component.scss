@@ -23,7 +23,21 @@
 
 .tag {
   font-size: $input-font-size-sm;
+  background-color: $brand-color;
   cursor: pointer;
+}
+
+.invalid-response {
+  color: $danger;
+}
+
+.ng-valid[required],
+.ng-valid.required {
+  border: 2px solid $success; /* green */
+}
+
+.ng-invalid:not(form).ng-touched {
+  border: 2px solid $danger; /* red */
 }
 
 @keyframes slideUp {

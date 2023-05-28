@@ -6,9 +6,14 @@ import {
   collectionData,
   doc,
 } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { Meal } from '../interfaces/meal.interface';
-import { DocumentReference, addDoc } from 'firebase/firestore';
+import {
+  DocumentReference,
+  addDoc,
+  getCountFromServer,
+  updateDoc,
+} from 'firebase/firestore';
 
 @Injectable({
   providedIn: 'root',
@@ -23,11 +28,20 @@ export class FirestoreService {
     return collectionData(mealsRef) as Observable<Meal[]>;
   }
 
+  async getSavedMealsCount() {
+    let mealsRef = collection(this.firestore, '/saved-meals');
+    const snapshot = await getCountFromServer(mealsRef);
+    return snapshot.data;
+  }
+
   async addSavedMeal(meal: Meal) {
     const docRef = await addDoc(
       collection(this.firestore, '/saved-meals'),
       meal
     );
+    await updateDoc(docRef, {
+      id: this.getSavedMealsCount(),
+    });
     return docRef as DocumentReference<Meal>;
   }
 }

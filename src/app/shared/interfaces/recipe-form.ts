@@ -1,5 +1,5 @@
 export interface RecipeForm {
-  id: number;
+  id: any;
   name: string;
   image?: string;
   mealType?: string;

@@ -1,9 +1,16 @@
-import { Component, ViewChild, ElementRef, OnInit } from '@angular/core';
+import {
+  Component,
+  ViewChild,
+  ElementRef,
+  OnInit,
+  NgZone,
+} from '@angular/core';
 import { Meal } from '../../interfaces/meal.interface';
 import { RecipeForm } from '../../interfaces/recipe-form';
 import { FirestoreService } from '../../services/firestore.service';
 import { MealClassificationsService } from '../../services/meal-classifications.service';
 import { DataConversionService } from '../../services/data-conversion.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-create-recipe',
@@ -20,21 +27,22 @@ export class CreateRecipeComponent implements OnInit {
   tags: string[] = [];
 
   recipe: RecipeForm = {
-    id: -1,
+    id: 4444,
     name: '',
     image: '',
     mealType: '',
     tags: [],
     ingredients: [],
     instructions: [],
-    prepTimeInMinutes: -1,
+    prepTimeInMinutes: 0,
   };
   meal!: Meal;
 
   constructor(
     private firestore: FirestoreService,
     private mealClassService: MealClassificationsService,
-    private conversionService: DataConversionService
+    private conversionService: DataConversionService,
+    private ngZone: NgZone
   ) {
     this.mealTypes = this.mealClassService.getMealTypes();
     this.tags = this.mealClassService.getTags();
@@ -86,7 +94,7 @@ export class CreateRecipeComponent implements OnInit {
       tags: [],
       ingredients: [],
       instructions: [],
-      prepTimeInMinutes: -1,
+      prepTimeInMinutes: 0,
     };
   }
 }

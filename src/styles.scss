@@ -5,13 +5,14 @@ $primary-light: #fff;
 $secondary-light: #2c2c2c;
 $brand-color: hsl(162, 80%, 39%);
 $highlight: hsl(40, 70%, 49%);
-$btn-close-color: $danger;
 
-$theme-colors: (
+$custom-colors: (
   "primary-light": $primary-light,
   "secondary-light": $secondary-light,
   "brand-color": $brand-color,
 );
+
+$theme-colors: map-merge($theme-colors, $custom-colors);
 
 /* Importing Bootstrap SCSS file. */
 
