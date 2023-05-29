@@ -13,7 +13,6 @@ import { RecipeForm } from '../../interfaces/recipe-form';
 import { FirestoreService } from '../../services/firestore.service';
 import { MealClassificationsService } from '../../services/meal-classifications.service';
 import { DataConversionService } from '../../services/data-conversion.service';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-create-recipe',
@@ -27,6 +26,7 @@ export class CreateRecipeComponent implements OnInit {
   ingredientInputVal: string = '';
   instructionInputVal: string = '';
   isSubmitted = false;
+  isOpen = true;
   mealTypes: string[] = [];
   tags: string[] = [];
 
@@ -59,6 +59,7 @@ export class CreateRecipeComponent implements OnInit {
     this.isSubmitted = true;
     this.firestore.addSavedMeal(this.meal);
     this.resetForm();
+    this.closeForm();
   }
 
   addTag(tag: string) {
@@ -104,6 +105,7 @@ export class CreateRecipeComponent implements OnInit {
 
   closeForm() {
     this.showFormOutput.emit();
+    this.isOpen = false;
     console.log('Child event emitted');
   }
 }

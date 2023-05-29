@@ -30,7 +30,7 @@ export class FirestoreService {
 
   async getSavedMealsCount() {
     let mealsRef = collection(this.firestore, '/saved-meals');
-    const snapshot = await getCountFromServer(mealsRef);
+    let snapshot = await getCountFromServer(mealsRef);
     return snapshot.data;
   }
 

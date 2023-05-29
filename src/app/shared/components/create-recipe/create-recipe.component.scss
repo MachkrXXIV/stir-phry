@@ -1,18 +1,46 @@
 @import "src/styles.scss";
+
 @mixin sliding-transition($name, $time: 1s) {
-  animation: $name $time ease-in-out;
+  animation: $name $time ease-out;
 }
 
+@mixin transition-ease($time) {
+  transition: all $time ease-in-out;
+}
+
+// .slide-up {
+//   transition: transform 0.3s ease-out;
+//   transform: translateY(100%);
+// }
+
+// .slide-up.open {
+//   transform: translateY(0);
+// }
+
 .form-container {
-  @include sliding-transition(slideUp, 200);
+  @include sliding-transition(slideUp, 0.3s);
+  // transition: all 0.3s ease-in-out;
   max-height: 80vh;
-  position: absolute;
-  left: 50%;
+  width: Min(100vw, 800px);
+  position: fixed;
+  left: 0;
   bottom: 0;
-  transform: translateX(-50%);
   background-color: white;
   padding: 2rem;
   overflow-y: scroll;
+  border-top-left-radius: 1.5rem;
+  border-top-right-radius: 1.5rem;
+  z-index: 1;
+
+  &.open {
+    transform: translateY(0);
+  }
+
+  @media (min-width: 992px) {
+    left: 50%;
+    transform: translateX(-50%);
+    transition: transform 0.3s ease-out;
+  }
 }
 
 .bg-primary {

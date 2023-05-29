@@ -1,8 +1,8 @@
-<article class="container-fluid form-container">
-  <div>{{ recipe | json }}</div>
+<article class="container-fluid form-container" tabindex="1">
+  <!-- <div>{{ recipe | json }}</div> -->
   <form
     autocomplete="off"
-    class="form d-flex flex-column"
+    class="form d-flex flex-column gap-3"
     #recipeForm="ngForm"
     (keydown.enter)="$event.preventDefault()"
     (ngSubmit)="recipeForm.valid ? onSubmit() : false"
