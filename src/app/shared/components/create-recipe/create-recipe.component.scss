@@ -18,7 +18,7 @@
 // }
 
 .form-container {
-  @include sliding-transition(slideUp, 0.3s);
+  @include sliding-transition(slideUp, 0.2s);
   // transition: all 0.3s ease-in-out;
   max-height: 80vh;
   width: Min(100vw, 800px);

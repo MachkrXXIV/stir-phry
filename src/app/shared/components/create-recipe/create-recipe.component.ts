@@ -21,12 +21,12 @@ import { DataConversionService } from '../../services/data-conversion.service';
 })
 export class CreateRecipeComponent implements OnInit {
   @ViewChild('recipeForm') recipeForm!: ElementRef;
-  @Output() showFormOutput: EventEmitter<void> = new EventEmitter();
+  @Output() showFormOutput: EventEmitter<boolean> = new EventEmitter();
   tagInputVal: string = '';
   ingredientInputVal: string = '';
   instructionInputVal: string = '';
   isSubmitted = false;
-  isOpen = true;
+  @Input() isOpen = true;
   mealTypes: string[] = [];
   tags: string[] = [];
 
@@ -59,7 +59,7 @@ export class CreateRecipeComponent implements OnInit {
     this.isSubmitted = true;
     this.firestore.addSavedMeal(this.meal);
     this.resetForm();
-    this.closeForm();
+    this.closeForm(true);
   }
 
   addTag(tag: string) {
@@ -103,9 +103,8 @@ export class CreateRecipeComponent implements OnInit {
     };
   }
 
-  closeForm() {
-    this.showFormOutput.emit();
+  closeForm(displayAlert: boolean = false) {
+    this.showFormOutput.emit(displayAlert);
     this.isOpen = false;
-    console.log('Child event emitted');
   }
 }

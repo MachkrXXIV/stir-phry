@@ -7,7 +7,7 @@
   </div>
   <app-create-recipe
     *ngIf="showForm"
-    (showFormOutput)="displayForm()"
+    (showFormOutput)="displayForm($event)"
   ></app-create-recipe>
   <div class="row row-cols-2 row-cols-lg-3" *ngIf="queryRecipes">
     <div class="col-md-6 col-lg-4 g-4 gx-4" *ngFor="let query of queryRecipes">
@@ -34,4 +34,5 @@
       [hidden]="showForm"
     ></fa-icon>
   </div>
+  <ngb-alert type="success" *ngIf="showAlert">Form submitted!</ngb-alert>
 </main>

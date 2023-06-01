@@ -134,7 +134,7 @@
             ? 'is-valid'
             : ''
         "
-        required
+        [required]="recipe.ingredients.length < 1"
       />
       <div
         class="invalid-response"
@@ -197,7 +197,7 @@
             ? 'is-valid'
             : ''
         "
-        required
+        [required]="recipe.instructions.length < 1"
       />
       <div
         class="invalid-response"
@@ -256,14 +256,13 @@
       <button
         type="submit"
         class="btn btn-primary m-1"
-        [disabled]="recipeForm.form.valid"
+        [disabled]="!recipeForm.form.valid"
       >
         Submit
       </button>
       <button
         type="button"
         class="btn btn-outline-primary m-1"
-        [disabled]="recipeForm.form.valid"
         (click)="closeForm()"
       >
         Cancel

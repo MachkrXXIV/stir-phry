@@ -4,6 +4,7 @@ import { SearchBarService } from 'src/app/shared/services/search-bar.service';
 import { Subscription } from 'rxjs';
 import { HostListener } from '@angular/core';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { NgbAlert } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-discover',
@@ -12,8 +13,9 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons';
 })
 export class DiscoverComponent implements OnInit, OnDestroy {
   private subscription: Subscription = new Subscription();
-  showForm = false;
   queryRecipes: Meal[] = [];
+  showForm = false;
+  showAlert = false;
   isLargeScreen = false;
   isError = false;
   faPlusCircle = faPlus;
@@ -34,9 +36,17 @@ export class DiscoverComponent implements OnInit, OnDestroy {
     this.isError = true;
   }
 
-  displayForm() {
+  displayForm(isValidSubmission: boolean = false) {
     this.showForm = !this.showForm;
-    console.log('Display form: ', this.showForm);
+    this.showAlert = false;
+
+    if (isValidSubmission) {
+      this.displayAlert();
+    }
+  }
+
+  displayAlert() {
+    this.showAlert = !this.showAlert;
   }
 
   ngOnInit(): void {}
