@@ -1,5 +1,7 @@
 <article class="container-fluid form-container" tabindex="1">
-  <!-- <div>{{ recipe | json }}</div> -->
+  <h2 class="text-center fw-bold w-100 form-header pt-3 pb-3 text-light">
+    Make your own recipe!
+  </h2>
   <form
     autocomplete="off"
     class="form d-flex flex-column gap-3"
@@ -8,7 +10,14 @@
     (ngSubmit)="recipeForm.valid ? onSubmit() : false"
   >
     <div class="form-group has-validation">
-      <label for="name" class="form-label"
+      <label
+        for="name"
+        class="form-label"
+        [ngClass]="
+          nameInput.invalid && (nameInput.dirty || nameInput.touched)
+            ? 'text-danger'
+            : ''
+        "
         >Name<span class="text-danger" [hidden]="nameInput.valid"
           >*</span
         ></label
@@ -46,7 +55,15 @@
     </div>
     <div class="form-group has-validation">
       <!-- make select -->
-      <label for="name" class="form-label"
+      <label
+        for="name"
+        class="form-label"
+        [ngClass]="
+          mealTypeInput.invalid &&
+          (mealTypeInput.dirty || mealTypeInput.touched)
+            ? 'text-danger'
+            : ''
+        "
         >Meal Type<span class="text-danger" [hidden]="mealTypeInput.valid"
           >*</span
         ></label
@@ -68,7 +85,16 @@
       </div>
     </div>
     <div class="form-group has-validation">
-      <label for="tags">Tags</label>
+      <label
+        for="tags"
+        class="form-label"
+        [ngClass]="
+          tagInput.invalid && (tagInput.dirty || tagInput.touched)
+            ? 'text-danger'
+            : ''
+        "
+        >Tags</label
+      >
       <input
         #tagInput="ngModel"
         type="text"
@@ -103,7 +129,15 @@
       </datalist>
     </div>
     <div class="form-group has-validation">
-      <label for="name"
+      <label
+        for="name"
+        class="form-label"
+        [ngClass]="
+          ingredientInput.invalid &&
+          (ingredientInput.dirty || ingredientInput.touched)
+            ? 'text-danger'
+            : ''
+        "
         >Ingredients<span class="text-danger" [hidden]="ingredientInput.valid"
           >*</span
         ></label
@@ -164,7 +198,15 @@
       </ul>
     </div>
     <div class="form-group has-validation">
-      <label for="name"
+      <label
+        for="name"
+        class="form-label"
+        [ngClass]="
+          instructionInput.invalid &&
+          (instructionInput.dirty || instructionInput.touched)
+            ? 'text-danger'
+            : ''
+        "
         >Instructions<span class="text-danger" [hidden]="instructionInput.valid"
           >*</span
         ></label
@@ -229,7 +271,17 @@
       </ul>
     </div>
     <div class="form-group has-validation">
-      <label for="name">Prep-time (min)</label>
+      <label
+        for="name"
+        class="form-label"
+        [ngClass]="
+          prepTimeInput.invalid &&
+          (prepTimeInput.dirty || prepTimeInput.touched)
+            ? 'text-danger'
+            : ''
+        "
+        >Prep-time (min)</label
+      >
       <input
         #prepTimeInput="ngModel"
         type="number"
