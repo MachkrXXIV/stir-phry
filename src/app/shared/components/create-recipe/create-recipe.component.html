@@ -43,6 +43,7 @@
         "
         required
       />
+      <fa-icon [icon]="icons.nameIcon" class="icon"></fa-icon>
       <div
         class="invalid-response"
         *ngIf="nameInput.invalid && (nameInput.dirty || nameInput.touched)"
@@ -107,6 +108,7 @@
         minlength="3"
         maxlength="16"
       />
+      <fa-icon [icon]="icons.tagsIcon" class="icon"></fa-icon>
       <div *ngIf="recipe.tags" class="tag-list w-100 p-2">
         <span
           class="badge tag rounded-pill me-1"
@@ -170,6 +172,7 @@
         "
         [required]="recipe.ingredients.length < 1"
       />
+      <fa-icon [icon]="icons.ingredientIcon" class="icon"></fa-icon>
       <div
         class="invalid-response"
         *ngIf="
@@ -241,6 +244,7 @@
         "
         [required]="recipe.instructions.length < 1"
       />
+      <fa-icon [icon]="icons.instructionIcon" class="icon"></fa-icon>
       <div
         class="invalid-response"
         *ngIf="
@@ -292,6 +296,7 @@
         max="120"
         name="prepTime"
       />
+      <fa-icon [icon]="icons.timeIcon" class="icon"></fa-icon>
       <div
         class="invalid-response"
         *ngIf="

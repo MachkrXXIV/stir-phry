@@ -13,6 +13,14 @@ import { RecipeForm } from '../../interfaces/recipe-form';
 import { FirestoreService } from '../../services/firestore.service';
 import { MealClassificationsService } from '../../services/meal-classifications.service';
 import { DataConversionService } from '../../services/data-conversion.service';
+import {
+  faPen,
+  faTag,
+  faStickyNote,
+  faCarrot,
+  faStamp,
+  faClock,
+} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-create-recipe',
@@ -29,6 +37,14 @@ export class CreateRecipeComponent implements OnInit {
   @Input() isOpen = true;
   mealTypes: string[] = [];
   tags: string[] = [];
+  icons = {
+    nameIcon: faPen,
+    typeIcon: faStamp,
+    tagsIcon: faTag,
+    ingredientIcon: faCarrot,
+    instructionIcon: faStickyNote,
+    timeIcon: faClock,
+  };
 
   recipe: RecipeForm = {
     id: 4444,
