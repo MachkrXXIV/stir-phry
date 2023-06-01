@@ -3,6 +3,7 @@ import { RecipeService } from '../../services/recipe.service';
 import { SearchBarService } from '../../services/search-bar.service';
 import { Meal } from '../../interfaces/meal.interface';
 import { HostListener } from '@angular/core';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-search-bar',
@@ -19,6 +20,7 @@ export class SearchBarComponent implements OnInit {
   searchValue = '';
   queryRecipes: Meal[] = [];
   isLargeScreen = false;
+  searchIcon = faSearch;
 
   getUserInput() {
     this.recipeService

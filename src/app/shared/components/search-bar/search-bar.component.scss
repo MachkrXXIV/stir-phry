@@ -7,3 +7,16 @@
     box-shadow: $brand-color 0px 2px 4px;
   }
 }
+
+.icon {
+  color: $form-text-color;
+  float: left;
+  margin-left: 1rem;
+  margin-top: -31px;
+  position: relative;
+  z-index: 2;
+}
+
+.input-group-lg > .icon {
+  margin-top: -2.25rem;
+}
