@@ -16,12 +16,18 @@ import {
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideAuth, getAuth } from '@angular/fire/auth';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import {
+  FaIconLibrary,
+  FontAwesomeModule,
+} from '@fortawesome/angular-fontawesome';
 import { HomeComponent } from './features/home/home.component';
 import { MealCarouselComponent } from './features/home/meal-carousel/meal-carousel.component';
 import { DiscoverComponent } from './features/discover/discover.component';
 import { SearchBarComponent } from './shared/components/search-bar/search-bar.component';
 import { CreateRecipeComponent } from './shared/components/create-recipe/create-recipe.component';
+import { ExplorerComponent } from './features/discover/explorer/explorer.component';
+import { far } from '@fortawesome/free-regular-svg-icons';
+import { fas } from '@fortawesome/free-solid-svg-icons';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,6 +36,7 @@ import { CreateRecipeComponent } from './shared/components/create-recipe/create-
     DiscoverComponent,
     SearchBarComponent,
     CreateRecipeComponent,
+    ExplorerComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,4 +55,8 @@ import { CreateRecipeComponent } from './shared/components/create-recipe/create-
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule {
+  constructor(library: FaIconLibrary) {
+    library.addIconPacks(fas, far);
+  }
+}
