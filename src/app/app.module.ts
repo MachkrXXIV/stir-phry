@@ -26,8 +26,8 @@ import { DiscoverComponent } from './features/discover/discover.component';
 import { SearchBarComponent } from './shared/components/search-bar/search-bar.component';
 import { CreateRecipeComponent } from './shared/components/create-recipe/create-recipe.component';
 import { ExplorerComponent } from './features/discover/explorer/explorer.component';
-import { far } from '@fortawesome/free-regular-svg-icons';
 import { fas } from '@fortawesome/free-solid-svg-icons';
+import { far } from '@fortawesome/free-regular-svg-icons';
 @NgModule({
   declarations: [
     AppComponent,

@@ -1,0 +1,25 @@
+<section
+  class="d-flex flex-column justify-content-center align-items-center flex-nowrap m-2"
+>
+  <div class="icon-wrapper d-flex justify-content-lg-evenly">
+    <div
+      class="icon-group d-flex flex-column justify-content-center align-items-center"
+      *ngFor="let icon of iconLibrary"
+    >
+      <fa-stack [size]="'2x'">
+        <fa-icon
+          [icon]="'circle'"
+          stackItemSize="2x"
+          [ngClass]="icon.color"
+        ></fa-icon>
+        <fa-icon
+          [icon]="icon.icon"
+          stackItemSize="1x"
+          [inverse]="true"
+        ></fa-icon>
+      </fa-stack>
+      <h6 class="fw-bold text-muted">{{ icon.name | titlecase }}</h6>
+    </div>
+  </div>
+  <h1>hello</h1>
+</section>
