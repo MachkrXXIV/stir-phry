@@ -6,7 +6,7 @@
       class="icon-group d-flex flex-column justify-content-center align-items-center"
       *ngFor="let icon of iconLibrary"
     >
-      <fa-stack [size]="'2x'">
+      <fa-stack [size]="iconSize">
         <fa-icon
           [icon]="'circle'"
           stackItemSize="2x"
@@ -18,8 +18,14 @@
           [inverse]="true"
         ></fa-icon>
       </fa-stack>
-      <h6 class="fw-bold text-muted">{{ icon.name | titlecase }}</h6>
+      <h6 class="icon-title fw-bold text-muted">{{ icon.name | titlecase }}</h6>
     </div>
   </div>
-  <h1>hello</h1>
+  <div class="container-fluid categories w-100">
+    <div class="row row-cols-2 row-cols-lg-3">
+      <div class="col-md-6 col-lg-4 gy-2" *ngFor="let banner of cultureBanners">
+        <app-banner-card [banner]="banner"></app-banner-card>
+      </div>
+    </div>
+  </div>
 </section>

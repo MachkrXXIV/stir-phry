@@ -28,6 +28,7 @@ import { CreateRecipeComponent } from './shared/components/create-recipe/create-
 import { ExplorerComponent } from './features/discover/explorer/explorer.component';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
+import { BannerCardComponent } from './shared/components/banner-card/banner-card.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,6 +38,7 @@ import { far } from '@fortawesome/free-regular-svg-icons';
     SearchBarComponent,
     CreateRecipeComponent,
     ExplorerComponent,
+    BannerCardComponent,
   ],
   imports: [
     BrowserModule,

@@ -27,7 +27,7 @@
     </div>
   </div>
   <ng-template #noResults>
-    <app-explorer></app-explorer>
+    <app-explorer [isLargeScreen]="isLargeScreen"></app-explorer>
   </ng-template>
   <div class="plus-wrapper" (click)="displayForm()">
     <fa-icon

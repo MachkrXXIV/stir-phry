@@ -58,5 +58,6 @@ export class DiscoverComponent implements OnInit, OnDestroy {
   @HostListener('window:resize', ['$event'])
   onResize(event: any) {
     this.isLargeScreen = event.target.innerWidth >= 992;
+    console.log('screen change!', this.isLargeScreen);
   }
 }

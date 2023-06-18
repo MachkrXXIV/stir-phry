@@ -12,22 +12,29 @@ fa-icon {
   @include card-shadow;
   overflow-x: scroll;
   margin-top: 0;
-  padding: 0.5rem 0.5rem;
-  margin-bottom: auto;
-  width: Max(40vw, 340px, 50%);
+  margin-bottom: 1rem;
+  padding-top: 0.25rem;
+  width: Max(30vw, 240px, 30%);
   white-space: nowrap;
   background-color: white;
 
   border-radius: 4rem;
   @media (min-width: 768px) {
     justify-content: center;
+    width: 35vw;
+  }
+  .icon-title {
+    font-size: 11px;
+
+    @media (min-width: 768px) {
+      font-size: 16px;
+    }
   }
 }
 
-// .icon-group {
-//   padding: 0.5rem;
-// }
-
+.categories {
+  width: 100vw;
+}
 .scroll-wrapper {
   animation: scroll 10s linear infinite;
 }
