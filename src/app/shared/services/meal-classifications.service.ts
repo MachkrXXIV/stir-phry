@@ -87,6 +87,7 @@ export class MealClassificationsService {
     'Southern/Soul',
     'Korean',
     'Gourmet',
+    'Chili',
   ];
 
   getMealTypes(): string[] {
