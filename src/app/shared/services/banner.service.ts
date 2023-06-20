@@ -16,51 +16,51 @@ export class BannerService {
     },
     {
       name: 'American',
-      imgUrl: '',
+      imgUrl: 'assets/imgs/americanFood.jpg',
     },
     {
       name: 'Thai',
-      imgUrl: '',
+      imgUrl: 'assets/imgs/thaiFood.jpg',
     },
     {
       name: 'Chinese',
-      imgUrl: '',
+      imgUrl: 'assets/imgs/chineseFood.jpg',
     },
     {
       name: 'Italian',
-      imgUrl: '',
+      imgUrl: 'assets/imgs/italianFood.jpg',
     },
     {
       name: 'Japanese',
-      imgUrl: '',
+      imgUrl: 'assets/imgs/japaneseFood.jpg',
     },
     {
       name: 'Vietnamese',
-      imgUrl: '',
+      imgUrl: 'assets/imgs/vietnameseFood.jpg',
     },
     {
       name: 'Greek',
-      imgUrl: '',
+      imgUrl: 'assets/imgs/greekFood.jpg',
     },
     {
       name: 'Indian',
-      imgUrl: '',
+      imgUrl: 'assets/imgs/indianFood.jpg',
     },
     {
       name: 'Korean',
-      imgUrl: '',
+      imgUrl: 'assets/imgs/koreanFood.jpg',
     },
     {
       name: 'Mediterranean',
-      imgUrl: '',
+      imgUrl: 'assets/imgs/mediterraneanFood.jpg',
     },
     {
       name: 'Southern/Soul',
-      imgUrl: '',
+      imgUrl: 'assets/imgs/southernFood.jpg',
     },
     {
       name: 'Middle Eastern',
-      imgUrl: '',
+      imgUrl: 'assets/imgs/middleEasternFood.jpg',
     },
   ];
 
