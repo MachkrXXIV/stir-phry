@@ -11,7 +11,7 @@
   ></app-create-recipe>
   <div
     class="row row-cols-2 row-cols-lg-3"
-    *ngIf="queryRecipes.length > 0; else noResults"
+    *ngIf="queryRecipes.length > 0; else default"
   >
     <div class="col-md-6 col-lg-4 g-4 gx-4" *ngFor="let query of queryRecipes">
       <article class="card">
@@ -26,7 +26,7 @@
       </article>
     </div>
   </div>
-  <ng-template #noResults>
+  <ng-template #default>
     <app-explorer [isLargeScreen]="isLargeScreen"></app-explorer>
   </ng-template>
   <div class="plus-wrapper" (click)="displayForm()">

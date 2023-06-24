@@ -16,7 +16,5 @@ export class SearchBarService {
 
   setQueryRecipes(recipes: Meal[]): void {
     this.queryRecipesSubject.next(recipes);
-    console.log('Set searchbar service query results');
-    console.log(this.queryRecipesSubject.getValue());
   }
 }

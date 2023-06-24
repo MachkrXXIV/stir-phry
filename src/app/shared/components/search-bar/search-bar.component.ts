@@ -1,4 +1,10 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  OnInit,
+  Output,
+  ChangeDetectorRef,
+} from '@angular/core';
 import { RecipeService } from '../../services/recipe.service';
 import { SearchBarService } from '../../services/search-bar.service';
 import { Meal } from '../../interfaces/meal.interface';
@@ -11,11 +17,13 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./search-bar.component.scss'],
 })
 export class SearchBarComponent implements OnInit {
+  @Output() isValidSearch: EventEmitter<boolean> = new EventEmitter<boolean>();
+
   constructor(
     private recipeService: RecipeService,
-    private searchService: SearchBarService
+    private searchService: SearchBarService,
+    private changeDetector: ChangeDetectorRef
   ) {}
-  // @Output() query = new EventEmitter<Meal[]>();
 
   searchValue = '';
   queryRecipes: Meal[] = [];
@@ -26,8 +34,12 @@ export class SearchBarComponent implements OnInit {
     this.recipeService
       .getRecipe(this.searchValue)
       .subscribe((meals: Meal[]) => {
-        // this.queryRecipes = meals;
-        // this.query.emit(meals);
+        if (!this.searchValue) {
+          meals = [];
+          this.isValidSearch.emit(false);
+        } else {
+          this.isValidSearch.emit(true);
+        }
         this.searchService.setQueryRecipes(meals);
         // console.log(this.queryRecipes);
       });
