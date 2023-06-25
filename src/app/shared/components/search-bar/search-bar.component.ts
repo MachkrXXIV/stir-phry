@@ -18,6 +18,7 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 })
 export class SearchBarComponent implements OnInit {
   @Output() isValidSearch: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() searchQuery: EventEmitter<string> = new EventEmitter<string>();
 
   constructor(
     private recipeService: RecipeService,
@@ -37,11 +38,13 @@ export class SearchBarComponent implements OnInit {
         if (!this.searchValue) {
           meals = [];
           this.isValidSearch.emit(false);
-        } else {
-          this.isValidSearch.emit(true);
         }
+        this.isValidSearch.emit(true);
+        this.searchQuery.subscribe((e) => {
+          console.log('event emitted', e);
+        });
+        this.searchQuery.emit(this.searchValue);
         this.searchService.setQueryRecipes(meals);
-        // console.log(this.queryRecipes);
       });
   }
 

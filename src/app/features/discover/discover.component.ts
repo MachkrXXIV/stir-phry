@@ -12,6 +12,7 @@ import { SearchBarService } from 'src/app/shared/services/search-bar.service';
 import { Subscription } from 'rxjs';
 import { HostListener } from '@angular/core';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { Banner } from 'src/app/shared/interfaces/banner.interface';
 
 @Component({
   selector: 'app-discover',
@@ -22,6 +23,7 @@ export class DiscoverComponent implements OnInit, OnDestroy {
   @ViewChild('default') defaultRef!: TemplateRef<ElementRef>;
   private subscription: Subscription = new Subscription();
   queryRecipes: Meal[] = [];
+  searchQuery = 'test';
   showForm = false;
   showAlert = false;
   isLargeScreen = false;
@@ -52,6 +54,7 @@ export class DiscoverComponent implements OnInit, OnDestroy {
     this.showAlert = false;
 
     if (isValidSubmission) {
+      console.log('valid submit!');
       this.displayAlert();
     }
   }
@@ -60,14 +63,21 @@ export class DiscoverComponent implements OnInit, OnDestroy {
     this.showAlert = !this.showAlert;
   }
 
+  handleSearchQuery(query: string) {
+    this.searchQuery = query;
+    console.log(this.searchQuery);
+  }
+
   ngOnInit(): void {
     this.queryRecipes = [];
+    this.searchQuery = '';
     this.cdRef.detectChanges();
   }
 
   ngOnDestroy(): void {
-    this.subscription.unsubscribe();
     this.queryRecipes = [];
+    this.searchQuery = '';
+    this.subscription.unsubscribe();
   }
 
   @HostListener('window:resize', ['$event'])

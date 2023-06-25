@@ -1,14 +1,22 @@
 <main class="container-md p-4">
+  <ng-container *ngIf="showAlert">
+    <ngb-alert type="success" (closed)="showAlert = false"
+      >Form submitted!</ngb-alert
+    >
+  </ng-container>
   <div
     class="d-flex flex-column align-items-center justify-content-center"
     *ngIf="isLargeScreen"
   >
-    <app-search-bar></app-search-bar>
+    <app-search-bar (searchQuery)="handleSearchQuery($event)"></app-search-bar>
   </div>
   <app-create-recipe
     *ngIf="showForm"
     (showFormOutput)="displayForm($event)"
   ></app-create-recipe>
+  <ng-container *ngIf="searchQuery">
+    <h2>{{ searchQuery }}</h2>
+  </ng-container>
   <div
     class="row row-cols-2 row-cols-lg-3"
     *ngIf="queryRecipes.length > 0; else default"
@@ -37,5 +45,4 @@
       [hidden]="showForm"
     ></fa-icon>
   </div>
-  <ngb-alert type="success" *ngIf="showAlert">Form submitted!</ngb-alert>
 </main>

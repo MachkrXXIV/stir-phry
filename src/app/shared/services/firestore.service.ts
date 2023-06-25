@@ -39,9 +39,10 @@ export class FirestoreService {
       collection(this.firestore, '/saved-meals'),
       meal
     );
-    await updateDoc(docRef, {
-      id: this.getSavedMealsCount(),
-    });
+    const mealDoc = doc(this.firestore, `/saved-meals/${docRef.id}`);
+    // await updateDoc(mealDoc, {
+    //   id: this.getSavedMealsCount(),
+    // });
     return docRef as DocumentReference<Meal>;
   }
 }
