@@ -61,8 +61,7 @@ export class CreateRecipeComponent implements OnInit {
   constructor(
     private firestore: FirestoreService,
     private mealClassService: MealClassificationsService,
-    private conversionService: DataConversionService,
-    private ngZone: NgZone
+    private conversionService: DataConversionService
   ) {
     this.mealTypes = this.mealClassService.getMealTypes();
     this.tags = this.mealClassService.getTags();

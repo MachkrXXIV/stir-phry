@@ -11,8 +11,6 @@
   @include card-shadow;
 
   &:hover {
-    //refactor
-    // border: 2px solid $brand-color;
     transform: scale(1.05);
     box-shadow: $brand-color 0px 4px 8px -2px, $brand-color 0px 0px 0px 1px;
     transition: all ease-out 0.2s;

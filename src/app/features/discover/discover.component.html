@@ -8,14 +8,16 @@
     class="d-flex flex-column align-items-center justify-content-center"
     *ngIf="isLargeScreen"
   >
-    <app-search-bar (searchQuery)="handleSearchQuery($event)"></app-search-bar>
+    <app-search-bar></app-search-bar>
   </div>
   <app-create-recipe
     *ngIf="showForm"
     (showFormOutput)="displayForm($event)"
   ></app-create-recipe>
   <ng-container *ngIf="searchQuery">
-    <h2>{{ searchQuery }}</h2>
+    <h2 class="text-black-50">
+      Results for... <span class="query">{{ searchQuery | titlecase }}</span>
+    </h2>
   </ng-container>
   <div
     class="row row-cols-2 row-cols-lg-3"

@@ -45,6 +45,7 @@ export class SearchBarComponent implements OnInit {
         });
         this.searchQuery.emit(this.searchValue);
         this.searchService.setQueryRecipes(meals);
+        this.searchService.setSearchValue(this.searchValue);
       });
   }
 

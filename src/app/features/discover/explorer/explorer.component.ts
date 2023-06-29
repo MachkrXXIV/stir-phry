@@ -31,15 +31,13 @@ export class ExplorerComponent implements OnInit {
   handleSelectedBanner(banner: any) {
     console.log(banner);
 
+    // makes the api request and generates the cards
     this.recipeService.getRecipe(banner.name).subscribe((meals: Meal[]) => {
       if (!banner.name) {
         meals = [];
-        // this.isValidSearch.emit(false);
-      } else {
-        // this.isValidSearch.emit(true);
       }
       this.searchService.setQueryRecipes(meals);
-      // console.log(this.queryRecipes);
+      this.searchService.setSearchValue(banner.name);
     });
   }
 

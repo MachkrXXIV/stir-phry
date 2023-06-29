@@ -21,7 +21,8 @@ import { Banner } from 'src/app/shared/interfaces/banner.interface';
 })
 export class DiscoverComponent implements OnInit, OnDestroy {
   @ViewChild('default') defaultRef!: TemplateRef<ElementRef>;
-  private subscription: Subscription = new Subscription();
+  private recipeSub: Subscription = new Subscription();
+  private searchValSub: Subscription = new Subscription();
   queryRecipes: Meal[] = [];
   searchQuery = 'test';
   showForm = false;
@@ -33,7 +34,8 @@ export class DiscoverComponent implements OnInit, OnDestroy {
     private searchService: SearchBarService,
     private cdRef: ChangeDetectorRef
   ) {
-    this.subscription = this.searchService.queryRecipes$.subscribe({
+    this.isLargeScreen = window.innerWidth >= 992;
+    this.recipeSub = this.searchService.queryRecipes$.subscribe({
       next: (recipes: Meal[]) => {
         this.queryRecipes = recipes;
       },
@@ -42,7 +44,9 @@ export class DiscoverComponent implements OnInit, OnDestroy {
         this.displayError();
       },
     });
-    this.isLargeScreen = window.innerWidth >= 992;
+    this.searchValSub = this.searchService.searchValue$.subscribe((query) => {
+      this.searchQuery = query;
+    });
   }
 
   displayError() {
@@ -51,7 +55,6 @@ export class DiscoverComponent implements OnInit, OnDestroy {
 
   displayForm(isValidSubmission: boolean = false) {
     this.showForm = !this.showForm;
-    this.showAlert = false;
 
     if (isValidSubmission) {
       console.log('valid submit!');
@@ -63,11 +66,6 @@ export class DiscoverComponent implements OnInit, OnDestroy {
     this.showAlert = !this.showAlert;
   }
 
-  handleSearchQuery(query: string) {
-    this.searchQuery = query;
-    console.log(this.searchQuery);
-  }
-
   ngOnInit(): void {
     this.queryRecipes = [];
     this.searchQuery = '';
@@ -77,7 +75,8 @@ export class DiscoverComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.queryRecipes = [];
     this.searchQuery = '';
-    this.subscription.unsubscribe();
+    this.recipeSub.unsubscribe();
+    this.searchValSub.unsubscribe();
   }
 
   @HostListener('window:resize', ['$event'])
