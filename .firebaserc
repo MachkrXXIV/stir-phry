@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "stir-phry": {
+      "hosting": {
+        "stir-phry": [
+          "stir-phry"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "stir-phry"
+  }
+}

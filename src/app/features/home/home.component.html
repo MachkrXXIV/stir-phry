@@ -1,0 +1,9 @@
+<main class="home-page d-flex flex-column align-items-center">
+  <div class="current-content container-fluid p-2">
+    <h1 class="ps-4 pt-3 fw-bolder">Hi, {{ userName }}</h1>
+    <app-meal-carousel></app-meal-carousel>
+  </div>
+  <div class="secondary-content" *ngFor="let meal of savedMeals$ | async">
+    {{ meal.name }}
+  </div>
+</main>

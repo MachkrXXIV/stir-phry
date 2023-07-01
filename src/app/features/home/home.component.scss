@@ -1,0 +1,18 @@
+@import "~/src/styles.scss";
+.home-page {
+  height: 95vh;
+
+  .current-content {
+    background-color: $brand-color;
+    color: white;
+    width: 100vw;
+  }
+
+  .secondary-content {
+    // height: 68.5%;
+    width: 100%;
+    background-color: #dad9d9;
+    border-top-left-radius: 2rem;
+    border-top-right-radius: 2rem;
+  }
+}

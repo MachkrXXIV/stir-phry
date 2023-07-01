@@ -1,0 +1,35 @@
+<section
+  class="d-flex flex-column justify-content-center align-items-center flex-nowrap m-2"
+>
+  <div class="icon-wrapper d-flex justify-content-lg-evenly">
+    <div
+      class="icon-group d-flex flex-column justify-content-center align-items-center"
+      *ngFor="let icon of iconLibrary"
+    >
+      <fa-stack [size]="iconSize">
+        <fa-icon
+          [icon]="'circle'"
+          stackItemSize="2x"
+          [ngClass]="icon.color"
+        ></fa-icon>
+        <fa-icon
+          [icon]="icon.icon"
+          stackItemSize="1x"
+          [inverse]="true"
+        ></fa-icon>
+      </fa-stack>
+      <h6 class="icon-title fw-bold text-muted">{{ icon.name | titlecase }}</h6>
+    </div>
+  </div>
+  <div class="container-fluid categories w-100">
+    <h2 class="fw-bolder text-black-50 mb-4">Culture-based</h2>
+    <div class="row row-cols-2 row-cols-lg-3">
+      <div class="col-md-6 col-lg-4 gy-2" *ngFor="let banner of cultureBanners">
+        <app-banner-card
+          [banner]="banner"
+          (onBannerSelect)="handleSelectedBanner($event)"
+        ></app-banner-card>
+      </div>
+    </div>
+  </div>
+</section>

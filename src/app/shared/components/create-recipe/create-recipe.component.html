@@ -1,0 +1,329 @@
+<article class="container-fluid form-container" tabindex="1">
+  <h2 class="text-center fw-bold w-100 form-header pt-3 pb-3 text-light">
+    Make your own recipe!
+  </h2>
+  <form
+    autocomplete="off"
+    class="form d-flex flex-column gap-3"
+    #recipeForm="ngForm"
+    (keydown.enter)="$event.preventDefault()"
+    (ngSubmit)="recipeForm.valid ? onSubmit() : false"
+  >
+    <div class="form-group has-validation">
+      <label
+        for="name"
+        class="form-label"
+        [ngClass]="
+          nameInput.invalid && (nameInput.dirty || nameInput.touched)
+            ? 'text-danger'
+            : ''
+        "
+        >Name<span class="text-danger" [hidden]="nameInput.valid"
+          >*</span
+        ></label
+      >
+      <input
+        #nameInput="ngModel"
+        type="text"
+        class="form-control"
+        placeholder="Enter recipe name"
+        [(ngModel)]="recipe.name"
+        name="name"
+        minlength="3"
+        maxlength="24"
+        [ngClass]="
+          !nameInput.valid && !nameInput.pristine && nameInput.touched
+            ? 'is-invalid'
+            : ''
+        "
+        [ngClass]="
+          nameInput.valid && !nameInput.pristine && nameInput.touched
+            ? 'is-valid'
+            : ''
+        "
+        required
+      />
+      <fa-icon [icon]="icons.nameIcon" class="icon"></fa-icon>
+      <div
+        class="invalid-response"
+        *ngIf="nameInput.invalid && (nameInput.dirty || nameInput.touched)"
+      >
+        <p *ngIf="nameInput.errors?.['required']">Name is required</p>
+        <p *ngIf="nameInput.invalid">
+          Please enter a valid name between 3-24 characters
+        </p>
+      </div>
+    </div>
+    <div class="form-group has-validation">
+      <!-- make select -->
+      <label
+        for="name"
+        class="form-label"
+        [ngClass]="
+          mealTypeInput.invalid &&
+          (mealTypeInput.dirty || mealTypeInput.touched)
+            ? 'text-danger'
+            : ''
+        "
+        >Meal Type<span class="text-danger" [hidden]="mealTypeInput.valid"
+          >*</span
+        ></label
+      >
+      <select
+        #mealTypeInput="ngModel"
+        name="mealType has-validation"
+        class="form-select"
+        [(ngModel)]="recipe.mealType"
+        required
+      >
+        <option selected disabled value="">Choose...</option>
+        <option *ngFor="let type of mealTypes" [value]="type">
+          {{ type }}
+        </option>
+      </select>
+      <div class="invalid-feedback">
+        <p>Meal type is required</p>
+      </div>
+    </div>
+    <div class="form-group has-validation">
+      <label
+        for="tags"
+        class="form-label"
+        [ngClass]="
+          tagInput.invalid && (tagInput.dirty || tagInput.touched)
+            ? 'text-danger'
+            : ''
+        "
+        >Tags</label
+      >
+      <input
+        #tagInput="ngModel"
+        type="text"
+        placeholder="Enter tags"
+        class="form-control borderless-bottom"
+        [(ngModel)]="tagInputVal"
+        name="tags"
+        list="tagsList"
+        (keyup.enter)="tagInput.valid ? addTag(tagInput.value) : false"
+        minlength="3"
+        maxlength="16"
+      />
+      <fa-icon [icon]="icons.tagsIcon" class="icon"></fa-icon>
+      <div *ngIf="recipe.tags" class="tag-list w-100 p-2">
+        <span
+          class="badge tag rounded-pill me-1"
+          *ngFor="let tag of recipe.tags"
+          (click)="removeTag(recipe.tags.indexOf(tag))"
+        >
+          {{ tag }}</span
+        >
+      </div>
+      <div
+        class="invalid-response"
+        *ngIf="tagInput.invalid && (tagInput.dirty || tagInput.touched)"
+      >
+        <p *ngIf="tagInput.invalid">
+          Please enter a valid tag between 3-16 characters
+        </p>
+      </div>
+      <datalist id="tagsList">
+        <option *ngFor="let tag of tags" [value]="tag">{{ tag }}</option>
+      </datalist>
+    </div>
+    <div class="form-group has-validation">
+      <label
+        for="name"
+        class="form-label"
+        [ngClass]="
+          ingredientInput.invalid &&
+          (ingredientInput.dirty || ingredientInput.touched)
+            ? 'text-danger'
+            : ''
+        "
+        >Ingredients<span class="text-danger" [hidden]="ingredientInput.valid"
+          >*</span
+        ></label
+      >
+      <input
+        #ingredientInput="ngModel"
+        type="text"
+        placeholder="Enter ingredients"
+        class="form-control"
+        [(ngModel)]="ingredientInputVal"
+        name="ingredients"
+        (keyup.enter)="
+          ingredientInput.valid ? addIngredient(ingredientInput.value) : false
+        "
+        minlength="3"
+        maxlength="24"
+        [ngClass]="
+          !ingredientInput.valid &&
+          !ingredientInput.pristine &&
+          ingredientInput.touched
+            ? 'is-invalid'
+            : ''
+        "
+        [ngClass]="
+          ingredientInput.valid &&
+          !ingredientInput.pristine &&
+          ingredientInput.touched
+            ? 'is-valid'
+            : ''
+        "
+        [required]="recipe.ingredients.length < 1"
+      />
+      <fa-icon [icon]="icons.ingredientIcon" class="icon"></fa-icon>
+      <div
+        class="invalid-response"
+        *ngIf="
+          recipe.ingredients.length < 1 &&
+          (ingredientInput.dirty || ingredientInput.touched)
+        "
+      >
+        <p *ngIf="ingredientInput.errors?.['required']">
+          Ingredients are required
+        </p>
+        <p *ngIf="ingredientInput.invalid">
+          Please enter a valid ingredient between 3-24 characters
+        </p>
+      </div>
+      <ul class="list-group d-flex flex-wrap" *ngIf="recipe.ingredients">
+        <li
+          class="list-group-item list-group-item-action d-flex justify-content-between w-75"
+          *ngFor="let ingredient of recipe.ingredients"
+        >
+          <div>{{ ingredient }}</div>
+          <span
+            class="btn-close"
+            (click)="removeIngredient(recipe.ingredients.indexOf(ingredient))"
+          ></span>
+        </li>
+      </ul>
+    </div>
+    <div class="form-group has-validation">
+      <label
+        for="name"
+        class="form-label"
+        [ngClass]="
+          instructionInput.invalid &&
+          (instructionInput.dirty || instructionInput.touched)
+            ? 'text-danger'
+            : ''
+        "
+        >Instructions<span class="text-danger" [hidden]="instructionInput.valid"
+          >*</span
+        ></label
+      >
+      <input
+        #instructionInput="ngModel"
+        type="text"
+        placeholder="Enter instructions"
+        class="form-control"
+        [(ngModel)]="instructionInputVal"
+        name="insutrctions"
+        (keyup.enter)="
+          instructionInput.valid
+            ? addInstruction(instructionInput.value)
+            : false
+        "
+        minlength="3"
+        maxlength="50"
+        [ngClass]="
+          !instructionInput.valid &&
+          !instructionInput.pristine &&
+          instructionInput.touched
+            ? 'is-invalid'
+            : ''
+        "
+        [ngClass]="
+          instructionInput.valid &&
+          !instructionInput.pristine &&
+          instructionInput.touched
+            ? 'is-valid'
+            : ''
+        "
+        [required]="recipe.instructions.length < 1"
+      />
+      <fa-icon [icon]="icons.instructionIcon" class="icon"></fa-icon>
+      <div
+        class="invalid-response"
+        *ngIf="
+          recipe.instructions.length < 1 &&
+          (instructionInput.dirty || instructionInput.touched)
+        "
+      >
+        <p *ngIf="instructionInput.errors?.['required']">
+          Instructions are required
+        </p>
+        <p *ngIf="instructionInput.invalid">
+          Please enter a valid instruction between 3-50 characters
+        </p>
+      </div>
+      <ul class="list-group d-flex flex-wrap" *ngIf="recipe.instructions">
+        <li
+          class="list-group-item list-group-item-action d-flex justify-content-between w-75"
+          *ngFor="let instruction of recipe.instructions"
+        >
+          <div>{{ instruction }}</div>
+          <span
+            class="btn-close"
+            (click)="
+              removeInstruction(recipe.instructions.indexOf(instruction))
+            "
+          ></span>
+        </li>
+      </ul>
+    </div>
+    <div class="form-group has-validation">
+      <label
+        for="name"
+        class="form-label"
+        [ngClass]="
+          prepTimeInput.invalid &&
+          (prepTimeInput.dirty || prepTimeInput.touched)
+            ? 'text-danger'
+            : ''
+        "
+        >Prep-time (min)</label
+      >
+      <input
+        #prepTimeInput="ngModel"
+        type="number"
+        placeholder="Enter prep-time"
+        class="form-control"
+        [(ngModel)]="recipe.prepTimeInMinutes"
+        min="1"
+        max="120"
+        name="prepTime"
+      />
+      <fa-icon [icon]="icons.timeIcon" class="icon"></fa-icon>
+      <div
+        class="invalid-response"
+        *ngIf="
+          prepTimeInput.invalid &&
+          (prepTimeInput.dirty || prepTimeInput.touched)
+        "
+      >
+        <p *ngIf="prepTimeInput.invalid">
+          Please enter a valid time between 1-120 minutes
+        </p>
+      </div>
+    </div>
+    <div class="button-group align-self-end">
+      <button
+        type="submit"
+        class="btn btn-primary m-1"
+        [disabled]="!recipeForm.form.valid"
+      >
+        Submit
+      </button>
+      <button
+        type="button"
+        class="btn btn-outline-primary m-1"
+        (click)="closeForm()"
+      >
+        Cancel
+      </button>
+    </div>
+  </form>
+</article>

@@ -1,0 +1,42 @@
+<ng-template #sidebar let-offcanvas>
+  <header class="offcanvas-header">
+    <ul class="navbar-nav container-fluid">
+      <li
+        class="nav-item me-auto fw-semibold lead w-50 d-flex align-items-center justify-content-between"
+        *ngFor="let link of navLinks"
+      >
+        <fa-icon [icon]="link.icon"></fa-icon>
+        <a
+          class="nav-link side-link align-self-center"
+          [routerLink]="link.route"
+          (click)="offcanvas.close()"
+        >
+          {{ link.name }}</a
+        >
+      </li>
+    </ul>
+  </header>
+</ng-template>
+
+<nav class="navbar navbar-expand-md fixed-top">
+  <div class="header-container container-fluid bg-light g-0">
+    <button
+      class="navbar-toggler"
+      type="button"
+      (click)="openMenuRight(sidebar)"
+    >
+      &#9776;
+    </button>
+    <div *ngIf="showSearchBar && !isLargeScreen">
+      <app-search-bar></app-search-bar>
+    </div>
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav container-fluid">
+        <li class="nav-item fw-bold" *ngFor="let link of navLinks">
+          <a class="nav-link" [routerLink]="link.route"> {{ link.name }}</a>
+        </li>
+      </ul>
+      <!-- <a class="navbar-brand circle" [routerLink]=""></a> -->
+    </div>
+  </div>
+</nav>

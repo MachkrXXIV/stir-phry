@@ -1,0 +1,27 @@
+@import "~bootstrap/scss/bootstrap";
+
+@mixin card-shadow {
+  box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px,
+    rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
+}
+
+.meal-group {
+  position: relative;
+
+  transform: translateY(4rem);
+}
+
+.carousel-control-next-icon,
+.carousel-control-prev-icon {
+  visibility: hidden;
+}
+
+.current-meal-card {
+  @include card-shadow;
+  height: 24vh;
+  width: 90%;
+  background-color: $body-bg;
+
+  color: black;
+  border-radius: 1.5rem;
+}

@@ -1,0 +1,156 @@
+@import "src/styles.scss";
+
+@mixin sliding-transition($name, $time: 1s) {
+  animation: $name $time ease-out;
+}
+
+@mixin transition-ease($time) {
+  transition: all $time ease-in-out;
+}
+
+@mixin card-shadow {
+  box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px,
+    rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
+}
+
+// .slide-up {
+//   transition: transform 0.3s ease-out;
+//   transform: translateY(100%);
+// }
+
+// .slide-up.open {
+//   transform: translateY(0);
+// }
+
+.form {
+  padding: 2rem;
+
+  &-control {
+    padding-left: 2rem;
+  }
+}
+
+.form-container {
+  @include sliding-transition(slideUp, 0.2s);
+  @include card-shadow;
+  // transition: all 0.3s ease-in-out;
+  max-height: 80vh;
+  width: Min(100vw, 800px);
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  padding: 0;
+  background-color: white;
+  overflow-y: scroll;
+  border-top-left-radius: 1.5rem;
+  border-top-right-radius: 1.5rem;
+  z-index: 1;
+  overscroll-behavior-y: none;
+  &.open {
+    @include sliding-transition(slideDown, 0.2s);
+  }
+
+  @media (min-width: 992px) {
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    // transform: translateX(-50%);
+    // transition: transform 0.3s ease-out;
+  }
+}
+
+.icon {
+  color: $form-text-color;
+  float: left;
+  margin-left: 8px;
+  margin-top: -31px;
+  position: relative;
+  z-index: 2;
+}
+
+.form-header {
+  background-color: $brand-color;
+  border-top-left-radius: 1.5rem;
+  border-top-right-radius: 1.5rem;
+}
+
+.bg-primary {
+  background-color: $primary-light;
+}
+
+.borderless-bottom {
+  border-bottom: none;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.tag-list {
+  background-color: white;
+  border-bottom-left-radius: 0.375rem;
+  border-bottom-right-radius: 0.375rem;
+  border: 1px solid #ced4da;
+  border-top: none;
+}
+
+.tag {
+  font-size: $input-font-size-sm;
+  background-color: $brand-color;
+  cursor: pointer;
+}
+
+.invalid-response {
+  color: $danger;
+}
+
+.ng-valid[required],
+.ng-valid.required {
+  border: 2px solid $success; /* green */
+}
+
+.ng-invalid:not(form).ng-touched {
+  border: 2px solid $danger; /* red */
+}
+
+@keyframes slideUp {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideDown {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+// removes arrows from prep-time input
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.form-container::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.form-container {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}

@@ -1,0 +1,46 @@
+<main class="container-md p-4">
+  <ng-container *ngIf="showAlert">
+    <ngb-alert type="success" (closed)="showAlert = false"
+      >Form submitted!</ngb-alert
+    >
+  </ng-container>
+  <div
+    class="d-flex flex-column align-items-center justify-content-center"
+    *ngIf="isLargeScreen"
+  >
+    <app-search-bar></app-search-bar>
+  </div>
+  <app-create-recipe
+    *ngIf="showForm"
+    (showFormOutput)="displayForm($event)"
+  ></app-create-recipe>
+  <ng-container *ngIf="searchQuery">
+    <h2 class="text-black-50">
+      <fa-icon
+        [icon]="'arrow-left'"
+        class="back-arrow"
+        (click)="goToDefault()"
+      ></fa-icon>
+      Results for... <span class="query">{{ searchQuery | titlecase }}</span>
+    </h2>
+  </ng-container>
+  <div
+    class="row row-cols-2 row-cols-lg-3"
+    *ngIf="queryRecipes.length > 0; else default"
+  >
+    <div class="col-md-6 col-lg-4 g-4 gx-4" *ngFor="let query of queryRecipes">
+      <app-query-card [query]="query"></app-query-card>
+    </div>
+  </div>
+  <ng-template #default>
+    <app-explorer [isLargeScreen]="isLargeScreen"></app-explorer>
+  </ng-template>
+  <div class="plus-wrapper" (click)="displayForm()">
+    <fa-icon
+      class="brand"
+      [icon]="faPlusCircle"
+      size="2x"
+      [hidden]="showForm"
+    ></fa-icon>
+  </div>
+</main>

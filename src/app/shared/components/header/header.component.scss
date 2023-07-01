@@ -1,0 +1,61 @@
+@import "src/styles.scss";
+
+.header {
+  display: flex;
+
+  height: 7vh;
+  width: 100vw;
+
+  &-container {
+    background-color: $primary-light;
+    color: $secondary-light;
+  }
+}
+
+.offcanvas {
+  border-top-right-radius: 10rem;
+  border-bottom-right-radius: 20rem;
+}
+
+.circle {
+  position: relative;
+  top: 2rem;
+  right: 1.5rem;
+  width: 2rem;
+  aspect-ratio: 1/1;
+
+  border-radius: 100%;
+
+  background-color: $light;
+}
+
+.navbar {
+  padding: 0;
+  position: sticky;
+
+  &-toggler {
+    aspect-ratio: 1.25/1;
+
+    &:focus,
+    &:active {
+      box-shadow: none;
+    }
+  }
+}
+
+.nav-link {
+  color: $secondary-light;
+  &:active,
+  &:focus,
+  &:hover {
+    color: $brand-color;
+  }
+}
+
+.side-link {
+  @include font-size(1.5rem);
+}
+
+.header-container {
+  padding: 0.8rem 0.8rem;
+}
