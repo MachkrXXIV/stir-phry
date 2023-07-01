@@ -29,16 +29,7 @@
     *ngIf="queryRecipes.length > 0; else default"
   >
     <div class="col-md-6 col-lg-4 g-4 gx-4" *ngFor="let query of queryRecipes">
-      <article class="card">
-        <img class="card-img-top custom-card-img" [src]="query.image" alt="" />
-        <section class="card-body">
-          <h5 class="card-title">{{ query.name }}</h5>
-          <p class="card-text">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Optio,
-            inventore.
-          </p>
-        </section>
-      </article>
+      <app-query-card [query]="query"></app-query-card>
     </div>
   </div>
   <ng-template #default>
