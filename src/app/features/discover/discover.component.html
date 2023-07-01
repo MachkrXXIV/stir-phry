@@ -16,6 +16,11 @@
   ></app-create-recipe>
   <ng-container *ngIf="searchQuery">
     <h2 class="text-black-50">
+      <fa-icon
+        [icon]="'arrow-left'"
+        class="back-arrow"
+        (click)="goToDefault()"
+      ></fa-icon>
       Results for... <span class="query">{{ searchQuery | titlecase }}</span>
     </h2>
   </ng-container>

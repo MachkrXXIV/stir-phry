@@ -66,6 +66,10 @@ export class DiscoverComponent implements OnInit, OnDestroy {
     this.showAlert = !this.showAlert;
   }
 
+  goToDefault() {
+    window.location.reload();
+  }
+
   ngOnInit(): void {
     this.queryRecipes = [];
     this.searchQuery = '';
