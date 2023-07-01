@@ -9,6 +9,8 @@ export interface Meal {
   calories?: number;
   fat?: number;
   carbohydrates?: number;
+  sugar?: number;
   protein?: number;
   prepTimeInMinutes?: number;
+  sourceUrl?: string;
 }
