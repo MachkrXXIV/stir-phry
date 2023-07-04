@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Meal } from '../../interfaces/meal.interface';
 import { RecipeService } from '../../services/recipe.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-query-card',
   templateUrl: './query-card.component.html',
@@ -13,13 +14,15 @@ export class QueryCardComponent implements OnInit {
     image: 'image',
   };
 
-  constructor(private recipeService: RecipeService) {}
+  constructor(private recipeService: RecipeService, private router: Router) {}
 
   routeToDetailedView(id: number) {
     this.recipeService.getDetailedInformation(id).subscribe({
       next: (recipe: Meal) => {
-        this.query = recipe;
+        // causes card shrink ??
+        // this.query = recipe;
         console.log(recipe);
+        this.router.navigate(['/discover', recipe.id]);
       },
       error: (error) => {
         console.log('error', error);
