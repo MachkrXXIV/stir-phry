@@ -21,7 +21,7 @@ export class QueryCardComponent implements OnInit {
       next: (recipe: Meal) => {
         // causes card shrink ??
         // this.query = recipe;
-        let nameUrl = recipe.name.split(' ').join('_');
+        let nameUrl = recipe.name.split(' ').join('-');
         console.log(recipe);
         this.router.navigate(['/discover', `${nameUrl}#${recipe.id}`], {
           state: recipe,

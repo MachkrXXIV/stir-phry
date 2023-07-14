@@ -8,7 +8,7 @@ import { Meal } from 'src/app/shared/interfaces/meal.interface';
   styleUrls: ['./detailed-view.component.scss'],
 })
 export class DetailedViewComponent implements OnInit {
-  private detailedRecipe: Meal;
+  detailedRecipe: Meal;
   constructor(private router: Router) {
     this.detailedRecipe = this.router.getCurrentNavigation()!.extras
       .state as Meal;

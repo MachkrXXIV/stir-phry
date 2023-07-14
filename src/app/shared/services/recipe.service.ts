@@ -42,10 +42,17 @@ export class RecipeService {
       .pipe(
         map((response) => {
           const recipe = response;
+          console.log(response);
           return {
             id: recipe.id,
             name: recipe.title,
             image: recipe.image,
+            prepTimeInMinutes: recipe.readyInMinutes,
+            ingredients: recipe.extendedIngredients,
+            instructions: recipe.instructions
+              .replace(/<[^>]*>/g, '')
+              .split('. '),
+            summary: recipe.summary,
             tags: recipe.cuisines,
             calories: recipe.nutrition.nutrients[0].amount,
             fat: recipe.nutrition.nutrients[1].amount,
