@@ -11,6 +11,12 @@ export class RecipeService {
   private baseUrl = 'https://api.spoonacular.com/recipes/';
   private apiKey = environment.apiKey;
 
+  private splitString(input: string) {
+    input = input.replace(/<[^>]*>/g, '');
+    const resultArray = input.split(/\. ?/).filter((str) => str.trim() !== '');
+    return resultArray;
+  }
+
   getRecipe(recipeName: string): Observable<Meal[]> {
     const params = new HttpParams().set('number', 50);
     return this.http
@@ -42,18 +48,21 @@ export class RecipeService {
       .pipe(
         map((response) => {
           const recipe = response;
-          console.log(response);
+          // gets all keys in json that are booleans
+          // evaluated to true and combine with cuisines subarray
+          const tags = Object.keys(recipe)
+            .filter((tag) => recipe[tag] === true)
+            .concat(recipe.cuisines);
+          const instructions = this.splitString(recipe.instructions);
           return {
             id: recipe.id,
             name: recipe.title,
             image: recipe.image,
             prepTimeInMinutes: recipe.readyInMinutes,
             ingredients: recipe.extendedIngredients,
-            instructions: recipe.instructions
-              .replace(/<[^>]*>/g, '')
-              .split('. '),
+            instructions: instructions,
             summary: recipe.summary,
-            tags: recipe.cuisines,
+            tags: tags,
             calories: recipe.nutrition.nutrients[0].amount,
             fat: recipe.nutrition.nutrients[1].amount,
             carbohydrates: recipe.nutrition.nutrients[3].amount,
