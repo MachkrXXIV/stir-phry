@@ -23,7 +23,7 @@ export class QueryCardComponent implements OnInit {
         // this.query = recipe;
         let nameUrl = recipe.name.split(' ').join('-');
         console.log(recipe);
-        this.router.navigate(['/discover', `${nameUrl}#${recipe.id}`], {
+        this.router.navigate(['/discover', nameUrl, recipe.id], {
           state: recipe,
         });
       },

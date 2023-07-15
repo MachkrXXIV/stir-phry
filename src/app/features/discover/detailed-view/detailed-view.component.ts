@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Meal } from 'src/app/shared/interfaces/meal.interface';
 
 @Component({
@@ -8,12 +8,13 @@ import { Meal } from 'src/app/shared/interfaces/meal.interface';
   styleUrls: ['./detailed-view.component.scss'],
 })
 export class DetailedViewComponent implements OnInit {
-  detailedRecipe: Meal;
-  constructor(private router: Router) {
-    this.detailedRecipe = this.router.getCurrentNavigation()!.extras
-      .state as Meal;
-    console.log(this.detailedRecipe.name);
-  }
+  detailedRecipe: Meal = {
+    id: -1,
+    name: '',
+  };
+  constructor(private route: ActivatedRoute) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.detailedRecipe = this.route.snapshot.data['detailedRecipe'];
+  }
 }
