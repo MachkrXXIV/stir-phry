@@ -31,6 +31,7 @@ import { far } from '@fortawesome/free-regular-svg-icons';
 import { BannerCardComponent } from './shared/components/banner-card/banner-card.component';
 import { QueryCardComponent } from './shared/components/query-card/query-card.component';
 import { DetailedViewComponent } from './features/discover/detailed-view/detailed-view.component';
+import { CamelCaseSplitPipe } from './shared/camel-case-split.pipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,6 +44,7 @@ import { DetailedViewComponent } from './features/discover/detailed-view/detaile
     BannerCardComponent,
     QueryCardComponent,
     DetailedViewComponent,
+    CamelCaseSplitPipe,
   ],
   imports: [
     BrowserModule,

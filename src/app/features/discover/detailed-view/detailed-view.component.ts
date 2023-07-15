@@ -12,7 +12,11 @@ export class DetailedViewComponent implements OnInit {
     id: -1,
     name: '',
   };
-  constructor(private route: ActivatedRoute) {}
+  constructor(private router: Router, private route: ActivatedRoute) {}
+
+  goBack() {
+    this.router.navigate(['/discover']);
+  }
 
   ngOnInit(): void {
     this.detailedRecipe = this.route.snapshot.data['detailedRecipe'];
