@@ -32,7 +32,7 @@ import { BannerCardComponent } from './shared/components/banner-card/banner-card
 import { QueryCardComponent } from './shared/components/query-card/query-card.component';
 import { DetailedViewComponent } from './features/discover/detailed-view/detailed-view.component';
 import { CamelCaseSplitPipe } from './shared/camel-case-split.pipe';
-import { NavTabsComponent } from './shared/components/nav-tabs/nav-tabs.component';
+import { NavTabsComponent } from './features/discover/detailed-view/nav-tabs/nav-tabs.component';
 @NgModule({
   declarations: [
     AppComponent,
