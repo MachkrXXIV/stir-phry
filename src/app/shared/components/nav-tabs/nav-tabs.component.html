@@ -1,0 +1,95 @@
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item" role="presentation">
+    <button
+      class="nav-link active"
+      [ngClass]="{ active: currentTab === 'summary' }"
+      id="summary-tab"
+      data-bs-toggle="tab"
+      data-bs-target="#summary-tab-pane"
+      type="button"
+      role="tab"
+      aria-controls="summary-tab-pane"
+      aria-selected="true"
+      (click)="navigateToTab('summary')"
+    >
+      Summary
+    </button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button
+      class="nav-link"
+      [ngClass]="{ active: currentTab === 'ingredients' }"
+      id="ingredient-tab"
+      data-bs-toggle="tab"
+      data-bs-target="#ingredients-tab-pane"
+      type="button"
+      role="tab"
+      aria-controls="ingredients-tab-pane"
+      aria-selected="false"
+      (click)="navigateToTab('ingredients')"
+    >
+      Ingredients
+    </button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button
+      class="nav-link"
+      [ngClass]="{ active: currentTab === 'instructions' }"
+      id="instruction-tab"
+      data-bs-toggle="tab"
+      data-bs-target="#instructions-tab-pane"
+      type="button"
+      role="tab"
+      aria-controls="instructions-tab-pane"
+      aria-selected="false"
+      (click)="navigateToTab('instructions')"
+    >
+      Instruction
+    </button>
+  </li>
+</ul>
+<div class="tab-content" [ngSwitch]="currentTab">
+  <ng-template
+    #summaryTab
+    [ngSwitchCase]="'summary'"
+    class="tab-pane fade show active"
+    id="summary-tab-pane"
+    role="tabpanel"
+    aria-labelledby="summary-tab"
+    tabindex="0"
+  >
+    <p [innerHTML]="summary"></p>
+  </ng-template>
+  <ng-template
+    #ingredientsTab
+    [ngSwitchCase]="'ingredients'"
+    class="tab-pane fade"
+    id="ingredients-tab-pane"
+    role="tabpanel"
+    aria-labelledby="ingredients-tab"
+    tabindex="0"
+  >
+    <h2 class="sublist__title">Ingredients:</h2>
+    <ul>
+      <li class="ingredient" *ngFor="let item of ingredients">
+        {{ item.original }}
+      </li>
+    </ul>
+  </ng-template>
+  <ng-template
+    #instructionsTab
+    [ngSwitchCase]="'instructions'"
+    class="tab-pane fade"
+    id="instructions-tab-pane"
+    role="tabpanel"
+    aria-labelledby="instructions-tab"
+    tabindex="0"
+  >
+    <h2 class="sublist__title">Instructions:</h2>
+    <ol>
+      <li class="instruction" *ngFor="let item of instructions">
+        {{ item }}
+      </li>
+    </ol>
+  </ng-template>
+</div>

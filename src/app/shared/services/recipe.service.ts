@@ -54,6 +54,7 @@ export class RecipeService {
             .filter((tag) => recipe[tag] === true)
             .concat(recipe.cuisines);
           const instructions = this.splitString(recipe.instructions);
+          console.log(recipe);
           return {
             id: recipe.id,
             name: recipe.title,

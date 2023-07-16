@@ -16,7 +16,7 @@
       ></fa-icon>
     </fa-stack>
     <div class="recipe-actions">
-      <fa-stack class="icon" size="lg">
+      <fa-stack class="icon-wrapper" size="lg">
         <fa-icon [icon]="'square'" stackItemSize="2x"></fa-icon>
         <fa-icon
           [icon]="'bookmark'"
@@ -25,7 +25,7 @@
           [inverse]="true"
         ></fa-icon>
       </fa-stack>
-      <fa-stack class="icon" size="lg">
+      <fa-stack class="icon-wrapper" size="lg">
         <fa-icon [icon]="'square'" stackItemSize="2x"></fa-icon>
         <fa-icon
           [icon]="'utensils'"
@@ -34,7 +34,7 @@
           [inverse]="true"
         ></fa-icon>
       </fa-stack>
-      <fa-stack class="icon" size="lg">
+      <fa-stack class="icon-wrapper" size="lg">
         <fa-icon [icon]="'square'" stackItemSize="2x"></fa-icon>
         <fa-icon
           [icon]="'heart'"
@@ -53,21 +53,13 @@
         {{ tag | camelCaseSplit | titlecase }}</span
       >
     </div>
+    <app-nav-tabs
+      [summary]="detailedRecipe.summary"
+      [ingredients]="detailedRecipe.ingredients"
+      [instructions]="detailedRecipe.instructions"
+    ></app-nav-tabs>
     <a [href]="detailedRecipe.sourceUrl">Source</a>
-    <p [innerHTML]="detailedRecipe.summary"></p>
-    <h2 class="sublist">Ingredients:</h2>
-    <ul>
-      <li class="ingredient" *ngFor="let item of detailedRecipe.ingredients">
-        {{ item.original }}
-      </li>
-    </ul>
-    <h2 class="sublist">Instructions:</h2>
-    <ol>
-      <li class="instruction" *ngFor="let item of detailedRecipe.instructions">
-        {{ item }}
-      </li>
-    </ol>
-    <h2 class="sublist">Nutrition:</h2>
+    <h2 class="sublist__title">Nutrition:</h2>
     <ul>
       <li class="nutrient">Calories: {{ detailedRecipe.calories }} kcal</li>
       <li class="nutrient">Total Fat: {{ detailedRecipe.fat }}g</li>
