@@ -60,16 +60,28 @@
     ></app-nav-tabs>
     <a [href]="detailedRecipe.sourceUrl">Source</a>
     <h2 class="sublist__title">Nutrition:</h2>
-    <ul>
-      <li class="nutrient">Calories: {{ detailedRecipe.calories }} kcal</li>
-      <li class="nutrient">Total Fat: {{ detailedRecipe.fat }}g</li>
-      <li class="nutrient">Cholesterol: {{ detailedRecipe.cholesterol }}g</li>
-      <li class="nutrient">Sodium: {{ detailedRecipe.sodium }}g</li>
-      <li class="nutrient">
+    <ul class="list-group">
+      <li class="nutrient list-group-item">
+        Calories: {{ detailedRecipe.calories }} kcal
+      </li>
+      <li class="nutrient list-group-item">
+        Total Fat: {{ detailedRecipe.fat }}g
+      </li>
+      <li class="nutrient list-group-item">
+        Cholesterol: {{ detailedRecipe.cholesterol }}g
+      </li>
+      <li class="nutrient list-group-item">
+        Sodium: {{ detailedRecipe.sodium }}g
+      </li>
+      <li class="nutrient list-group-item">
         Total Carbohydrate: {{ detailedRecipe.carbohydrates }}g
       </li>
-      <li class="nutrient">Total Sugars: {{ detailedRecipe.sugar }}g</li>
-      <li class="nutrient">Protein: {{ detailedRecipe.protein }}g</li>
+      <li class="nutrient list-group-item">
+        Total Sugars: {{ detailedRecipe.sugar }}g
+      </li>
+      <li class="nutrient list-group-item">
+        Protein: {{ detailedRecipe.protein }}g
+      </li>
     </ul>
   </section>
 </div>
