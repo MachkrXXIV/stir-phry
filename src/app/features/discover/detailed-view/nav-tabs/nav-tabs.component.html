@@ -70,8 +70,8 @@
     tabindex="0"
   >
     <h2 class="sublist__title">Ingredients:</h2>
-    <ul>
-      <li class="ingredient" *ngFor="let item of ingredients">
+    <ul class="list-group list-group-flush">
+      <li class="ingredient list-group-item" *ngFor="let item of ingredients">
         {{ item.original }}
       </li>
     </ul>
@@ -86,8 +86,8 @@
     tabindex="0"
   >
     <h2 class="sublist__title">Instructions:</h2>
-    <ol>
-      <li class="instruction" *ngFor="let item of instructions">
+    <ol class="list-group list-group-flush list-group-numbered">
+      <li class="instruction list-group-item" *ngFor="let item of instructions">
         {{ item }}
       </li>
     </ol>

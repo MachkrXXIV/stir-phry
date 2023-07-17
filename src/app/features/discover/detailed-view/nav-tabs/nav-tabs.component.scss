@@ -1,7 +1,22 @@
+$brand-color: hsl(162, 80%, 39%);
 .nav {
   margin-top: 1rem;
+  border-color: $brand-color;
+}
+
+.nav-link {
+  &.active {
+    border-color: $brand-color;
+    border-bottom: 1px solid #fff;
+    color: $brand-color;
+  }
 }
 
 .tab-content {
   padding: 0.5rem 1rem;
+  background-color: #fff;
+}
+
+.tab-pane.list-group-item {
+  border-color: $brand-color;
 }
