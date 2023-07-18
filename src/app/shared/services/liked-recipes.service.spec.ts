@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { FirestoreService } from './firestore.service';
+import { LikedRecipesService } from './liked-recipes.service';
 
-describe('FirestoreService', () => {
-  let service: FirestoreService;
+describe('LikedRecipesService', () => {
+  let service: LikedRecipesService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(FirestoreService);
+    service = TestBed.inject(LikedRecipesService);
   });
 
   it('should be created', () => {

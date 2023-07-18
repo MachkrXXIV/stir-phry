@@ -20,18 +20,20 @@ import {
   QuerySnapshot,
   DocumentData,
 } from 'firebase/firestore';
+import { FirestoreCollection } from '../interfaces/firestore-collection.interface';
 
 @Injectable({
   providedIn: 'root',
 })
-export class FirestoreService {
-  constructor(private firestore: Firestore) {} //fix this entire thing
+export class SavedMealsService implements FirestoreCollection<Meal> {
+  collectionRef: CollectionReference;
 
-  savedMealsCollection!: CollectionReference<Meal[]>;
+  constructor(private firestore: Firestore) {
+    this.collectionRef = collection(this.firestore, '/saved-meals');
+  }
 
-  getSavedMeals(): Observable<Meal[]> {
-    let mealsRef = collection(this.firestore, '/saved-meals');
-    return collectionData(mealsRef) as Observable<Meal[]>;
+  async get() {
+    return collectionData(this.collectionRef) as Observable<Meal[]>;
   }
 
   async getSavedMealsCount() {
@@ -40,11 +42,8 @@ export class FirestoreService {
     return snapshot.data;
   }
 
-  async addSavedMeal(meal: Meal) {
-    const docRef = await addDoc(
-      collection(this.firestore, '/saved-meals'),
-      meal
-    );
+  async add(meal: Meal) {
+    const docRef = await addDoc(this.collectionRef, meal);
     const mealDoc = doc(this.firestore, `/saved-meals/${docRef.id}`);
     // await updateDoc(mealDoc, {
     //   id: this.getSavedMealsCount(),
@@ -52,10 +51,9 @@ export class FirestoreService {
     return docRef as DocumentReference<Meal>;
   }
 
-  async deleteSavedMeal(meal: Meal) {
-    const collectionRef = collection(this.firestore, '/saved-meals');
+  async delete(meal: Meal) {
     const q = query(
-      collectionRef,
+      this.collectionRef,
       where('id', '==', meal.id),
       where('name', '==', meal.name)
     );
@@ -67,7 +65,5 @@ export class FirestoreService {
     } catch (ex) {
       console.error("Can't find/delete document", ex);
     }
-    // const mealDoc = doc(this.firestore, '/saved-meals', meal.name);
-    // await deleteDoc(doc(this.firestore, 'saved-meals', meal.id.toString()));
   }
 }
