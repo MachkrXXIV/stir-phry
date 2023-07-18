@@ -10,7 +10,7 @@ import {
 } from '@angular/core';
 import { Meal } from '../../interfaces/meal.interface';
 import { RecipeForm } from '../../interfaces/recipe-form';
-import { FirestoreService } from '../../services/firestore.service';
+import { SavedMealsService } from '../../services/saved-meal.service';
 import { MealClassificationsService } from '../../services/meal-classifications.service';
 import { DataConversionService } from '../../services/data-conversion.service';
 import {
@@ -59,7 +59,7 @@ export class CreateRecipeComponent implements OnInit {
   meal!: Meal;
 
   constructor(
-    private firestore: FirestoreService,
+    private firestore: SavedMealsService,
     private mealClassService: MealClassificationsService,
     private conversionService: DataConversionService
   ) {
@@ -72,7 +72,7 @@ export class CreateRecipeComponent implements OnInit {
   onSubmit() {
     this.meal = this.conversionService.convertRecipeFormToMeal(this.recipe);
     this.isSubmitted = true;
-    this.firestore.addSavedMeal(this.meal);
+    this.firestore.add(this.meal);
     this.resetForm();
     this.closeForm(true);
   }

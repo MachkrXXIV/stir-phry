@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Meal } from 'src/app/shared/interfaces/meal.interface';
-import { FirestoreService } from 'src/app/shared/services/firestore.service';
+import { SavedMealsService } from 'src/app/shared/services/saved-meal.service';
 
 @Component({
   selector: 'app-detailed-view',
@@ -14,10 +14,11 @@ export class DetailedViewComponent implements OnInit {
     name: '',
   };
   isSaved: boolean = false;
+  isLiked: boolean = false;
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private firestore: FirestoreService
+    private firestore: SavedMealsService
   ) {}
 
   goBack() {
@@ -26,11 +27,11 @@ export class DetailedViewComponent implements OnInit {
 
   saveRecipe(isAlreadySaved: boolean) {
     if (isAlreadySaved) {
-      this.firestore.deleteSavedMeal(this.detailedRecipe);
+      this.firestore.delete(this.detailedRecipe);
       localStorage.setItem('isSaved', 'false');
       this.isSaved = false;
     } else {
-      this.firestore.addSavedMeal(this.detailedRecipe);
+      this.firestore.add(this.detailedRecipe);
       localStorage.setItem('isSaved', 'true');
       this.isSaved = true;
     }
