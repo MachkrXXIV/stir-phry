@@ -55,7 +55,12 @@ li {
   cursor: pointer;
 }
 
+.active-icon {
+  color: orange;
+}
+
 .tag {
+  display: inline-block;
   padding: 0.25rem 0.5rem;
   margin-right: 0.25rem;
   border-radius: 2rem;
