@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Meal } from 'src/app/shared/interfaces/meal.interface';
 import { SavedMealsService } from 'src/app/shared/services/saved-meal.service';
+import { LikedRecipesService } from 'src/app/shared/services/liked-recipes.service';
 
 @Component({
   selector: 'app-detailed-view',
@@ -18,7 +19,8 @@ export class DetailedViewComponent implements OnInit {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private firestore: SavedMealsService
+    private savedMealService: SavedMealsService,
+    private likedRecipeService: LikedRecipesService
   ) {}
 
   goBack() {
@@ -27,11 +29,11 @@ export class DetailedViewComponent implements OnInit {
 
   saveRecipe(isAlreadySaved: boolean) {
     if (isAlreadySaved) {
-      this.firestore.delete(this.detailedRecipe);
+      this.savedMealService.delete(this.detailedRecipe);
       localStorage.setItem('isSaved', 'false');
       this.isSaved = false;
     } else {
-      this.firestore.add(this.detailedRecipe);
+      this.savedMealService.add(this.detailedRecipe);
       localStorage.setItem('isSaved', 'true');
       this.isSaved = true;
     }
@@ -39,13 +41,24 @@ export class DetailedViewComponent implements OnInit {
 
   tryRecipe() {}
 
-  likeRecipe() {}
+  likeRecipe(isAlreadyLiked: boolean) {
+    if (isAlreadyLiked) {
+      this.likedRecipeService.delete(this.detailedRecipe);
+      localStorage.setItem('isLiked', 'false');
+      this.isLiked = false;
+    } else {
+      this.likedRecipeService.add(this.detailedRecipe);
+      localStorage.setItem('isLiked', 'true');
+      this.isLiked = true;
+    }
+  }
 
   checkIconStates() {}
 
   ngOnInit(): void {
     this.detailedRecipe = this.route.snapshot.data['detailedRecipe'];
     this.isSaved = localStorage.getItem('isSaved') === 'true' ? true : false;
+    this.isLiked = localStorage.getItem('isLiked') === 'true' ? true : false;
     console.log('save state:', this.isSaved);
   }
 }

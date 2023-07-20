@@ -51,12 +51,15 @@ li {
   // image-rendering: -webkit-optimize-contrast;
 }
 
-.icon-wrapper {
+.icon-wrapper,
+.back-arrow {
+  @include setIconColorAndHover($brand-color);
+  transition: all 100ms;
   cursor: pointer;
 }
 
 .active-icon {
-  color: orange;
+  @include setIconColorAndHover($custom-alert);
 }
 
 .tag {
@@ -65,6 +68,7 @@ li {
   margin-right: 0.25rem;
   border-radius: 2rem;
   background-color: $custom-info;
+  margin-bottom: 0.5rem;
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */

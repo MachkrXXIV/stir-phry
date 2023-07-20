@@ -1,21 +1,21 @@
 import { Injectable } from '@angular/core';
-import { FirestoreCollection } from '../interfaces/firestore-collection.interface';
-import { Meal } from '../interfaces/meal.interface';
 import {
   CollectionReference,
-  DocumentReference,
   Firestore,
-  addDoc,
   collection,
+  collectionData,
+} from '@angular/fire/firestore';
+import { Observable, of } from 'rxjs';
+import { Meal } from '../interfaces/meal.interface';
+import {
+  DocumentReference,
+  addDoc,
   deleteDoc,
-  doc,
-  getCountFromServer,
-  getDocs,
   query,
   where,
+  getDocs,
 } from 'firebase/firestore';
-import { Observable } from 'rxjs';
-import { collectionData } from '@angular/fire/firestore';
+import { FirestoreCollection } from '../interfaces/firestore-collection.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -33,7 +33,7 @@ export class LikedRecipesService implements FirestoreCollection<Meal> {
 
   async add(meal: Meal) {
     const docRef = await addDoc(this.collectionRef, meal);
-    const mealDoc = doc(this.firestore, `/saved-meals/${docRef.id}`);
+    // const mealDoc = doc(this.firestore, `/saved-meals/${docRef.id}`);
     // await updateDoc(mealDoc, {
     //   id: this.getSavedMealsCount(),
     // });

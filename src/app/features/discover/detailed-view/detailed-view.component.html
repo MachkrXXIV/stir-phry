@@ -10,20 +10,25 @@
       <fa-icon [icon]="'circle'" stackItemSize="2x"></fa-icon>
       <fa-icon
         [icon]="'arrow-left'"
-        class="icon"
+        [classes]="['icon']"
         stackItemSize="1x"
+        [style.color]="'red'"
         [inverse]="true"
       ></fa-icon>
     </fa-stack>
     <div class="recipe-actions">
-      <fa-stack class="icon-wrapper" size="lg">
+      <fa-stack
+        class="icon-wrapper"
+        size="lg"
+        [ngClass]="{ 'active-icon': isSaved }"
+        (click)="saveRecipe(isSaved)"
+      >
         <fa-icon [icon]="'square'" stackItemSize="2x"></fa-icon>
         <fa-icon
           [icon]="'bookmark'"
           class="icon bookmark"
           stackItemSize="1x"
           [inverse]="true"
-          (click)="saveRecipe(isSaved)"
         ></fa-icon>
       </fa-stack>
       <fa-stack class="icon-wrapper" size="lg">
@@ -35,7 +40,12 @@
           [inverse]="true"
         ></fa-icon>
       </fa-stack>
-      <fa-stack class="icon-wrapper" size="lg">
+      <fa-stack
+        class="icon-wrapper"
+        size="lg"
+        [ngClass]="{ 'active-icon': isLiked }"
+        (click)="likeRecipe(isLiked)"
+      >
         <fa-icon [icon]="'square'" stackItemSize="2x"></fa-icon>
         <fa-icon
           [icon]="'heart'"

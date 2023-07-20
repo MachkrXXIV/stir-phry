@@ -59,7 +59,7 @@ export class CreateRecipeComponent implements OnInit {
   meal!: Meal;
 
   constructor(
-    private firestore: SavedMealsService,
+    private savedMealService: SavedMealsService,
     private mealClassService: MealClassificationsService,
     private conversionService: DataConversionService
   ) {
@@ -72,7 +72,7 @@ export class CreateRecipeComponent implements OnInit {
   onSubmit() {
     this.meal = this.conversionService.convertRecipeFormToMeal(this.recipe);
     this.isSubmitted = true;
-    this.firestore.add(this.meal);
+    this.savedMealService.add(this.meal);
     this.resetForm();
     this.closeForm(true);
   }
