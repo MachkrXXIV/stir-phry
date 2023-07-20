@@ -15,4 +15,12 @@
     border-top-left-radius: 2rem;
     border-top-right-radius: 2rem;
   }
+
+  .subheading {
+    margin: 1rem;
+
+    @media (min-width: 768px) {
+      margin-top: 7rem;
+    }
+  }
 }

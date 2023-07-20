@@ -33,6 +33,7 @@ import { QueryCardComponent } from './shared/components/query-card/query-card.co
 import { DetailedViewComponent } from './features/discover/detailed-view/detailed-view.component';
 import { CamelCaseSplitPipe } from './shared/camel-case-split.pipe';
 import { NavTabsComponent } from './features/discover/detailed-view/nav-tabs/nav-tabs.component';
+import { SliderContainerComponent } from './shared/components/slider-container/slider-container.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,6 +48,7 @@ import { NavTabsComponent } from './features/discover/detailed-view/nav-tabs/nav
     DetailedViewComponent,
     CamelCaseSplitPipe,
     NavTabsComponent,
+    SliderContainerComponent,
   ],
   imports: [
     BrowserModule,

@@ -14,6 +14,7 @@ li {
   padding: 0;
 
   @media (min-width: 600px) {
+    @include card-shadow();
     width: 70vw;
     margin-top: 2rem;
     margin-bottom: 2rem;
@@ -39,7 +40,7 @@ li {
 
 .information {
   padding: 0.5rem;
-  background-color: $light;
+  background-color: #fff;
 }
 
 .recipe-img {
