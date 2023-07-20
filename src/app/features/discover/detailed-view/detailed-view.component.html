@@ -20,8 +20,8 @@
       <fa-stack
         class="icon-wrapper"
         size="lg"
-        [ngClass]="{ 'active-icon': isSaved }"
-        (click)="saveRecipe(isSaved)"
+        [ngClass]="{ 'active-icon': recipeState.isSaved }"
+        (click)="saveRecipe()"
       >
         <fa-icon [icon]="'square'" stackItemSize="2x"></fa-icon>
         <fa-icon
@@ -43,8 +43,8 @@
       <fa-stack
         class="icon-wrapper"
         size="lg"
-        [ngClass]="{ 'active-icon': isLiked }"
-        (click)="likeRecipe(isLiked)"
+        [ngClass]="{ 'active-icon': recipeState.isLiked }"
+        (click)="likeRecipe()"
       >
         <fa-icon [icon]="'square'" stackItemSize="2x"></fa-icon>
         <fa-icon

@@ -14,8 +14,11 @@ export class DetailedViewComponent implements OnInit {
     id: -1,
     name: '',
   };
-  isSaved: boolean = false;
-  isLiked: boolean = false;
+  recipeState = {
+    isSaved: false,
+    isTried: false,
+    isLiked: false,
+  };
   constructor(
     private router: Router,
     private route: ActivatedRoute,
@@ -27,29 +30,35 @@ export class DetailedViewComponent implements OnInit {
     this.router.navigate(['/discover']);
   }
 
-  saveRecipe(isAlreadySaved: boolean) {
-    if (isAlreadySaved) {
+  saveRecipe() {
+    if (this.recipeState.isSaved) {
       this.savedMealService.delete(this.detailedRecipe);
-      localStorage.setItem('isSaved', 'false');
-      this.isSaved = false;
+      this.recipeState.isSaved = false;
+      let state = JSON.stringify(this.recipeState);
+      localStorage.setItem(this.detailedRecipe.id.toString(), state);
     } else {
       this.savedMealService.add(this.detailedRecipe);
-      localStorage.setItem('isSaved', 'true');
-      this.isSaved = true;
+      this.recipeState.isSaved = true;
+      let state = JSON.stringify(this.recipeState);
+      localStorage.setItem(this.detailedRecipe.id.toString(), state);
     }
   }
 
   tryRecipe() {}
 
-  likeRecipe(isAlreadyLiked: boolean) {
-    if (isAlreadyLiked) {
+  likeRecipe() {
+    let state = JSON.stringify(this.recipeState);
+
+    if (this.recipeState.isLiked) {
       this.likedRecipeService.delete(this.detailedRecipe);
-      localStorage.setItem('isLiked', 'false');
-      this.isLiked = false;
+      this.recipeState.isLiked = false;
+      let state = JSON.stringify(this.recipeState);
+      localStorage.setItem(this.detailedRecipe.id.toString(), state);
     } else {
       this.likedRecipeService.add(this.detailedRecipe);
-      localStorage.setItem('isLiked', 'true');
-      this.isLiked = true;
+      this.recipeState.isLiked = true;
+      let state = JSON.stringify(this.recipeState);
+      localStorage.setItem(this.detailedRecipe.id.toString(), state);
     }
   }
 
@@ -57,8 +66,11 @@ export class DetailedViewComponent implements OnInit {
 
   ngOnInit(): void {
     this.detailedRecipe = this.route.snapshot.data['detailedRecipe'];
-    this.isSaved = localStorage.getItem('isSaved') === 'true' ? true : false;
-    this.isLiked = localStorage.getItem('isLiked') === 'true' ? true : false;
-    console.log('save state:', this.isSaved);
+    let state = localStorage.getItem(this.detailedRecipe.id.toString());
+    if (state) {
+      console.log('parsing!');
+      this.recipeState = JSON.parse(state);
+    }
+    console.log('save state:', this.recipeState);
   }
 }
