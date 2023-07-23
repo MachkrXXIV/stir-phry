@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Meal } from 'src/app/shared/interfaces/meal.interface';
 import { SavedMealsService } from 'src/app/shared/services/saved-meal.service';
@@ -20,14 +21,14 @@ export class DetailedViewComponent implements OnInit {
     isLiked: false,
   };
   constructor(
-    private router: Router,
     private route: ActivatedRoute,
     private savedMealService: SavedMealsService,
-    private likedRecipeService: LikedRecipesService
+    private likedRecipeService: LikedRecipesService,
+    private location: Location
   ) {}
 
   goBack() {
-    this.router.navigate(['/discover']);
+    this.location.back();
   }
 
   saveRecipe() {
