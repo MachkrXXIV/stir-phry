@@ -5,7 +5,7 @@ import {
   collection,
   collectionData,
 } from '@angular/fire/firestore';
-import { Observable, of } from 'rxjs';
+import { Observable, from, of } from 'rxjs';
 import { Meal } from '../interfaces/meal.interface';
 import {
   DocumentReference,
@@ -14,8 +14,13 @@ import {
   query,
   where,
   getDocs,
+  doc,
+  getDoc,
+  setDoc,
 } from 'firebase/firestore';
 import { FirestoreCollection } from '../interfaces/firestore-collection.interface';
+
+const PATH = '/liked-meals';
 
 @Injectable({
   providedIn: 'root',
@@ -24,20 +29,32 @@ export class LikedRecipesService implements FirestoreCollection<Meal> {
   collectionRef: CollectionReference;
 
   constructor(private firestore: Firestore) {
-    this.collectionRef = collection(this.firestore, '/liked-recipes');
+    this.collectionRef = collection(this.firestore, PATH);
   }
 
-  async get() {
+  async get(meal: Meal): Promise<Meal> {
+    const uniqueID = `${meal.name}-${meal.id}`;
+    const docRef = doc(this.firestore, PATH, uniqueID);
+    const docSnap = await getDoc(docRef);
+    return docSnap.data() as Promise<Meal>;
+  }
+
+  getAll(): Observable<Meal[]> {
     return collectionData(this.collectionRef) as Observable<Meal[]>;
   }
 
   async add(meal: Meal) {
-    const docRef = await addDoc(this.collectionRef, meal);
+    const uniqueID = `${meal.name}-${meal.id}`;
+    try {
+      await setDoc(doc(this.firestore, PATH, uniqueID), meal);
+    } catch (ex) {
+      console.error('Error:', ex);
+    }
     // const mealDoc = doc(this.firestore, `/saved-meals/${docRef.id}`);
     // await updateDoc(mealDoc, {
     //   id: this.getSavedMealsCount(),
     // });
-    return docRef as DocumentReference<Meal>;
+    // return docRef as DocumentReference<Meal>;
   }
 
   async delete(meal: Meal) {
