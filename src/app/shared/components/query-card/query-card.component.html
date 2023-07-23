@@ -1,6 +1,6 @@
-<article class="card" (click)="routeToDetailedView(query.id)">
+<article class="card" (click)="routeToDetailedView(query, isUserCreated)">
   <img class="card-img-top custom-card-img" [src]="query.image" alt="" />
-  <section class="card-body">
-    <h5 class="card-title">{{ query.name }}</h5>
-  </section>
+  <div class="card-img-overlay">
+    <h4 class="card-title title-wrapper">{{ query.name }}</h4>
+  </div>
 </article>

@@ -7,6 +7,7 @@
 
 .card {
   @include card-shadow;
+  color: #fff;
 
   &:hover {
     //refactor
@@ -16,5 +17,33 @@
     transition: all ease-out 0.2s;
     z-index: 0;
     cursor: pointer;
+  }
+}
+
+.card-img {
+  aspect-ratio: 4/3;
+}
+
+.card-img-overlay {
+  background-image: linear-gradient(
+    to right,
+    hsla(0, 0%, 0%, 0.5),
+    hsla(0, 100%, 50%, 0)
+  );
+
+  @media (max-width: 600px) {
+    padding: 0.25rem;
+  }
+}
+
+.title-wrapper {
+  border-radius: 1rem;
+  padding: 0 0.25rem;
+  width: fit-content;
+  font-weight: bold;
+  font-size: 14px;
+
+  @media (min-width: 600px) {
+    font-size: 1.5rem;
   }
 }
