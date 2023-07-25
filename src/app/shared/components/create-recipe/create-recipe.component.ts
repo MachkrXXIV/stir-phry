@@ -47,9 +47,9 @@ export class CreateRecipeComponent implements OnInit {
   };
 
   recipe: RecipeForm = {
-    id: 4444,
+    id: 0,
     name: '',
-    image: '',
+    image: 'https://spoonacular.com/recipeImages/667701-556x370.jpg',
     mealType: '',
     tags: [],
     ingredients: [],
