@@ -72,6 +72,8 @@
     <h2 class="sublist__title">Ingredients:</h2>
     <ul class="list-group list-group-flush">
       <li class="ingredient list-group-item" *ngFor="let item of ingredients">
+        <ng-container *ngIf="isUserCreated"> {{ item }}</ng-container>
+        <!-- <ng-template #discovered>{{ item.original }}</ng-template> -->
         {{ item.original }}
       </li>
     </ul>

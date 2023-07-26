@@ -13,6 +13,11 @@ const routes: Routes = [
     component: DetailedViewComponent,
     resolve: { detailedRecipe: RecipeResolverService },
   },
+  {
+    path: 'collections/saved-meals/:id',
+    component: DetailedViewComponent,
+    resolve: { detailedRecipe: RecipeResolverService },
+  },
   { path: '**', component: HomeComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
 ];

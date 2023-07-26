@@ -32,11 +32,14 @@ export class LikedRecipesService implements FirestoreCollection<Meal> {
     this.collectionRef = collection(this.firestore, PATH);
   }
 
-  async get(meal: Meal): Promise<Meal> {
-    const uniqueID = `${meal.name}-${meal.id}`;
-    const docRef = doc(this.firestore, PATH, uniqueID);
+  private async fetchFromFirestore(id: string) {
+    const docRef = doc(this.firestore, PATH, id);
     const docSnap = await getDoc(docRef);
     return docSnap.data() as Promise<Meal>;
+  }
+
+  get(id: string): Observable<Meal> {
+    return from(this.fetchFromFirestore(id));
   }
 
   getAll(): Observable<Meal[]> {

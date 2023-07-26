@@ -39,7 +39,7 @@ export class RecipeService {
       );
   }
 
-  getDetailedInformation(id: number): Observable<Meal> {
+  getDetailedInformation(id: string): Observable<Meal> {
     const params = new HttpParams().set('includeNutrition', true);
     return this.http
       .get<any>(`${this.baseUrl}/${id}/information?apiKey=${this.apiKey}`, {
@@ -56,7 +56,7 @@ export class RecipeService {
           const instructions = this.splitString(recipe.instructions);
           console.log(recipe);
           return {
-            id: recipe.id,
+            id: recipe.id.toString(),
             name: recipe.title,
             image: recipe.image,
             prepTimeInMinutes: recipe.readyInMinutes,

@@ -12,7 +12,7 @@ import { LikedRecipesService } from 'src/app/shared/services/liked-recipes.servi
 })
 export class DetailedViewComponent implements OnInit {
   detailedRecipe: Meal = {
-    id: -1,
+    id: '',
     name: '',
   };
   recipeState = {
@@ -20,6 +20,7 @@ export class DetailedViewComponent implements OnInit {
     isTried: false,
     isLiked: false,
   };
+  isUserCreated!: boolean;
   constructor(
     private route: ActivatedRoute,
     private savedMealService: SavedMealsService,
@@ -69,9 +70,12 @@ export class DetailedViewComponent implements OnInit {
     this.detailedRecipe = this.route.snapshot.data['detailedRecipe'];
     let state = localStorage.getItem(this.detailedRecipe.id.toString());
     if (state) {
-      console.log('parsing!');
       this.recipeState = JSON.parse(state);
     }
+    this.isUserCreated = this.detailedRecipe.id.startsWith('CUSTOM')
+      ? true
+      : false;
+    this.recipeState.isSaved = this.isUserCreated ? true : false;
     console.log('save state:', this.recipeState);
   }
 }

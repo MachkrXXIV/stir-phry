@@ -27,7 +27,7 @@
         type="text"
         class="form-control"
         placeholder="Enter recipe name"
-        [(ngModel)]="recipe.name"
+        [(ngModel)]="formData.name"
         name="name"
         minlength="3"
         maxlength="24"
@@ -73,7 +73,7 @@
         #mealTypeInput="ngModel"
         name="mealType has-validation"
         class="form-select"
-        [(ngModel)]="recipe.mealType"
+        [(ngModel)]="formData.mealType"
         required
       >
         <option selected disabled value="">Choose...</option>
@@ -109,11 +109,11 @@
         maxlength="16"
       />
       <fa-icon [icon]="icons.tagsIcon" class="icon"></fa-icon>
-      <div *ngIf="recipe.tags" class="tag-list w-100 p-2">
+      <div *ngIf="formData.tags" class="tag-list w-100 p-2">
         <span
           class="badge tag rounded-pill me-1"
-          *ngFor="let tag of recipe.tags"
-          (click)="removeTag(recipe.tags.indexOf(tag))"
+          *ngFor="let tag of formData.tags"
+          (click)="removeTag(formData.tags.indexOf(tag))"
         >
           {{ tag }}</span
         >
@@ -170,13 +170,13 @@
             ? 'is-valid'
             : ''
         "
-        [required]="recipe.ingredients.length < 1"
+        [required]="formData.ingredients.length < 1"
       />
       <fa-icon [icon]="icons.ingredientIcon" class="icon"></fa-icon>
       <div
         class="invalid-response"
         *ngIf="
-          recipe.ingredients.length < 1 &&
+          formData.ingredients.length < 1 &&
           (ingredientInput.dirty || ingredientInput.touched)
         "
       >
@@ -187,15 +187,15 @@
           Please enter a valid ingredient between 3-24 characters
         </p>
       </div>
-      <ul class="list-group d-flex flex-wrap" *ngIf="recipe.ingredients">
+      <ul class="list-group d-flex flex-wrap" *ngIf="formData.ingredients">
         <li
           class="list-group-item list-group-item-action d-flex justify-content-between w-75"
-          *ngFor="let ingredient of recipe.ingredients"
+          *ngFor="let ingredient of formData.ingredients"
         >
           <div>{{ ingredient }}</div>
           <span
             class="btn-close"
-            (click)="removeIngredient(recipe.ingredients.indexOf(ingredient))"
+            (click)="removeIngredient(formData.ingredients.indexOf(ingredient))"
           ></span>
         </li>
       </ul>
@@ -242,13 +242,13 @@
             ? 'is-valid'
             : ''
         "
-        [required]="recipe.instructions.length < 1"
+        [required]="formData.instructions.length < 1"
       />
       <fa-icon [icon]="icons.instructionIcon" class="icon"></fa-icon>
       <div
         class="invalid-response"
         *ngIf="
-          recipe.instructions.length < 1 &&
+          formData.instructions.length < 1 &&
           (instructionInput.dirty || instructionInput.touched)
         "
       >
@@ -259,16 +259,16 @@
           Please enter a valid instruction between 3-50 characters
         </p>
       </div>
-      <ul class="list-group d-flex flex-wrap" *ngIf="recipe.instructions">
+      <ul class="list-group d-flex flex-wrap" *ngIf="formData.instructions">
         <li
           class="list-group-item list-group-item-action d-flex justify-content-between w-75"
-          *ngFor="let instruction of recipe.instructions"
+          *ngFor="let instruction of formData.instructions"
         >
           <div>{{ instruction }}</div>
           <span
             class="btn-close"
             (click)="
-              removeInstruction(recipe.instructions.indexOf(instruction))
+              removeInstruction(formData.instructions.indexOf(instruction))
             "
           ></span>
         </li>
@@ -291,7 +291,7 @@
         type="number"
         placeholder="Enter prep-time"
         class="form-control"
-        [(ngModel)]="recipe.prepTimeInMinutes"
+        [(ngModel)]="formData.prepTimeInMinutes"
         min="1"
         max="120"
         name="prepTime"

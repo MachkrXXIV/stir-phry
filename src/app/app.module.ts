@@ -34,6 +34,7 @@ import { DetailedViewComponent } from './features/discover/detailed-view/detaile
 import { CamelCaseSplitPipe } from './shared/camel-case-split.pipe';
 import { NavTabsComponent } from './features/discover/detailed-view/nav-tabs/nav-tabs.component';
 import { SliderContainerComponent } from './shared/components/slider-container/slider-container.component';
+import { RecipePreviewComponent } from './features/home/recipe-preview/recipe-preview.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,6 +50,7 @@ import { SliderContainerComponent } from './shared/components/slider-container/s
     CamelCaseSplitPipe,
     NavTabsComponent,
     SliderContainerComponent,
+    RecipePreviewComponent,
   ],
   imports: [
     BrowserModule,

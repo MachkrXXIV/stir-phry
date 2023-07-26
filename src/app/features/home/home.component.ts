@@ -20,19 +20,19 @@ export class HomeComponent implements OnInit {
 
   meals: Meal[] = [
     {
-      id: 1,
+      id: '',
       image: '#',
       name: 'Fried Rice',
       prepTimeInMinutes: 25,
     },
     {
-      id: 2,
+      id: '',
       image: '#',
       name: 'Creamy Cajun Pasta',
       prepTimeInMinutes: 55,
     },
     {
-      id: 3,
+      id: '',
       image: '#',
       name: 'Beef Enchiladas',
       prepTimeInMinutes: 45,

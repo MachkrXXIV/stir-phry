@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Meal } from '../../interfaces/meal.interface';
 import { RecipeService } from '../../services/recipe.service';
 import { Router } from '@angular/router';
+import { SavedMealsService } from '../../services/saved-meal.service';
 @Component({
   selector: 'app-query-card',
   templateUrl: './query-card.component.html',
@@ -9,20 +10,29 @@ import { Router } from '@angular/router';
 })
 export class QueryCardComponent implements OnInit {
   @Input() query: Meal = {
-    id: 0,
+    id: '',
     name: '',
     image: '',
   };
   isUserCreated!: boolean;
 
-  constructor(private recipeService: RecipeService, private router: Router) {}
+  constructor(
+    private recipeService: RecipeService,
+    private router: Router,
+    private savedMealService: SavedMealsService
+  ) {}
 
   routeToDetailedView(query: Meal, isUserCreated: boolean) {
     if (isUserCreated) {
-      let nameUrl = query.name.split(' ').join('-');
-      console.log('usercreated!');
-      this.router.navigate(['/collections/saved-meals', nameUrl, query.id], {
-        state: query,
+      this.savedMealService.get(query.id).subscribe({
+        next: (recipe: Meal) => {
+          this.router.navigate(['/collections/saved-meals', query.id], {
+            state: recipe,
+          });
+        },
+        error: (error) => {
+          console.error('ERROR: ', error);
+        },
       });
     } else {
       console.log('not user');
@@ -42,6 +52,6 @@ export class QueryCardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.isUserCreated = this.query.id === -24 ? true : false;
+    this.isUserCreated = this.query.id.includes('CUSTOM') ? true : false;
   }
 }
