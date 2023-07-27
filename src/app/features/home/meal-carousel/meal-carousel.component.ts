@@ -9,13 +9,11 @@ import { FirestoreRecipesService } from 'src/app/shared/services/firestore-recip
   selector: 'app-meal-carousel',
   templateUrl: './meal-carousel.component.html',
   styleUrls: ['./meal-carousel.component.scss'],
-  standalone: true,
-  imports: [NgbCarouselModule, CommonModule],
 })
 export class MealCarouselComponent implements OnInit {
-  constructor(private firestore: FirestoreRecipesService) {}
-  isLargeScreen = false;
   mealAgenda$?: Observable<Meal[]>;
+  isLargeScreen = false;
+  constructor(private firestore: FirestoreRecipesService) {}
 
   meals: Meal[] = [
     {
@@ -39,7 +37,7 @@ export class MealCarouselComponent implements OnInit {
   ];
 
   ngOnInit(): void {
-    const path = '/saved-meals';
+    const path = '/meal-agenda';
     this.isLargeScreen = window.innerWidth >= 992;
     this.mealAgenda$ = this.firestore.getAll(path);
     console.log(this.mealAgenda$);

@@ -21,7 +21,6 @@ import {
   FontAwesomeModule,
 } from '@fortawesome/angular-fontawesome';
 import { HomeComponent } from './features/home/home.component';
-import { MealCarouselComponent } from './features/home/meal-carousel/meal-carousel.component';
 import { DiscoverComponent } from './features/discover/discover.component';
 import { SearchBarComponent } from './shared/components/search-bar/search-bar.component';
 import { CreateRecipeComponent } from './shared/components/create-recipe/create-recipe.component';
@@ -35,6 +34,8 @@ import { CamelCaseSplitPipe } from './shared/camel-case-split.pipe';
 import { NavTabsComponent } from './features/discover/detailed-view/nav-tabs/nav-tabs.component';
 import { SliderContainerComponent } from './shared/components/slider-container/slider-container.component';
 import { RecipePreviewComponent } from './features/home/recipe-preview/recipe-preview.component';
+import { CommonModule } from '@angular/common';
+import { HomeModule } from './features/home/home.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,13 +53,16 @@ import { RecipePreviewComponent } from './features/home/recipe-preview/recipe-pr
     SliderContainerComponent,
     RecipePreviewComponent,
   ],
+  providers: [],
+  bootstrap: [AppComponent],
   imports: [
     BrowserModule,
+    CommonModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
     NgbModule,
-    MealCarouselComponent,
+    HomeModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     FirestoreModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
@@ -66,8 +70,6 @@ import { RecipePreviewComponent } from './features/home/recipe-preview/recipe-pr
     provideFirestore(() => getFirestore()),
     FontAwesomeModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent],
 })
 export class AppModule {
   constructor(library: FaIconLibrary) {

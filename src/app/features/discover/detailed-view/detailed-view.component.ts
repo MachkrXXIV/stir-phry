@@ -45,7 +45,20 @@ export class DetailedViewComponent implements OnInit {
     }
   }
 
-  tryRecipe() {}
+  tryRecipe() {
+    const path = '/meal-agenda';
+    if (this.recipeState.isTried) {
+      this.firestoreRecipesService.delete(this.detailedRecipe, path);
+      this.recipeState.isTried = false;
+      let state = JSON.stringify(this.recipeState);
+      localStorage.setItem(this.detailedRecipe.id.toString(), state);
+    } else {
+      this.firestoreRecipesService.add(this.detailedRecipe, path);
+      this.recipeState.isTried = true;
+      let state = JSON.stringify(this.recipeState);
+      localStorage.setItem(this.detailedRecipe.id.toString(), state);
+    }
+  }
 
   likeRecipe() {
     const path = '/liked-recipes';

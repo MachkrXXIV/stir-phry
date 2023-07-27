@@ -1,39 +1,21 @@
 <ngb-carousel
-  *ngIf="meals && !isLargeScreen"
+  *ngIf="mealAgenda$ && !isLargeScreen"
   class="container-fluid"
   [interval]="10000"
   [pauseOnHover]="true"
 >
-  <ng-template ngbSlide *ngFor="let meal of meals">
-    <main class="current-meal-container d-flex flex-column align-items-center">
-      <h2>Today's [mealTime]</h2>
-      <article
-        class="current-meal-card card p-2 d-flex col-lg-4 flex-column justify-content-between flex-fill"
-      >
-        <div class="card-body">
-          <img class="card-img-top" [src]="" alt="meal image" />
-          <h4 class="card-title">{{ meal.name }}</h4>
-        </div>
-        <p class="text-end pe-3">{{ meal.prepTimeInMinutes }} min</p>
-      </article>
-    </main>
+  <ng-template ngbSlide *ngFor="let meal of mealAgenda$ | async">
+    <h2 class="mb-3">Today's meal is...</h2>
+    <app-agenda-card [meal]="meal"></app-agenda-card>
   </ng-template>
 </ngb-carousel>
 
 <section class="meal-group container-fluid" *ngIf="isLargeScreen">
   <div class="row">
-    <main class="col-lg" *ngFor="let meal of meals">
+    <h2 class="mb-4">Today's meals are...</h2>
+    <main class="col-lg" *ngFor="let meal of mealAgenda$ | async">
       <div class="current-meal-container">
-        <h2>Today's [mealTime]</h2>
-        <article
-          class="current-meal-card card p-2 d-flex flex-column justify-content-between flex-fill"
-        >
-          <div class="card-body">
-            <img class="card-img-top" [src]="" alt="meal image" />
-            <h4 class="card-title">{{ meal.name }}</h4>
-          </div>
-          <p class="text-end pe-3">{{ meal.prepTimeInMinutes }} min</p>
-        </article>
+        <app-agenda-card class="meal-card" [meal]="meal"></app-agenda-card>
       </div>
     </main>
   </div>
