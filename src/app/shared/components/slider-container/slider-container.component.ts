@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { SavedMealsService } from '../../services/saved-meal.service';
+import { FirestoreRecipesService } from '../../services/firestore-recipes.service';
 import { Meal } from '../../interfaces/meal.interface';
 import { Observable } from 'rxjs';
 
@@ -10,9 +10,10 @@ import { Observable } from 'rxjs';
 })
 export class SliderContainerComponent implements OnInit {
   items$?: Observable<Meal[]>;
-  constructor(private savedMealService: SavedMealsService) {}
+  constructor(private savedMealService: FirestoreRecipesService) {}
 
   ngOnInit(): void {
-    this.items$ = this.savedMealService.getAll();
+    const path = '/saved-meals';
+    this.items$ = this.savedMealService.getAll(path);
   }
 }

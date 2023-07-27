@@ -2,6 +2,8 @@ import { Component, HostListener, OnInit } from '@angular/core';
 import { Meal } from 'src/app/shared/interfaces/meal.interface';
 import { NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
 import { CommonModule } from '@angular/common';
+import { Observable } from 'rxjs';
+import { FirestoreRecipesService } from 'src/app/shared/services/firestore-recipes.service';
 
 @Component({
   selector: 'app-meal-carousel',
@@ -11,8 +13,9 @@ import { CommonModule } from '@angular/common';
   imports: [NgbCarouselModule, CommonModule],
 })
 export class MealCarouselComponent implements OnInit {
-  constructor() {}
+  constructor(private firestore: FirestoreRecipesService) {}
   isLargeScreen = false;
+  mealAgenda$?: Observable<Meal[]>;
 
   meals: Meal[] = [
     {
@@ -36,7 +39,10 @@ export class MealCarouselComponent implements OnInit {
   ];
 
   ngOnInit(): void {
+    const path = '/saved-meals';
     this.isLargeScreen = window.innerWidth >= 992;
+    this.mealAgenda$ = this.firestore.getAll(path);
+    console.log(this.mealAgenda$);
   }
 
   @HostListener('window:resize', ['$event'])

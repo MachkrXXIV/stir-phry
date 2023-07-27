@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Meal } from '../../interfaces/meal.interface';
 import { RecipeService } from '../../services/recipe.service';
 import { Router } from '@angular/router';
-import { SavedMealsService } from '../../services/saved-meal.service';
+import { FirestoreRecipesService } from '../../services/firestore-recipes.service';
 @Component({
   selector: 'app-query-card',
   templateUrl: './query-card.component.html',
@@ -19,12 +19,13 @@ export class QueryCardComponent implements OnInit {
   constructor(
     private recipeService: RecipeService,
     private router: Router,
-    private savedMealService: SavedMealsService
+    private savedMealService: FirestoreRecipesService
   ) {}
 
   routeToDetailedView(query: Meal, isUserCreated: boolean) {
+    const path = '/saved-meals';
     if (isUserCreated) {
-      this.savedMealService.get(query.id).subscribe({
+      this.savedMealService.get(query.id, path).subscribe({
         next: (recipe: Meal) => {
           this.router.navigate(['/collections/saved-meals', query.id], {
             state: recipe,
@@ -52,6 +53,8 @@ export class QueryCardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.isUserCreated = this.query.id.includes('CUSTOM') ? true : false;
+    this.isUserCreated = this.query.id.toString().startsWith('CUSTOM')
+      ? true
+      : false;
   }
 }

@@ -2,9 +2,8 @@ import { CollectionReference, DocumentReference } from 'firebase/firestore';
 import { Observable } from 'rxjs';
 
 export interface FirestoreCollection<T> {
-  collectionRef: CollectionReference;
-  get(id: string): Observable<T>;
-  getAll(): Observable<T[]>;
-  add(item: T): Promise<void>;
-  delete(item: T): Promise<void>;
+  get(id: string, collectionName: string): Observable<T>;
+  getAll(collectionName: string): Observable<T[]>;
+  add(item: T, collectionName: string): Promise<void>;
+  delete(item: T, collectionName: string): Promise<void>;
 }

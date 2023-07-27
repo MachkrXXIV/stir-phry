@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Meal } from 'src/app/shared/interfaces/meal.interface';
-import { SavedMealsService } from 'src/app/shared/services/saved-meal.service';
+import { FirestoreRecipesService } from 'src/app/shared/services/firestore-recipes.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  constructor(private fs: SavedMealsService) {
+  constructor(private fs: FirestoreRecipesService) {
     // this.savedMeals$ = this.fs.getSavedMeals();
     // console.log(this.savedMeals$);
   }

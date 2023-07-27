@@ -10,7 +10,7 @@ import {
 } from '@angular/core';
 import { Meal } from '../../interfaces/meal.interface';
 import { RecipeForm } from '../../interfaces/recipe-form';
-import { SavedMealsService } from '../../services/saved-meal.service';
+import { FirestoreRecipesService } from '../../services/firestore-recipes.service';
 import { MealClassificationsService } from '../../services/meal-classifications.service';
 import { DataConversionService } from '../../services/data-conversion.service';
 import {
@@ -59,7 +59,7 @@ export class CreateRecipeComponent implements OnInit {
   meal!: Meal;
 
   constructor(
-    private savedMealService: SavedMealsService,
+    private savedMealService: FirestoreRecipesService,
     private mealClassService: MealClassificationsService,
     private conversionService: DataConversionService
   ) {
@@ -70,12 +70,13 @@ export class CreateRecipeComponent implements OnInit {
   ngOnInit(): void {}
 
   onSubmit() {
+    const path = '/saved-meals';
     this.meal = this.conversionService.convertRecipeFormToMeal(this.formData);
     const compactName = this.meal.name.split(' ').join('-');
     this.meal.id = `CUSTOM-${compactName}`;
     console.log(this.meal);
     this.isSubmitted = true;
-    this.savedMealService.add(this.meal);
+    this.savedMealService.add(this.meal, path);
     this.resetForm();
     this.closeForm(true);
   }

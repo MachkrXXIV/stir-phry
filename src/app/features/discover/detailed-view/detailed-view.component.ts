@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Meal } from 'src/app/shared/interfaces/meal.interface';
-import { SavedMealsService } from 'src/app/shared/services/saved-meal.service';
-import { LikedRecipesService } from 'src/app/shared/services/liked-recipes.service';
+import { FirestoreRecipesService } from 'src/app/shared/services/firestore-recipes.service';
 
 @Component({
   selector: 'app-detailed-view',
@@ -23,8 +22,7 @@ export class DetailedViewComponent implements OnInit {
   isUserCreated!: boolean;
   constructor(
     private route: ActivatedRoute,
-    private savedMealService: SavedMealsService,
-    private likedRecipeService: LikedRecipesService,
+    private firestoreRecipesService: FirestoreRecipesService,
     private location: Location
   ) {}
 
@@ -33,13 +31,14 @@ export class DetailedViewComponent implements OnInit {
   }
 
   saveRecipe() {
+    const path = '/saved-meals';
     if (this.recipeState.isSaved) {
-      this.savedMealService.delete(this.detailedRecipe);
+      this.firestoreRecipesService.delete(this.detailedRecipe, path);
       this.recipeState.isSaved = false;
       let state = JSON.stringify(this.recipeState);
       localStorage.setItem(this.detailedRecipe.id.toString(), state);
     } else {
-      this.savedMealService.add(this.detailedRecipe);
+      this.firestoreRecipesService.add(this.detailedRecipe, path);
       this.recipeState.isSaved = true;
       let state = JSON.stringify(this.recipeState);
       localStorage.setItem(this.detailedRecipe.id.toString(), state);
@@ -49,15 +48,14 @@ export class DetailedViewComponent implements OnInit {
   tryRecipe() {}
 
   likeRecipe() {
-    let state = JSON.stringify(this.recipeState);
-
+    const path = '/liked-recipes';
     if (this.recipeState.isLiked) {
-      this.likedRecipeService.delete(this.detailedRecipe);
+      this.firestoreRecipesService.delete(this.detailedRecipe, path);
       this.recipeState.isLiked = false;
       let state = JSON.stringify(this.recipeState);
       localStorage.setItem(this.detailedRecipe.id.toString(), state);
     } else {
-      this.likedRecipeService.add(this.detailedRecipe);
+      this.firestoreRecipesService.add(this.detailedRecipe, path);
       this.recipeState.isLiked = true;
       let state = JSON.stringify(this.recipeState);
       localStorage.setItem(this.detailedRecipe.id.toString(), state);
