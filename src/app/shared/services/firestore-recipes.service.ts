@@ -46,10 +46,10 @@ export class FirestoreRecipesService implements FirestoreCollection<Meal> {
     return collectionData(collectionRef) as Observable<Meal[]>;
   }
 
-  async getSavedMealsCount() {
-    let mealsRef = collection(this.firestore, '/saved-meals');
-    let snapshot = await getCountFromServer(mealsRef);
-    return snapshot.data;
+  async getItemCount(collectionName: string) {
+    let collectionRef = collection(this.firestore, collectionName);
+    let snapshot = await getCountFromServer(collectionRef);
+    return snapshot.data().count;
   }
 
   async add(meal: Meal, collectionName: string) {

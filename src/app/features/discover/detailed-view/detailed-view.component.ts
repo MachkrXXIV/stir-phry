@@ -32,6 +32,8 @@ export class DetailedViewComponent implements OnInit {
 
   saveRecipe() {
     const path = '/saved-meals';
+
+    // checks saveState and delete if already saved previously
     if (this.recipeState.isSaved) {
       this.firestoreRecipesService.delete(this.detailedRecipe, path);
       this.recipeState.isSaved = false;
@@ -45,13 +47,19 @@ export class DetailedViewComponent implements OnInit {
     }
   }
 
-  tryRecipe() {
+  async tryRecipe() {
     const path = '/meal-agenda';
+    let itemCount = await this.firestoreRecipesService
+      .getItemCount(path)
+      .then((count) => count);
     if (this.recipeState.isTried) {
       this.firestoreRecipesService.delete(this.detailedRecipe, path);
       this.recipeState.isTried = false;
       let state = JSON.stringify(this.recipeState);
       localStorage.setItem(this.detailedRecipe.id.toString(), state);
+    } else if (itemCount >= 3) {
+      console.log('CANNOT ADD');
+      // generate toast popup error
     } else {
       this.firestoreRecipesService.add(this.detailedRecipe, path);
       this.recipeState.isTried = true;
