@@ -10,11 +10,11 @@
   color: #fff;
   margin-left: 2rem;
   margin-right: 2rem;
+  margin-bottom: 2rem;
   &:hover {
     //refactor
-    border: 2px solid $custom-alert;
     transform: scale(1.05);
-    box-shadow: $custom-alert 0px 4px 8px -2px, $custom-alert 0px 0px 0px 1px;
+    box-shadow: $custom-alert 0px 4px 10px -2px, $custom-alert 0px 0px 0px 1px;
     transition: all ease-out 0.2s;
     z-index: 0;
     cursor: pointer;

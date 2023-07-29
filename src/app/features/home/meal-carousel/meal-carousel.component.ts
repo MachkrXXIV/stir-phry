@@ -15,27 +15,6 @@ export class MealCarouselComponent implements OnInit {
   isLargeScreen = false;
   constructor(private firestore: FirestoreRecipesService) {}
 
-  meals: Meal[] = [
-    {
-      id: '',
-      image: '#',
-      name: 'Fried Rice',
-      prepTimeInMinutes: 25,
-    },
-    {
-      id: '',
-      image: '#',
-      name: 'Creamy Cajun Pasta',
-      prepTimeInMinutes: 55,
-    },
-    {
-      id: '',
-      image: '#',
-      name: 'Beef Enchiladas',
-      prepTimeInMinutes: 45,
-    },
-  ];
-
   ngOnInit(): void {
     const path = '/meal-agenda';
     this.isLargeScreen = window.innerWidth >= 992;

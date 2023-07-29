@@ -16,6 +16,14 @@
   visibility: hidden;
 }
 
+ngb-carousel {
+  padding-bottom: 2rem;
+}
+
+.carousel-inner {
+  padding-bottom: 2rem !important;
+}
+
 .current-meal-card {
   @include card-shadow;
   height: 24vh;

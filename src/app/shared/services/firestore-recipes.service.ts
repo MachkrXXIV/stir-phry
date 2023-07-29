@@ -22,6 +22,7 @@ import {
   DocumentData,
   getDoc,
   setDoc,
+  writeBatch,
 } from 'firebase/firestore';
 import { FirestoreCollection } from '../interfaces/firestore-collection.interface';
 
