@@ -36,6 +36,7 @@ import { SliderContainerComponent } from './shared/components/slider-container/s
 import { RecipePreviewComponent } from './features/home/recipe-preview/recipe-preview.component';
 import { CommonModule } from '@angular/common';
 import { HomeModule } from './features/home/home.module';
+import { CookModule } from './features/cook/cook.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -69,6 +70,7 @@ import { HomeModule } from './features/home/home.module';
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
     FontAwesomeModule,
+    CookModule,
   ],
 })
 export class AppModule {
