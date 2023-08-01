@@ -23,7 +23,6 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.router.events.subscribe((e) => {
       if (e instanceof NavigationEnd) {
-        console.log(this.router.url);
         this.showHeader = !this.router.url.startsWith('/cook');
       }
     });

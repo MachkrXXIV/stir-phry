@@ -37,6 +37,7 @@ import { RecipePreviewComponent } from './features/home/recipe-preview/recipe-pr
 import { CommonModule } from '@angular/common';
 import { HomeModule } from './features/home/home.module';
 import { CookModule } from './features/cook/cook.module';
+import { SharedModule } from './shared/shared.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,7 +50,6 @@ import { CookModule } from './features/cook/cook.module';
     BannerCardComponent,
     QueryCardComponent,
     DetailedViewComponent,
-    CamelCaseSplitPipe,
     NavTabsComponent,
     SliderContainerComponent,
     RecipePreviewComponent,
@@ -71,7 +71,9 @@ import { CookModule } from './features/cook/cook.module';
     provideFirestore(() => getFirestore()),
     FontAwesomeModule,
     CookModule,
+    SharedModule,
   ],
+  exports: [],
 })
 export class AppModule {
   constructor(library: FaIconLibrary) {

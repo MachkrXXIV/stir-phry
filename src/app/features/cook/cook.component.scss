@@ -1,0 +1,21 @@
+.tag {
+  margin-top: 0.5rem;
+  vertical-align: middle;
+}
+
+.recipe-img {
+  object-fit: cover;
+  padding: 0;
+  margin: 0;
+  width: Min(100%, 480px);
+  // aspect-ratio: 4/3;
+  // image-rendering: -webkit-optimize-contrast;
+}
+
+.btn-alert {
+  position: relative;
+}
+
+.back-arrow {
+  cursor: pointer;
+}
