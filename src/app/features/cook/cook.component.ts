@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { Meal } from 'src/app/shared/interfaces/meal.interface';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-cook',
@@ -9,15 +9,25 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./cook.component.scss'],
 })
 export class CookComponent implements OnInit {
-  detailedRecipe: Meal = {
-    id: '',
-    name: '',
-  };
+  detailedRecipe: Meal;
+  currentPage: string;
 
-  constructor(private location: Location, private route: ActivatedRoute) {}
+  constructor(
+    private location: Location,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {
+    this.detailedRecipe = { id: '', name: '' };
+    this.currentPage = 'prelude';
+  }
 
-  goBack() {
-    this.location.back();
+  exitPage() {
+    this.router.navigate(['/home']);
+  }
+
+  handleRelocation(relocation: string) {
+    console.log('routing to:', relocation);
+    this.currentPage = relocation;
   }
 
   ngOnInit(): void {

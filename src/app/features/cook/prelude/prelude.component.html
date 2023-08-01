@@ -1,0 +1,26 @@
+<main class="container-sm">
+  <div class="row mt-3">
+    <div class="col d-flex flex-column justify-content-center">
+      <div class="text-center">
+        <h1>{{ detailedRecipe.name }}</h1>
+        <h4>
+          <fa-icon icon="clock"></fa-icon> Time to cook:
+          {{ detailedRecipe.prepTimeInMinutes }} min
+        </h4>
+        <img class="recipe-img" [src]="detailedRecipe.image" alt="img" />
+        <div class="tags-wrapper">
+          <span class="tag" *ngFor="let tag of detailedRecipe.tags">
+            {{ tag | camelCaseSplit | titlecase }}</span
+          >
+        </div>
+      </div>
+      <p [innerHTML]="detailedRecipe.summary"></p>
+      <button
+        class="btn btn-alert text-white mt-3"
+        (click)="routeToIngredients()"
+      >
+        Prepare Ingredients
+      </button>
+    </div>
+  </div>
+</main>
