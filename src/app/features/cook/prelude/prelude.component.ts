@@ -17,7 +17,7 @@ export class PreludeComponent implements OnInit {
   }
 
   routeToIngredients() {
-    this.relocation.emit('ingredients');
+    this.relocation.emit('mise-en-place');
   }
 
   ngOnInit(): void {}

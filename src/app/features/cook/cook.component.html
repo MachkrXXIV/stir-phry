@@ -1,9 +1,9 @@
 <main class="container-sm">
   <div class="row mt-3" [ngSwitch]="currentPage">
     <fa-icon
-      class="back-arrow"
-      icon="arrow-left"
-      size="lg"
+      class="exit"
+      icon="chevron-circle-left"
+      size="2x"
       (click)="exitPage()"
     ></fa-icon>
     <app-prelude
@@ -11,5 +11,10 @@
       [detailedRecipe]="detailedRecipe"
       (relocation)="handleRelocation($event)"
     ></app-prelude>
+    <app-mise-en-place
+      *ngSwitchCase="'mise-en-place'"
+      [detailedRecipe]="detailedRecipe"
+      (relocation)="handleRelocation($event)"
+    ></app-mise-en-place>
   </div>
 </main>
