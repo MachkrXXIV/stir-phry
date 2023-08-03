@@ -9,10 +9,12 @@ import { Meal } from 'src/app/shared/interfaces/meal.interface';
 export class MiseEnPlaceComponent implements OnInit {
   @Input() detailedRecipe: Meal;
   @Output() relocation: EventEmitter<string>;
+  isUserCreated?: boolean;
 
   constructor() {
     this.detailedRecipe = { id: '', name: '' };
     this.relocation = new EventEmitter<string>();
+    console.log(this.isUserCreated);
   }
 
   routeToPrelude() {
@@ -27,5 +29,7 @@ export class MiseEnPlaceComponent implements OnInit {
     item.classList.toggle('cross');
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.isUserCreated = this.detailedRecipe.id.startsWith('CUSTOM');
+  }
 }

@@ -1,0 +1,21 @@
+<div class="col mt-3" (window:scroll)="onScroll()">
+  <ngb-progressbar
+    class="fixed-top custom-progress"
+    [value]="scrollProgress"
+  ></ngb-progressbar>
+  <article
+    class="step"
+    *ngFor="let step of detailedRecipe.instructions; let i = index"
+  >
+    <h1>{{ i + 1 }}.</h1>
+    <h2 class="align-self-center">
+      {{ step }}
+    </h2>
+  </article>
+  <fa-icon
+    class="arrow backward"
+    icon="chevron-left"
+    size="2x"
+    (click)="routeToMiseEnPlace()"
+  ></fa-icon>
+</div>

@@ -3,6 +3,7 @@
   <h2 class="mt-2 mb-5">The Ingredients you will need are...</h2>
   <ol class="list-group" *ngFor="let ingredient of detailedRecipe.ingredients">
     <div class="form-check list-group-item" #item (click)="toggleActive(item)">
+      <ng-container *ngIf="isUserCreated">{{ ingredient }}</ng-container>
       {{ ingredient.original }}
     </div>
   </ol>

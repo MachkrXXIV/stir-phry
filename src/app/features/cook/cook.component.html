@@ -16,5 +16,11 @@
       [detailedRecipe]="detailedRecipe"
       (relocation)="handleRelocation($event)"
     ></app-mise-en-place>
+    <app-instructions
+      *ngSwitchCase="'instructions'"
+      [detailedRecipe]="detailedRecipe"
+      (relocation)="handleRelocation($event)"
+    >
+    </app-instructions>
   </div>
 </main>
