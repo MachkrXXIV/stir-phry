@@ -8,7 +8,13 @@
 }
 
 .step {
-  min-height: 90vh;
+  min-height: 40vh;
+  opacity: 0;
+  transition: opacity 1s ease;
+
+  &.show {
+    opacity: 1;
+  }
 }
 
 .custom-progress {
@@ -21,4 +27,15 @@
 .fade-container {
   position: relative;
   overflow: hidden;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  overflow: hidden;
+  overflow-y: scroll;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
