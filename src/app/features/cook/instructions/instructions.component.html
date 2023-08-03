@@ -3,6 +3,7 @@
     class="fixed-top custom-progress"
     [value]="scrollProgress"
     type="primary"
+    #progressRef
   ></ngb-progressbar>
   <article
     class="step"
@@ -19,4 +20,11 @@
     size="2x"
     (click)="routeToMiseEnPlace()"
   ></fa-icon>
+  <button
+    class="btn btn-alert finish"
+    *ngIf="progressRef.value >= progressRef.max * 0.9"
+    (click)="finishRecipe()"
+  >
+    Finish Cooking
+  </button>
 </div>

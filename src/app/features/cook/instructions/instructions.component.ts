@@ -9,7 +9,9 @@ import {
   OnInit,
   Output,
 } from '@angular/core';
+import { Router } from '@angular/router';
 import { Meal } from 'src/app/shared/interfaces/meal.interface';
+import { FirestoreRecipesService } from 'src/app/shared/services/firestore-recipes.service';
 
 @Component({
   selector: 'app-instructions',
@@ -24,13 +26,23 @@ export class InstructionsComponent implements OnInit, AfterViewInit, OnDestroy {
   scrollProgress = window.scrollY;
   scrollMax!: number;
 
-  constructor(private elementRef: ElementRef) {
+  constructor(
+    private elementRef: ElementRef,
+    private router: Router,
+    private firestoreService: FirestoreRecipesService
+  ) {
     this.detailedRecipe = { id: '', name: '' };
     this.relocation = new EventEmitter<string>();
   }
 
   routeToMiseEnPlace() {
     this.relocation.emit('mise-en-place');
+  }
+
+  finishRecipe() {
+    const path = '/meal-agenda';
+    this.firestoreService.delete(this.detailedRecipe, path);
+    this.router.navigate(['/home']);
   }
 
   @HostListener('window:scroll')
@@ -55,7 +67,6 @@ export class InstructionsComponent implements OnInit, AfterViewInit, OnDestroy {
     this.intersectionObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          console.log(entry);
           entry.target.classList.toggle('show', entry.isIntersecting);
         });
       },

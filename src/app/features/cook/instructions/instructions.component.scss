@@ -10,7 +10,7 @@
 .step {
   min-height: 40vh;
   opacity: 0;
-  transition: opacity 1s ease;
+  transition: opacity 1s ease-out;
 
   &.show {
     opacity: 1;
@@ -29,13 +29,17 @@
   overflow: hidden;
 }
 
-body::-webkit-scrollbar {
-  display: none;
+.finish {
+  @include center-absolute();
+  animation: fadeIn 1s ease-out;
+  position: fixed;
 }
 
-body {
-  overflow: hidden;
-  overflow-y: scroll;
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
