@@ -99,6 +99,23 @@
   cursor: pointer;
 }
 
+.btn {
+  &:hover {
+    color: #fff;
+  }
+}
+
+.submit {
+  color: #fff;
+
+  &:disabled {
+    color: #fff;
+  }
+  &:hover {
+    background-color: darken($color: $custom-primary, $amount: 5);
+  }
+}
+
 .invalid-response {
   color: $danger;
 }
