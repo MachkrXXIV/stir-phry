@@ -24,22 +24,17 @@ import { SearchBarComponent } from '../search-bar/search-bar.component';
   encapsulation: ViewEncapsulation.None,
 })
 export class HeaderComponent implements OnInit {
-  constructor(private offcanvasService: NgbOffcanvas, private router: Router) {}
   isLargeScreen = false;
   showSearchBar = false;
-  faHome = faHome;
-  faCompass = faCompass;
-  faPlus = faPlus;
-  faPortrait = faPortrait;
-  faStore = faStore;
+
+  constructor(private offcanvasService: NgbOffcanvas, private router: Router) {}
 
   isMenuCollapsed = true;
   navLinks: NavLink[] = [
+    { name: 'Home', route: '/home', icon: faHome },
     { name: 'Discover', route: '/discover', icon: faCompass },
     { name: 'Pantry', route: '/pantry', icon: faStore },
-    { name: 'Create', route: '/create', icon: faPlus },
     { name: 'Profile', route: '/profile', icon: faPortrait },
-    { name: 'Extra', route: '/home', icon: faHome },
   ];
 
   openMenuRight(content: TemplateRef<any>) {

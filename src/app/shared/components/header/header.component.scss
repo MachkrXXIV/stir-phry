@@ -13,8 +13,7 @@
 }
 
 .offcanvas {
-  border-top-right-radius: 10rem;
-  border-bottom-right-radius: 20rem;
+  animation: deform 0.4s ease-out;
 }
 
 .circle {
@@ -58,4 +57,15 @@
 
 .header-container {
   padding: 0.8rem 0.8rem;
+}
+
+@keyframes deform {
+  from {
+    border-top-right-radius: 40rem;
+    border-bottom-right-radius: 40rem;
+  }
+
+  to {
+    border-radius: 0px;
+  }
 }
