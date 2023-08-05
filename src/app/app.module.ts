@@ -38,16 +38,9 @@ import { CommonModule } from '@angular/common';
 import { HomeModule } from './features/home/home.module';
 import { CookModule } from './features/cook/cook.module';
 import { SharedModule } from './shared/shared.module';
+import { DiscoverModule } from './features/discover/discover.module';
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomeComponent,
-    DiscoverComponent,
-    ExplorerComponent,
-    DetailedViewComponent,
-    NavTabsComponent,
-    RecipePreviewComponent,
-  ],
+  declarations: [AppComponent],
   providers: [],
   bootstrap: [AppComponent],
   imports: [
@@ -66,6 +59,7 @@ import { SharedModule } from './shared/shared.module';
     FontAwesomeModule,
     CookModule,
     SharedModule,
+    DiscoverModule,
   ],
   exports: [],
 })

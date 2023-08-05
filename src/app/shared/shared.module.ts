@@ -30,6 +30,7 @@ import { AppRoutingModule } from '../app-routing.module';
     QueryCardComponent,
     SearchBarComponent,
     SliderContainerComponent,
+    FontAwesomeModule,
   ],
 })
 export class SharedModule {}
