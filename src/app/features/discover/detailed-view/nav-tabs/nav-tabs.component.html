@@ -1,5 +1,5 @@
 <ul class="nav nav-tabs" role="tablist">
-  <li class="nav-item" role="presentation">
+  <li role="presentation">
     <button
       class="nav-link active"
       [ngClass]="{ active: currentTab === 'summary' }"
@@ -15,7 +15,7 @@
       Summary
     </button>
   </li>
-  <li class="nav-item" role="presentation">
+  <li role="presentation">
     <button
       class="nav-link"
       [ngClass]="{ active: currentTab === 'ingredients' }"
@@ -31,7 +31,7 @@
       Ingredients
     </button>
   </li>
-  <li class="nav-item" role="presentation">
+  <li role="presentation">
     <button
       class="nav-link"
       [ngClass]="{ active: currentTab === 'instructions' }"

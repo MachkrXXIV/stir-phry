@@ -1,10 +1,12 @@
 $brand-color: hsl(162, 80%, 39%);
+$custom-dark: hsl(0, 0%, 17%);
 .nav {
   margin-top: 1rem;
   border-color: $brand-color;
 }
 
-.nav-link {
+button.nav-link {
+  color: $custom-dark;
   &.active {
     border-color: $brand-color;
     border-bottom: 1px solid #fff;
