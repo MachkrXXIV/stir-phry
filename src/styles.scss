@@ -20,6 +20,7 @@ $custom-warning: hsl(47, 93%, 60%);
 $custom-info: hsl(185, 61%, 68%);
 $custom-dark: hsl(0, 0%, 17%);
 $custom-alert: hsl(35, 88%, 54%);
+$custom-heading-color: hsl(200, 1%, 44%);
 
 $primary: $custom-primary;
 $secondary: $custom-secondary;
@@ -28,6 +29,7 @@ $danger: $custom-danger;
 $warning: $custom-warning;
 $info: $custom-info;
 $dark: $custom-dark;
+$headings-color: $custom-heading-color;
 
 // $theme-colors: map-merge($theme-colors, $custom-colors);
 $theme-colors: map-merge(

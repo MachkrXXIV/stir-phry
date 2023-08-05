@@ -5,14 +5,14 @@
   [pauseOnHover]="true"
 >
   <ng-template ngbSlide *ngFor="let meal of mealAgenda$ | async">
-    <h2 class="mb-3">Today's meal is...</h2>
+    <h2 class="mb-3 text-light">Today's meal is...</h2>
     <app-agenda-card [meal]="meal"></app-agenda-card>
   </ng-template>
 </ngb-carousel>
 
 <section class="meal-group container-fluid" *ngIf="isLargeScreen">
   <div class="row">
-    <h2 class="mb-4">Today's meals are...</h2>
+    <h2 class="mb-4 text-light">Today's meals are...</h2>
     <main class="col-lg" *ngFor="let meal of mealAgenda$ | async">
       <div class="current-meal-container">
         <app-agenda-card class="meal-card" [meal]="meal"></app-agenda-card>
