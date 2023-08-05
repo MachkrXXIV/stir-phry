@@ -41,17 +41,11 @@ import { SharedModule } from './shared/shared.module';
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
     HomeComponent,
     DiscoverComponent,
-    SearchBarComponent,
-    CreateRecipeComponent,
     ExplorerComponent,
-    BannerCardComponent,
-    QueryCardComponent,
     DetailedViewComponent,
     NavTabsComponent,
-    SliderContainerComponent,
     RecipePreviewComponent,
   ],
   providers: [],
