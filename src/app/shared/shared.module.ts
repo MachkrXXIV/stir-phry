@@ -10,6 +10,15 @@ import { SliderContainerComponent } from './components/slider-container/slider-c
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from '../app-routing.module';
+import { BannerService } from './services/banner.service';
+import { DataConversionService } from './services/data-conversion.service';
+import { FirestoreRecipesService } from './services/firestore-recipes.service';
+import { IconLibraryService } from './services/icon-library.service';
+import { MealClassificationsService } from './services/meal-classifications.service';
+import { RecipeResolverService } from './services/recipe-resolver.service';
+import { RecipeService } from './services/recipe.service';
+import { SearchBarService } from './services/search-bar.service';
+import { ViewportService } from './services/viewport.service';
 
 @NgModule({
   declarations: [
@@ -31,6 +40,17 @@ import { AppRoutingModule } from '../app-routing.module';
     SearchBarComponent,
     SliderContainerComponent,
     FontAwesomeModule,
+  ],
+  providers: [
+    BannerService,
+    DataConversionService,
+    FirestoreRecipesService,
+    IconLibraryService,
+    MealClassificationsService,
+    RecipeResolverService,
+    RecipeService,
+    SearchBarService,
+    ViewportService,
   ],
 })
 export class SharedModule {}
