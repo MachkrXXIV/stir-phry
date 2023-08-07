@@ -1,0 +1,104 @@
+<div class="container d-flex flex-column">
+  <div class="image-container">
+    <img
+      class="recipe-img"
+      [src]="detailedRecipe.image"
+      alt=""
+      *ngIf="detailedRecipe.image"
+    />
+    <fa-stack class="back-arrow" size="lg" (click)="goBack()">
+      <fa-icon [icon]="'circle'" stackItemSize="2x"></fa-icon>
+      <fa-icon
+        [icon]="'arrow-left'"
+        [classes]="['icon']"
+        stackItemSize="1x"
+        [style.color]="'red'"
+        [inverse]="true"
+      ></fa-icon>
+    </fa-stack>
+    <div class="recipe-actions">
+      <fa-stack
+        class="icon-wrapper"
+        size="lg"
+        [ngClass]="{ 'active-icon': recipeState.isSaved }"
+        (click)="saveRecipe()"
+      >
+        <fa-icon [icon]="'square'" stackItemSize="2x"></fa-icon>
+        <fa-icon
+          [icon]="'bookmark'"
+          class="icon bookmark"
+          stackItemSize="1x"
+          [inverse]="true"
+        ></fa-icon>
+      </fa-stack>
+      <fa-stack
+        class="icon-wrapper"
+        size="lg"
+        [ngClass]="{ 'active-icon': recipeState.isTried }"
+        (click)="tryRecipe()"
+      >
+        <fa-icon [icon]="'square'" stackItemSize="2x"></fa-icon>
+        <fa-icon
+          [icon]="'utensils'"
+          class="icon utensils"
+          stackItemSize="1x"
+          [inverse]="true"
+        ></fa-icon>
+      </fa-stack>
+      <fa-stack
+        class="icon-wrapper"
+        size="lg"
+        [ngClass]="{ 'active-icon': recipeState.isLiked }"
+        (click)="likeRecipe()"
+      >
+        <fa-icon [icon]="'square'" stackItemSize="2x"></fa-icon>
+        <fa-icon
+          [icon]="'heart'"
+          class="icon heart"
+          stackItemSize="1x"
+          [inverse]="true"
+        ></fa-icon>
+      </fa-stack>
+    </div>
+  </div>
+  <section class="information">
+    <div class="information__header">
+      <h1 class="title">{{ detailedRecipe.name }}</h1>
+      <a [href]="detailedRecipe.sourceUrl">Source</a>
+      <p>Time to make: {{ detailedRecipe.prepTimeInMinutes }} minutes</p>
+      <span class="tag" *ngFor="let tag of detailedRecipe.tags">
+        {{ tag | camelCaseSplit | titlecase }}</span
+      >
+    </div>
+    <app-nav-tabs
+      [summary]="detailedRecipe.summary"
+      [ingredients]="detailedRecipe.ingredients"
+      [instructions]="detailedRecipe.instructions"
+      [isUserCreated]="isUserCreated"
+    ></app-nav-tabs>
+    <h2 class="sublist__title">Nutrition:</h2>
+    <ul class="list-group">
+      <li class="nutrient list-group-item">
+        Calories: {{ detailedRecipe.calories }} kcal
+      </li>
+      <li class="nutrient list-group-item">
+        Total Fat: {{ detailedRecipe.fat }}g
+      </li>
+      <li class="nutrient list-group-item">
+        Cholesterol: {{ detailedRecipe.cholesterol }}g
+      </li>
+      <li class="nutrient list-group-item">
+        Sodium: {{ detailedRecipe.sodium }}g
+      </li>
+      <li class="nutrient list-group-item">
+        Total Carbohydrate: {{ detailedRecipe.carbohydrates }}g
+      </li>
+      <li class="nutrient list-group-item">
+        Total Sugars: {{ detailedRecipe.sugar }}g
+      </li>
+      <li class="nutrient list-group-item">
+        Protein: {{ detailedRecipe.protein }}g
+      </li>
+    </ul>
+  </section>
+</div>

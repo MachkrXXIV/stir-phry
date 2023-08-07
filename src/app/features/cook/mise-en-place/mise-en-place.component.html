@@ -1,0 +1,24 @@
+<div class="col">
+  <h1 class="mt-4 text-center fw-bold">Mise en place!</h1>
+  <h2 class="mt-2 mb-5">The Ingredients you will need are...</h2>
+  <ol class="list-group" *ngFor="let ingredient of detailedRecipe.ingredients">
+    <div class="form-check list-group-item" #item (click)="toggleActive(item)">
+      <ng-container *ngIf="isUserCreated">{{ ingredient }}</ng-container>
+      {{ ingredient.original }}
+    </div>
+  </ol>
+  <nav class="arrows d-flex justify-content-around">
+    <fa-icon
+      class="arrow backward"
+      icon="chevron-left"
+      size="2x"
+      (click)="routeToPrelude()"
+    ></fa-icon>
+    <fa-icon
+      class="arrow forward"
+      icon="chevron-right"
+      size="2x"
+      (click)="routeToInstructions()"
+    ></fa-icon>
+  </nav>
+</div>

@@ -2,24 +2,21 @@
   <header class="offcanvas-header">
     <ul class="navbar-nav container-fluid">
       <li
-        class="nav-item me-auto fw-semibold lead w-50 d-flex align-items-center justify-content-between"
+        class="nav-item me-auto fw-semibold lead w-75 d-flex align-items-center justify-content-between"
         *ngFor="let link of navLinks"
+        [routerLink]="link.route"
+        [routerLinkActive]="'active-route'"
+        (click)="offcanvas.close()"
       >
-        <fa-icon [icon]="link.icon"></fa-icon>
-        <a
-          class="nav-link side-link align-self-center"
-          [routerLink]="link.route"
-          (click)="offcanvas.close()"
-        >
-          {{ link.name }}</a
-        >
+        <fa-icon [icon]="link.icon" size="lg"></fa-icon>
+        <a class="nav-link side-link align-self-center"> {{ link.name }}</a>
       </li>
     </ul>
   </header>
 </ng-template>
 
 <nav class="navbar navbar-expand-md fixed-top">
-  <div class="header-container container-fluid bg-light g-0">
+  <div class="header-container container-fluid g-0">
     <button
       class="navbar-toggler"
       type="button"
@@ -32,8 +29,14 @@
     </div>
     <div class="collapse navbar-collapse">
       <ul class="navbar-nav container-fluid">
-        <li class="nav-item fw-bold" *ngFor="let link of navLinks">
-          <a class="nav-link" [routerLink]="link.route"> {{ link.name }}</a>
+        <li class="nav-item-lg fw-bold" *ngFor="let link of navLinks">
+          <a
+            class="nav-link nav-item-lg"
+            [routerLink]="link.route"
+            [routerLinkActive]="'active-route-lg'"
+          >
+            {{ link.name }}</a
+          >
         </li>
       </ul>
       <!-- <a class="navbar-brand circle" [routerLink]=""></a> -->

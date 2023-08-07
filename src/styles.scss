@@ -19,6 +19,8 @@ $custom-danger: hsl(0, 84%, 68%);
 $custom-warning: hsl(47, 93%, 60%);
 $custom-info: hsl(185, 61%, 68%);
 $custom-dark: hsl(0, 0%, 17%);
+$custom-alert: hsl(35, 88%, 54%);
+$custom-heading-color: hsl(200, 1%, 44%);
 
 $primary: $custom-primary;
 $secondary: $custom-secondary;
@@ -27,6 +29,7 @@ $danger: $custom-danger;
 $warning: $custom-warning;
 $info: $custom-info;
 $dark: $custom-dark;
+$headings-color: $custom-heading-color;
 
 // $theme-colors: map-merge($theme-colors, $custom-colors);
 $theme-colors: map-merge(
@@ -42,21 +45,73 @@ $theme-colors: map-merge(
   )
 );
 
+@mixin setBgColorAndHover($baseColor) {
+  background-color: $baseColor;
+  &:hover {
+    background-color: darken($baseColor, 5%);
+  }
+}
+@mixin setIconColorAndHover($baseColor) {
+  color: $baseColor;
+  &:hover {
+    color: darken($baseColor, 5%);
+  }
+}
+@mixin card-shadow {
+  box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px,
+    rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
+}
+@mixin center-absolute {
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  bottom: 10px;
+  text-align: center;
+}
+
 /* Importing Bootstrap SCSS file. */
 
-$body-bg: hsl(0, 0%, 100%);
+$body-bg: hsl(0, 0%, 97%);
+$nav-bar-bg: #fff;
 // $theme-colors: map-merge($theme-colors, $theme-colors);
 
 @import "~bootstrap/scss/bootstrap";
 // @import "./custom-styles.scss";
 
 body {
-  // background-color: $body-bg;
-  background-color: hsl(0, 0%, 92%);
+  background-color: $body-bg;
 }
 
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+}
+
+.tag {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  margin-right: 0.25rem;
+  border-radius: 2rem;
+  background-color: $custom-info;
+  margin-bottom: 0.5rem;
+}
+
+.btn-alert {
+  @include center-absolute();
+  background-color: $custom-alert;
+  color: #fff;
+  font-weight: bold;
+
+  transition: all 100ms;
+  &:hover {
+    background-color: darken($color: $custom-alert, $amount: 5);
+  }
+
+  &:active {
+    background-color: darken($color: $custom-alert, $amount: 10) !important;
+    border: 1px solid lighten($color: $custom-alert, $amount: 5) !important;
+  }
 }

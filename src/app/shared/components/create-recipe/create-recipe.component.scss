@@ -86,7 +86,7 @@
 }
 
 .tag-list {
-  background-color: white;
+  background-color: $input-bg;
   border-bottom-left-radius: 0.375rem;
   border-bottom-right-radius: 0.375rem;
   border: 1px solid #ced4da;
@@ -97,6 +97,23 @@
   font-size: $input-font-size-sm;
   background-color: $brand-color;
   cursor: pointer;
+}
+
+.btn {
+  &:hover {
+    color: #fff;
+  }
+}
+
+.submit {
+  color: #fff;
+
+  &:disabled {
+    color: #fff;
+  }
+  &:hover {
+    background-color: darken($color: $custom-primary, $amount: 5);
+  }
 }
 
 .invalid-response {

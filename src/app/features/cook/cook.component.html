@@ -1,0 +1,26 @@
+<main class="container-sm">
+  <div class="row mt-3" [ngSwitch]="currentPage">
+    <fa-icon
+      class="exit"
+      icon="chevron-circle-left"
+      size="2x"
+      (click)="exitPage()"
+    ></fa-icon>
+    <app-prelude
+      *ngSwitchCase="'prelude'"
+      [detailedRecipe]="detailedRecipe"
+      (relocation)="handleRelocation($event)"
+    ></app-prelude>
+    <app-mise-en-place
+      *ngSwitchCase="'mise-en-place'"
+      [detailedRecipe]="detailedRecipe"
+      (relocation)="handleRelocation($event)"
+    ></app-mise-en-place>
+    <app-instructions
+      *ngSwitchCase="'instructions'"
+      [detailedRecipe]="detailedRecipe"
+      (relocation)="handleRelocation($event)"
+    >
+    </app-instructions>
+  </div>
+</main>

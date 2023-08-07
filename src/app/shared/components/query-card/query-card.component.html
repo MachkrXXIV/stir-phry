@@ -1,10 +1,6 @@
 <article class="card" (click)="routeToDetailedView(query.id)">
   <img class="card-img-top custom-card-img" [src]="query.image" alt="" />
-  <section class="card-body">
-    <h5 class="card-title">{{ query.name }}</h5>
-    <p class="card-text">
-      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Optio,
-      inventore.
-    </p>
-  </section>
+  <div class="card-img-overlay">
+    <h4 class="card-title title-wrapper text-wrap">{{ query.name }}</h4>
+  </div>
 </article>

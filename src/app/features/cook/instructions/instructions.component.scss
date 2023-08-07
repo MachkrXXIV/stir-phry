@@ -1,0 +1,45 @@
+@import "src/styles.scss";
+.arrow {
+  position: fixed;
+  bottom: 4rem;
+  color: $custom-primary;
+
+  cursor: pointer;
+}
+
+.step {
+  min-height: 80vh;
+  opacity: 0;
+  transition: opacity 1s ease-out;
+
+  &.show {
+    opacity: 1;
+  }
+}
+
+.custom-progress {
+  @include center-absolute();
+  position: sticky;
+  width: 50vw;
+  top: 2rem;
+}
+
+.fade-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.finish {
+  @include center-absolute();
+  animation: fadeIn 1s ease-out;
+  position: fixed;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

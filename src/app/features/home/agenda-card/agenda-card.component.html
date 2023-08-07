@@ -1,0 +1,9 @@
+<article class="card">
+  <img class="card-img-top custom-card-img" [src]="meal.image" alt="" />
+  <div class="card-img-overlay">
+    <h4 class="card-title title-wrapper text-wrap">{{ meal.name }}</h4>
+  </div>
+  <button class="btn cook" (click)="routeToDetailedView(meal.id)">
+    Cook meal
+  </button>
+</article>

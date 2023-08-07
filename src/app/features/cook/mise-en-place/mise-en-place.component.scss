@@ -1,0 +1,35 @@
+@import "src/styles.scss";
+.form-check {
+  padding: 0.5rem;
+  border-radius: 1rem;
+  font-size: 1.5rem;
+  transition: all 200ms;
+  &:hover {
+    background-color: $custom-secondary;
+  }
+
+  &:focus {
+    background-color: darken($color: $custom-secondary, $amount: 5);
+    color: $gray-600;
+    text-decoration: line-through;
+  }
+}
+
+.list-item {
+  padding-left: 2.5rem;
+}
+
+.cross {
+  background-color: darken($color: $custom-secondary, $amount: 5);
+  color: $gray-700;
+  text-decoration: line-through;
+}
+
+.arrows {
+  margin-top: 2rem;
+  color: $custom-primary;
+
+  .arrow {
+    cursor: pointer;
+  }
+}
