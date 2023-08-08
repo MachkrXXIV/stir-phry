@@ -33,3 +33,22 @@ ngb-carousel {
   color: black;
   border-radius: 1.5rem;
 }
+
+.actions {
+  background-color: #fff;
+  padding: 0.25rem 1rem;
+  border-radius: 1rem;
+}
+
+.trash {
+  cursor: pointer;
+  flex: 0 0 auto;
+  color: $custom-heading-color;
+  transition: 100ms all ease-in-out;
+  &:hover {
+    color: $custom-danger;
+  }
+  // left: 50%;
+  // transform: translateX(-50%);
+  // margin-bottom: 1rem;
+}

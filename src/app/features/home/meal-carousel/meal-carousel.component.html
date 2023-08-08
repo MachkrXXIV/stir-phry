@@ -7,6 +7,16 @@
   <ng-template ngbSlide *ngFor="let meal of mealAgenda$ | async">
     <h2 class="mb-3 text-light">Today's meal is...</h2>
     <app-agenda-card [meal]="meal"></app-agenda-card>
+    <div class="actions-wrapper d-flex justify-content-center mb-2">
+      <span class="actions">
+        <fa-icon
+          class="trash"
+          icon="trash"
+          size="lg"
+          (click)="removeAgendaMeal(meal)"
+        ></fa-icon>
+      </span>
+    </div>
   </ng-template>
 </ngb-carousel>
 
