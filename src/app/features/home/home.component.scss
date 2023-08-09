@@ -16,11 +16,24 @@
     border-top-right-radius: 2rem;
   }
 
+  .headings-wrapper {
+    @media (min-width: 768px) {
+      margin-top: 5rem;
+    }
+  }
+
   .subheading {
     margin: 1rem;
+  }
 
-    @media (min-width: 768px) {
-      margin-top: 7rem;
+  .see-all {
+    color: $custom-primary;
+    margin: 1rem;
+    cursor: pointer;
+
+    transition: 100ms all ease-in-out;
+    &:hover {
+      color: $custom-alert;
     }
   }
 }
