@@ -26,6 +26,16 @@
     <main class="col-lg" *ngFor="let meal of mealAgenda$ | async">
       <div class="current-meal-container">
         <app-agenda-card class="meal-card" [meal]="meal"></app-agenda-card>
+        <div class="actions-wrapper d-flex justify-content-center mb-2">
+          <span class="actions">
+            <fa-icon
+              class="trash trash-lg"
+              icon="trash"
+              size="lg"
+              (click)="removeAgendaMeal(meal)"
+            ></fa-icon>
+          </span>
+        </div>
       </div>
     </main>
   </div>

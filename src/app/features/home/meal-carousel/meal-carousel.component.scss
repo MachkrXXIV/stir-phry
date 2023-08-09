@@ -38,6 +38,10 @@ ngb-carousel {
   background-color: #fff;
   padding: 0.25rem 1rem;
   border-radius: 1rem;
+
+  @media (min-width: 992px) {
+    background-color: $gray-400;
+  }
 }
 
 .trash {
@@ -48,7 +52,8 @@ ngb-carousel {
   &:hover {
     color: $custom-danger;
   }
-  // left: 50%;
-  // transform: translateX(-50%);
-  // margin-bottom: 1rem;
+
+  &-lg {
+    color: #fff;
+  }
 }
