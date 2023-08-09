@@ -19,6 +19,7 @@ import { RecipeResolverService } from './services/recipe-resolver.service';
 import { RecipeService } from './services/recipe.service';
 import { SearchBarService } from './services/search-bar.service';
 import { ViewportService } from './services/viewport.service';
+import { DelimiterToTitlePipe } from './pipes/delimiter-to-title.pipe';
 
 @NgModule({
   declarations: [
@@ -29,10 +30,12 @@ import { ViewportService } from './services/viewport.service';
     QueryCardComponent,
     SearchBarComponent,
     SliderContainerComponent,
+    DelimiterToTitlePipe,
   ],
   imports: [CommonModule, FontAwesomeModule, FormsModule, AppRoutingModule],
   exports: [
     CamelCaseSplitPipe,
+    DelimiterToTitlePipe,
     BannerCardComponent,
     CreateRecipeComponent,
     HeaderComponent,
