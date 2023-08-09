@@ -14,6 +14,7 @@ export class SliderContainerComponent implements OnInit {
   constructor(private savedMealService: FirestoreRecipesService) {}
 
   ngOnInit(): void {
-    this.items$ = this.savedMealService.getAll(this.collectionName);
+    const size = 15;
+    this.items$ = this.savedMealService.getLimited(this.collectionName, size);
   }
 }
