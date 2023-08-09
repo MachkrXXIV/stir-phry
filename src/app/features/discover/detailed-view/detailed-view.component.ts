@@ -13,7 +13,7 @@ import { RecipeState } from 'src/app/core/interfaces/recipe-state.interface';
 })
 export class DetailedViewComponent implements OnInit, OnDestroy {
   detailedRecipe: Meal;
-  recipeState: RecipeState;
+  recipeState!: RecipeState;
   isUserCreated: boolean;
   private key: string;
   constructor(
@@ -23,7 +23,7 @@ export class DetailedViewComponent implements OnInit, OnDestroy {
     private recipeStateService: RecipeStateMachineService
   ) {
     this.detailedRecipe = { id: '', name: '' };
-    this.recipeState = { isLiked: false, isSaved: false, isTried: false };
+    // this.recipeState = { isLiked: false, isSaved: false, isTried: false };
     this.isUserCreated = false;
     this.key = '';
   }
@@ -96,6 +96,8 @@ export class DetailedViewComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
+    // fix this jawn
+    // console.log('exiting recipe state', this.recipeState);
     this.recipeStateService.deleteEmpty(this.key, this.recipeState);
   }
 }
