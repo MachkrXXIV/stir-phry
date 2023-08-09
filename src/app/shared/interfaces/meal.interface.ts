@@ -16,4 +16,5 @@ export interface Meal {
   protein?: number;
   prepTimeInMinutes?: number;
   sourceUrl?: string;
+  dateAdded?: Date;
 }

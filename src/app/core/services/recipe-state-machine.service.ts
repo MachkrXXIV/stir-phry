@@ -29,8 +29,6 @@ export class RecipeStateMachineService {
 
   deleteEmpty(key: string, state: RecipeState) {
     if (!state.isLiked && !state.isSaved && !state.isTried) {
-      console.log('exiting state', state);
-      console.log('deleting empty state');
       localStorage.removeItem(key);
     }
   }
