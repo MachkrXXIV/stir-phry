@@ -9,11 +9,12 @@ import { Observable } from 'rxjs';
   styleUrls: ['./slider-container.component.scss'],
 })
 export class SliderContainerComponent implements OnInit {
+  @Input() collectionName!: string;
   items$?: Observable<Meal[]>;
   constructor(private savedMealService: FirestoreRecipesService) {}
 
   ngOnInit(): void {
-    const path = '/saved-meals';
-    this.items$ = this.savedMealService.getAll(path);
+    const size = 15;
+    this.items$ = this.savedMealService.getLimited(this.collectionName, size);
   }
 }

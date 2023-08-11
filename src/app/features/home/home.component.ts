@@ -8,36 +8,15 @@ import { FirestoreRecipesService } from 'src/app/shared/services/firestore-recip
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  constructor(private fs: FirestoreRecipesService) {
-    // this.savedMeals$ = this.fs.getSavedMeals();
-    // console.log(this.savedMeals$);
-  }
   savedMeals$!: Observable<Meal[]>;
+  collectionNames: string[];
 
   isLargeScreen = false;
 
   userName = 'Justin';
-
-  meals: Meal[] = [
-    {
-      id: '',
-      image: '#',
-      name: 'Fried Rice',
-      prepTimeInMinutes: 25,
-    },
-    {
-      id: '',
-      image: '#',
-      name: 'Creamy Cajun Pasta',
-      prepTimeInMinutes: 55,
-    },
-    {
-      id: '',
-      image: '#',
-      name: 'Beef Enchiladas',
-      prepTimeInMinutes: 45,
-    },
-  ];
+  constructor(private fs: FirestoreRecipesService) {
+    this.collectionNames = ['/saved-meals', '/liked-recipes'];
+  }
 
   ngOnInit(): void {}
 }

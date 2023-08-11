@@ -102,3 +102,10 @@
     </ul>
   </section>
 </div>
+
+<app-toast
+  *ngIf="isError"
+  [message]="'Can only try a maximum of 3 recipes'"
+  [type]="'danger'"
+  (showPopup)="isError = false"
+></app-toast>

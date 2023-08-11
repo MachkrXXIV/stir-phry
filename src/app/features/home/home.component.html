@@ -6,6 +6,15 @@
   <div class="secondary-content" *ngFor="let meal of savedMeals$ | async">
     {{ meal.name }}
   </div>
-  <h2 class="subheading fw-bold">Saved Recipes</h2>
-  <app-slider-container></app-slider-container>
+  <ng-container *ngFor="let name of collectionNames">
+    <div
+      class="headings-wrapper d-flex justify-content-between align-items-center"
+    >
+      <h2 class="subheading fw-bold">{{ name | delimiterToTitle }}</h2>
+      <p class="see-all fw-bold">See all</p>
+    </div>
+    <app-slider-container [collectionName]="name"></app-slider-container>
+  </ng-container>
 </main>
+
+<div class="circle"></div>

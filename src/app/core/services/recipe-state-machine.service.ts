@@ -28,7 +28,7 @@ export class RecipeStateMachineService {
   }
 
   deleteEmpty(key: string, state: RecipeState) {
-    if (!(state.isLiked && state.isSaved && state.isTried)) {
+    if (!state.isLiked && !state.isSaved && !state.isTried) {
       localStorage.removeItem(key);
     }
   }

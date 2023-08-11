@@ -23,6 +23,8 @@ import {
   getDoc,
   setDoc,
   writeBatch,
+  orderBy,
+  limit,
 } from 'firebase/firestore';
 import { FirestoreCollection } from '../interfaces/firestore-collection.interface';
 
@@ -40,6 +42,12 @@ export class FirestoreRecipesService implements FirestoreCollection<Meal> {
 
   get(id: string, collectionName: string): Observable<Meal> {
     return from(this.fetchFromFirestore(id, collectionName));
+  }
+
+  getLimited(collectionName: string, size: number) {
+    const collectionRef = collection(this.firestore, collectionName);
+    const q = query(collectionRef, orderBy('name'), limit(size));
+    return collectionData(q) as Observable<Meal[]>;
   }
 
   getAll(collectionName: string): Observable<Meal[]> {

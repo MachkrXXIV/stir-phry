@@ -12,10 +12,12 @@ import { RecipeState } from 'src/app/core/interfaces/recipe-state.interface';
   styleUrls: ['./detailed-view.component.scss'],
 })
 export class DetailedViewComponent implements OnInit, OnDestroy {
-  detailedRecipe: Meal;
-  recipeState: RecipeState;
-  isUserCreated: boolean;
   private key: string;
+  detailedRecipe: Meal;
+  recipeState!: RecipeState;
+  isUserCreated: boolean;
+  isError: boolean;
+
   constructor(
     private route: ActivatedRoute,
     private firestoreRecipesService: FirestoreRecipesService,
@@ -23,9 +25,10 @@ export class DetailedViewComponent implements OnInit, OnDestroy {
     private recipeStateService: RecipeStateMachineService
   ) {
     this.detailedRecipe = { id: '', name: '' };
-    this.recipeState = { isLiked: false, isSaved: false, isTried: false };
+    // this.recipeState = { isLiked: false, isSaved: false, isTried: false };
     this.isUserCreated = false;
     this.key = '';
+    this.isError = false;
   }
   // can definitely refactor this to get $event name as params and attempt to do that button name's action
 
@@ -53,13 +56,13 @@ export class DetailedViewComponent implements OnInit, OnDestroy {
     let itemCount = await this.firestoreRecipesService
       .getItemCount(path)
       .then((count) => count);
+    this.isError = itemCount >= 3;
 
     if (this.recipeState.isTried) {
       this.firestoreRecipesService.delete(this.detailedRecipe, path);
       this.recipeState.isTried = false;
     } else if (itemCount >= 3) {
       console.log('CANNOT ADD');
-      // generate toast popup error
     } else {
       this.firestoreRecipesService.add(this.detailedRecipe, path);
       this.recipeState.isTried = true;
@@ -96,6 +99,8 @@ export class DetailedViewComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
+    // fix this jawn
+    // console.log('exiting recipe state', this.recipeState);
     this.recipeStateService.deleteEmpty(this.key, this.recipeState);
   }
 }
