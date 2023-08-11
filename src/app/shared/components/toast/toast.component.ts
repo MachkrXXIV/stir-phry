@@ -24,13 +24,11 @@ export class ToastComponent implements OnInit {
   @Input() message: string;
   @Output() showPopup: EventEmitter<boolean>;
   iconTypes: Record<string, IconDefinition>;
-  showToast: boolean;
 
   constructor() {
     this.message = '';
     this.type = 'primary';
     this.showPopup = new EventEmitter<boolean>();
-    this.showToast = false;
     this.iconTypes = {
       success: faCheck,
       info: faQuestion,

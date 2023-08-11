@@ -18,18 +18,6 @@
   animation: deform 0.4s ease-out;
 }
 
-.circle {
-  position: relative;
-  top: 2rem;
-  right: 1.5rem;
-  width: 2rem;
-  aspect-ratio: 1/1;
-
-  border-radius: 100%;
-
-  background-color: $light;
-}
-
 .navbar {
   padding: 0;
   position: sticky;
