@@ -20,6 +20,8 @@ import { RecipeService } from './services/recipe.service';
 import { SearchBarService } from './services/search-bar.service';
 import { ViewportService } from './services/viewport.service';
 import { DelimiterToTitlePipe } from './pipes/delimiter-to-title.pipe';
+import { ToastComponent } from './components/toast/toast.component';
+import { NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -31,8 +33,15 @@ import { DelimiterToTitlePipe } from './pipes/delimiter-to-title.pipe';
     SearchBarComponent,
     SliderContainerComponent,
     DelimiterToTitlePipe,
+    ToastComponent,
   ],
-  imports: [CommonModule, FontAwesomeModule, FormsModule, AppRoutingModule],
+  imports: [
+    CommonModule,
+    FontAwesomeModule,
+    FormsModule,
+    NgbAlertModule,
+    AppRoutingModule,
+  ],
   exports: [
     CamelCaseSplitPipe,
     DelimiterToTitlePipe,
@@ -43,6 +52,7 @@ import { DelimiterToTitlePipe } from './pipes/delimiter-to-title.pipe';
     SearchBarComponent,
     SliderContainerComponent,
     FontAwesomeModule,
+    ToastComponent,
   ],
   providers: [
     BannerService,

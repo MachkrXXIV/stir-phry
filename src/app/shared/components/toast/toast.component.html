@@ -1,0 +1,10 @@
+<ngb-alert
+  class="custom-toast"
+  [type]="type"
+  [dismissible]="true"
+  [animation]="true"
+  (closed)="handleClosed()"
+>
+  <fa-icon [icon]="iconTypes[type]"></fa-icon>
+  {{ message }}</ngb-alert
+>
