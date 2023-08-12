@@ -16,16 +16,17 @@ import { computeStyles } from '@popperjs/core';
 export class RecipeResolverService implements Resolve<Meal> {
   constructor(
     private recipeService: RecipeService,
-    private savedMealService: FirestoreRecipesService
+    private firestoreService: FirestoreRecipesService
   ) {}
 
   resolve(route: ActivatedRouteSnapshot): Observable<Meal> {
     const id: string = route.params['id'];
-    const path = '/saved-meals';
-    if (id.startsWith('CUSTOM')) {
-      return this.savedMealService.get(id, path);
+    const collectionName = route.params['collectionName'];
+    const isSaved = route.url[0].path === 'collections';
+    if (id.startsWith('CUSTOM') || isSaved) {
+      console.log('collection Name', collectionName);
+      return this.firestoreService.get(id, collectionName);
     }
     return this.recipeService.getDetailedInformation(id);
-    // return this.savedMealService.get()
   }
 }

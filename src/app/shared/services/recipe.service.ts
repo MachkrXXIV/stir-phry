@@ -40,6 +40,7 @@ export class RecipeService {
   }
 
   getDetailedInformation(id: string): Observable<Meal> {
+    console.log('calling get detaield info');
     const params = new HttpParams().set('includeNutrition', true);
     return this.http
       .get<any>(`${this.baseUrl}/${id}/information?apiKey=${this.apiKey}`, {

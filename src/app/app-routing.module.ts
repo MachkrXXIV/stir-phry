@@ -15,7 +15,7 @@ const routes: Routes = [
     resolve: { detailedRecipe: RecipeResolverService },
   },
   {
-    path: 'collections/saved-meals/:id',
+    path: 'collections/:collectionName/:id',
     component: DetailedViewComponent,
     resolve: { detailedRecipe: RecipeResolverService },
   },

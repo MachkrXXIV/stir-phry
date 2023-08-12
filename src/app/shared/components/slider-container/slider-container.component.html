@@ -1,5 +1,8 @@
 <div class="container d-flex flex-nowrap">
   <ng-container *ngFor="let item of items$ | async">
-    <app-query-card [query]="item"></app-query-card>
+    <app-query-card
+      [query]="item"
+      [collectionName]="collectionName"
+    ></app-query-card>
   </ng-container>
 </div>
