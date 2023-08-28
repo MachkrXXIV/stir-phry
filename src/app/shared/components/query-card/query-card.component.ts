@@ -15,6 +15,7 @@ export class QueryCardComponent extends BaseCard implements OnInit {
     name: '',
     image: '',
   };
+  @Input() collectionName?: string;
   isUserCreated!: boolean;
   isSaved?: boolean;
 
@@ -24,14 +25,16 @@ export class QueryCardComponent extends BaseCard implements OnInit {
     private recipeService: RecipeService
   ) {
     super(router, firestoreRecipeService);
+    this.collectionName = '/saved-meals';
   }
 
   override routeToDetailedView(id: string) {
-    const path = '/saved-meals';
+    const path = this.collectionName!;
+    console.log('collection path', path);
     if (this.isUserCreated || this.isSaved) {
       this.firestoreRecipeService.get(id, path).subscribe({
         next: (recipe: Meal) => {
-          this.router.navigate(['/collections/saved-meals', id], {
+          this.router.navigate(['/collections/', path, id], {
             state: recipe,
           });
         },
