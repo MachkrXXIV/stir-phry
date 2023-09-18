@@ -10,6 +10,7 @@ import { SearchBarService } from '../../services/search-bar.service';
 import { Meal } from '../../interfaces/meal.interface';
 import { HostListener } from '@angular/core';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search-bar',
@@ -23,7 +24,7 @@ export class SearchBarComponent implements OnInit {
   constructor(
     private recipeService: RecipeService,
     private searchService: SearchBarService,
-    private changeDetector: ChangeDetectorRef
+    private router: Router
   ) {}
 
   searchValue = '';

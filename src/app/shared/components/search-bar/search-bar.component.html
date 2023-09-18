@@ -1,7 +1,11 @@
-<div class="form-group" [ngClass]="isLargeScreen ? 'input-group-lg' : ''">
+<div
+  class="form-group"
+  [ngClass]="isLargeScreen ? 'input-group-lg' : ''"
+  role="search"
+>
   <input
     class="search-bar form-control ps-5 pe-1 rounded-4"
-    type="text"
+    type="search"
     placeholder="Search for a recipe"
     #searchbar
     [(ngModel)]="searchValue"
