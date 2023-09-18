@@ -1,11 +1,16 @@
 {
   "hosting": {
+<<<<<<< HEAD
     "public": "public",
     "ignore": [
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
     ],
+=======
+    "public": "dist/stir-phry",
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+>>>>>>> develop
     "rewrites": [
       {
         "source": "**",

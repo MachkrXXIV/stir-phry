@@ -14,7 +14,7 @@ import {
   faPortrait,
   faStore,
 } from '@fortawesome/free-solid-svg-icons';
-import { Router, NavigationEnd } from '@angular/router';
+import { Router, NavigationEnd, NavigationStart } from '@angular/router';
 import { SearchBarComponent } from '../search-bar/search-bar.component';
 
 @Component({
@@ -25,7 +25,7 @@ import { SearchBarComponent } from '../search-bar/search-bar.component';
 })
 export class HeaderComponent implements OnInit {
   isLargeScreen = false;
-  showSearchBar = false;
+  showSearchBar = true;
 
   constructor(private offcanvasService: NgbOffcanvas, private router: Router) {}
 
@@ -46,7 +46,7 @@ export class HeaderComponent implements OnInit {
 
   displaySearchBar() {
     this.router.events.subscribe((event) => {
-      if (event instanceof NavigationEnd) {
+      if (event instanceof NavigationEnd || event instanceof NavigationStart) {
         this.showSearchBar = event.url === '/discover';
       }
     });
