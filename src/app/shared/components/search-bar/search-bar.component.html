@@ -1,16 +1,17 @@
-<div
+<form
   class="form-group"
   [ngClass]="isLargeScreen ? 'input-group-lg' : ''"
   role="search"
+  (ngSubmit)="getUserInput()"
 >
   <input
+    #searchInput="ngModel"
+    name="search"
     class="search-bar form-control ps-5 pe-1 rounded-4"
     type="search"
     placeholder="Search for a recipe"
     #searchbar
     [(ngModel)]="searchValue"
-    (search)="getUserInput()"
-    (keyup.enter)="getUserInput()"
   />
   <fa-icon [icon]="searchIcon" class="icon"></fa-icon>
-</div>
+</form>

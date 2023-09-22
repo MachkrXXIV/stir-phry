@@ -2,9 +2,9 @@
 
 .form-control {
   &:focus {
-    border-color: $brand-color;
+    border-color: $custom-primary;
     border-width: 1px;
-    box-shadow: $brand-color 0px 2px 4px;
+    box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
   }
 }
 
